@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="container container--mini">
-                <form class="form" method="post">
+                <form action="" class="form" method="post">
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             {% for message in messages %}
@@ -33,14 +33,14 @@
 
                     <br>
                     <div class="form-group">
-                        <label for="user_login">Email</label>
+                        <label for="inputEmail">Email</label>
                         <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="email" class="form-control" value="{{ request.form.email }}" required="">
+                               type="text" id="inputEmail" name="email" class="form-control" value="{{ request.form.email }}" required="">
                     </div>
                     <div class="form-group">
-                        <label for="user_pass">Password</label>
+                        <label for="inputPassword">Password</label>
                         <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="password" class="form-control" value="{{ request.form.password }}" required="">
+                               type="password" id="inputPassword" name="password" class="form-control" value="{{ request.form.password }}" required="">
                     </div>
 
                     <center>
