@@ -11,10 +11,7 @@ Bootstrap(app)
 
 @app.route('/')
 def test():
-    try:
-        return render_template("home.html")
-    except Exception as e:
-        return render_template("500.html", error = e)
+    return render_template("home.html")
 
 @app.route('/home/')
 def homepage():
@@ -22,12 +19,12 @@ def homepage():
 
 
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
     return render_template('404.html')
 
 
 @app.errorhandler(405)
-def page_not_found():
+def page_not_found(e):
     return render_template('405.html')
 
 @app.route('/login/', methods = ['GET', 'POST'])
@@ -36,8 +33,7 @@ def login_page():
         if request.method == "POST":
             email = request.form['email']
             password = request.form['password']
-            flash(email)
-            flash(password)
+
             if email == 'a@qq.com' and password == '1':
                 return redirect(url_for('homepage'))
             else:
