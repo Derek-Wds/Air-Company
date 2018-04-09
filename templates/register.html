@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='js/jquery.slim.min.js') }}"></script>
     <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/form.css" type="text/css">
@@ -15,40 +13,10 @@
 
 <body data-gr-c-s-loaded="true">
 
-<form class="needs-validation" novalidate align="center">
-    First name: <input type="text" name="firstname"><br>
-    Last name: <input type="text" name="lastname">
-    Password: <input type="password" name="pwd">
-    <input type="submit" value="Submit">
-</form>
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
 
 
-<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
-<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
-<script src="{{ url_for('static',filename='js/index.js') }}"></script>
-<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
-
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </body>
 
 </html>
