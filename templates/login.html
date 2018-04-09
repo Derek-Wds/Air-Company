@@ -11,56 +11,54 @@
     <title>Sign in</title>
 </head>
 
-<body style="height: 800px; margin-left: 360px; margin-right: 360px" data-gr-c-s-loaded = "true">
+<body style="height: 800px; margin-left: 360px; margin-right: 360px" data-gr-c-s-loaded="true">
 <main id="main" class="site-main main" style="align-content: center">
-    <div class="container">
-        <div class="row">
-            <div class="container container--mini">
-                <form action="" class="form" method="post">
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                    <center>
-                        <h1 class="h3 mb-3 font-weight-normal" style="font-size: 300%">Please sign in</h1>
-                    </center>
-
-                    <br>
-                    <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="text" id="inputEmail" name="email" class="form-control" value="{{ request.form.email }}" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="password" id="inputPassword" name="password" class="form-control" value="{{ request.form.password }}" required="">
-                    </div>
-
-                    <center>
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" value="remember-me"> Remember me
-                            </label>
+    <div class="row justify-content-center">
+        <form action="" class="form" method="post" align="center">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                            {{ message }}
                         </div>
-                    </center>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <center>
+                <h1 class="h3 mb-3 font-weight-normal" style="font-size: 300%">Please sign in</h1>
+            </center>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
-                    <br>
-                    <center>
-                        <div>No account? <a href="../register/">Register here.</a></div>
-                        <br>
-                        <span class="text-muted">All rights reserved to Derek & Masaki's Air Company © 2018</span>
-                    </center>
-                </form>
+            <br>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                       type="text" id="inputEmail" name="email" class="form-control" value="{{ request.form.email }}"
+                       required="">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                       type="password" id="inputPassword" name="password" class="form-control"
+                       value="{{ request.form.password }}" required="">
+            </div>
+
+            <center>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+            </center>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
+            <br>
+            <center>
+                <div>No account? <a href="../register/">Register here.</a></div>
+                <br>
+                <span class="text-muted">All rights reserved to Derek & Masaki's Air Company © 2018</span>
+            </center>
+        </form>
     </div>
 </main>
 
