@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.slim.min.js') }}"></script>
     <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/form.css" type="text/css">
     <title>Sign in</title>
 </head>
 
-<body style="height: 800px; margin-left: 360px; margin-right: 360px" data-gr-c-s-loaded = "true">
-<main id="main" class="site-main main" style="align-content: center">
+<body style="height: 800px;" data-gr-c-s-loaded = "true">
+<main id="main" class="site-main main">
     <div class="container">
         <div class="row">
             <div class="container container--mini">
-                <form action="" class="form" method="post">
+                <form action="" class="form" method="post" align="center">
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             {% for message in messages %}
@@ -30,6 +32,7 @@
                     <center>
                         <h1 class="h3 mb-3 font-weight-normal" style="font-size: 300%">Please sign in</h1>
                     </center>
+
 
                     <br>
                     <div class="form-group">
@@ -51,7 +54,7 @@
                         </div>
                     </center>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
+                    <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Login">Sign in</button>
                     <br>
                     <center>
                         <div>No account? <a href="../register/">Register here.</a></div>
@@ -65,8 +68,10 @@
 </main>
 
 
-<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/index.js') }}"></script>
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
 </body>
 
 
