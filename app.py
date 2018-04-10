@@ -8,12 +8,8 @@ app.config['SECRET_KEY'] = '\x1b\x9d\xa8\x9b\xbbn\xa5\xfd\xd2\xa4\x16%{c\xba~\xd
 
 
 @app.route('/')
-def test():
+def home_page():
     return render_template("index.html")
-
-@app.route('/home/')
-def homepage():
-    return render_template("home.html")
 
 
 @app.errorhandler(404)
