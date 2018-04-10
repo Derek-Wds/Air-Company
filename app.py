@@ -48,6 +48,20 @@ def register_page():
     return render_template("register.html")
 
 
+@app.route('/customer/', methods = ['GET', 'POST'])
+def register_page1():
+    return render_template("form1.html")
+
+
+@app.route('/agent/', methods = ['GET', 'POST'])
+def register_page2():
+    return render_template("form2.html")
+
+
+@app.route('/staff/', methods = ['GET', 'POST'])
+def register_page3():
+    return render_template("form3.html")
+
 
 
 

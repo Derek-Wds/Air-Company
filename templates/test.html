@@ -1,0 +1,45 @@
+<%@ page language="java" import="java.util.*" pageEncoding="GB2312"%>
+
+<html>
+
+ <head>
+
+ <script type="text/javascript" >
+
+  function baidu(){
+
+  var radios = document.getElementsByName("a");
+
+  for ( var i = 0; i < radios.length; i++) {
+
+  if (radios[i].checked==true) {
+
+      i++;
+
+   alert("你选中的是第"+i+"个单选框。值为："+radios[--i].value);
+
+   }
+
+  }
+
+ }
+
+</script>
+
+ </head>
+
+ <body>
+
+  <input type="radio" name="a" value="1"/>1
+
+  <input type="radio" name="a" value="2"/>2
+
+  <input type="radio" name="a" value="3"/>3
+
+  <input type="radio" name="a" value="4"/>4
+
+  <input type="button" onClick="baidu()" value="按下"/>
+
+ </body>
+
+</html>
