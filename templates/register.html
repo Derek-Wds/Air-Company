@@ -7,7 +7,6 @@
     <meta name="author" content="">
     <script src="{{ url_for('static',filename='js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static',filename='js/jquery.slim.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='js/form.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/form.css') }}" type="text/css">
@@ -111,6 +110,8 @@
 <script>
     function register_suc() {
     var customer_reg = document.getElementById("registerer1");
+    var agent_reg = document.getElementById("registerer2");
+    var staff_reg = document.getElementById("registerer3");
     var emails = document.getElementById("inputEmail");
     var pwd1 = document.getElementById("inputPassword");
     var pwd2 = document.getElementById("confirmPassword");
@@ -123,6 +124,32 @@
                 if ((pwd2.value + 1) != 1) {
                     document.write('');
                     window.location.assign("/customer/");
+                }
+            }
+        }
+    }
+
+    if (agent_reg.checked == true) {
+        if ((emails.value + 1) != 1) {
+            window.location.reload();
+            if ((pwd1.value + 1) != 1) {
+                window.location.reload();
+                if ((pwd2.value + 1) != 1) {
+                    document.write('');
+                    window.location.assign("/agent/");
+                }
+            }
+        }
+    }
+
+    if (staff_reg.checked == true) {
+        if ((emails.value + 1) != 1) {
+            window.location.reload();
+            if ((pwd1.value + 1) != 1) {
+                window.location.reload();
+                if ((pwd2.value + 1) != 1) {
+                    document.write('');
+                    window.location.assign("/staff/");
                 }
             }
         }
