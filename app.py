@@ -66,5 +66,4 @@ def register_page3():
 
 
 if __name__ == '__main__':
-    print("I Fucked Up")
     app.run(host="0.0.0.0", port=8080)

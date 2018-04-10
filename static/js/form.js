@@ -1,12 +1,19 @@
 function register_suc() {
-    var registerers = document.getElementById("register");
-    var email = document.getElementById("inputEmail");
+    var customer_reg = document.getElementById("registerer1");
+    var emails = document.getElementById("inputEmail");
     var pwd1 = document.getElementById("inputPassword");
     var pwd2 = document.getElementById("confirmPassword");
 
-    if (registerers[0].checked == true) {
-        if (email == true && pwd1 ==true && true == pwd2) {
-            window.location.assign("/customer/");
+    if (customer_reg.checked == true) {
+        if ((emails.value + 1) != 1) {
+            window.location.reload();
+            if ((pwd1.value + 1) != 1) {
+                window.location.reload();
+                if ((pwd2.value + 1) != 1) {
+                    document.write('');
+                    window.location.assign("/customer/");
+                }
+            }
         }
     }
 }
