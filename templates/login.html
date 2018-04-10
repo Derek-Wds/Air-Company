@@ -5,53 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/form.css" type="text/css">
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.slim.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/form.css') }}" type="text/css">
     <title>Sign in</title>
 </head>
 
-<body style="height: 800px; margin-left: 360px; margin-right: 360px" data-gr-c-s-loaded="true">
-<main id="main" class="site-main main" style="align-content: center">
+<body style="height: 600px; padding-top: 66px;" data-gr-c-s-loaded="true">
+<main id="main" class="site-main main">
     <div class="row justify-content-center">
-        <form action="" class="form" method="post" align="center">
+        <form action="" class="form" method="post">
+
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
                         <div class="alert alert-danger alert-dismissible" role="alert">
-                            <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                             {{ message }}
                         </div>
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            <center>
-                <h1 class="h3 mb-3 font-weight-normal" style="font-size: 300%">Please sign in</h1>
-            </center>
-
             <br>
-            <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                       type="text" id="inputEmail" name="email" class="form-control" value="{{ request.form.email }}"
-                       required="">
-            </div>
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input size="20" style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                       type="password" id="inputPassword" name="password" class="form-control"
-                       value="{{ request.form.password }}" required="">
-            </div>
 
-            <center>
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <center>
+                        <h1 class="h3 mb-3 font-weight-normal" style="font-size: 300%">Please sign in</h1>
+                    </center>
                 </div>
-            </center>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio" id="log_type"
+                               value="option">
+                        <label class="form-check-label" for="Log_type">Customer</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio" id="log_type"
+                               value="option">
+                        <label class="form-check-label" for="log_type">Booking agent</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio" id="log_type"
+                               value="option">
+                        <label class="form-check-label" for="log_type">Airline Staff</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputEmail" style="align-content: left">Username</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="text" id="inputEmail" name="email" class="form-control"
+                               value="{{ request.form.email }}" required="">
+                    </div>
+                </div>
+            </div>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="password" id="inputPassword" name="password" class="form-control"
+                               value="{{ request.form.password }}" required="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <center>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+
+            <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Login">Sign in</button>
             <br>
             <center>
                 <div>No account? <a href="../register/">Register here.</a></div>
@@ -62,9 +111,9 @@
     </div>
 </main>
 
-
-<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
 </body>
 
 

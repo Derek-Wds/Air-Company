@@ -1,28 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="height: 100%">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/form.css" type="text/css">
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.slim.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/form.css') }}" type="text/css">
     <title>Register</title>
 </head>
 
-<body data-gr-c-s-loaded="true">
-<form>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-        <label for="register">Username</label>
-        <input type="username" class="form-control" id="register_username" placeholder="Username">
-        </div>
-    </div>
-</form>
+<body style="height: 600px; padding-top: 66px;" data-gr-c-s-loaded="true">
+<main id="main" class="site-main main">
+    <div class="row justify-content-center">
+        <form class="form" method="post">
 
-<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <center>
+                        <h1 class="h3 mb-3 font-weight-normal" style="font-size: 300%">Sign up</h1>
+                    </center>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio" id="log_type"
+                               value="option">
+                        <label class="form-check-label" for="log_type">Customer</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio" id="log_type"
+                               value="option">
+                        <label class="form-check-label" for="log_type">Booking agent</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio" id="log_type"
+                               value="option">
+                        <label class="form-check-label" for="log_type">Airline Staff</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputEmail" style="align-content: left">Username</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="text" id="inputEmail" name="email" class="form-control"
+                               value="{{ request.form.email }}" required="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="password" id="inputPassword" name="password" class="form-control"
+                               value="{{ request.form.password }}" required="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputPassword">Confirm Password</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="password" id="inputPassword" name="password" class="form-control"
+                               value="{{ request.form.password }}" required="">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Register">Register</button>
+            <br>
+            <center>
+                <div>Already have an account? <a href="../login/">Login here.</a></div>
+                <br>
+                <span class="text-muted">All rights reserved to Derek & Masaki's Air Company © 2018</span>
+            </center>
+        </form>
+    </div>
+</main>
+
+
+
+<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
 </body>
 
 </html>

@@ -31,7 +31,7 @@ def login_page():
             if email == 'a@qq.com' and password == '1':
                 return redirect(url_for('homepage'))
             else:
-                err = "Invalid input, try again!"
+                err = "Account does not exist or password error!"
                 flash(err)
         return render_template("login.html")
 
@@ -46,6 +46,8 @@ class Registration(Form):
 @app.route('/register/', methods = ['GET', 'POST'])
 def register_page():
     return render_template("register.html")
+
+
 
 
 
