@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: auto;">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,59 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/footer.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css">
+    <style>
+        input[type='text'],
+        input[type='number'],
+        input[type='password'],
+        textarea {
+            outline: none;
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+        }
+
+        @media (min-width: 1200px) {
+            #flights {
+                max-width: 1200px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #searchforflight {
+                max-width: 720px;
+                box-sizing: border-box;
+                background-color: #f5f5f5;
+                border-radius: 10px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #result-header {
+                box-sizing: border-box;
+                max-width: 960px;
+                border-radius: 10px;
+                background-color: #f5f5f5;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #col-left {
+                border: 2px solid #f5f5f5 !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #col-right {
+                border-top: 2px solid #f5f5f5 !important;
+                border-bottom: 2px solid #f5f5f5 !important;
+                border-right: 2px solid #f5f5f5 !important;
+            }
+        }
+
+
+        ul {
+            list-style: none
+        }
+    </style>
 
     <title>Air Company</title>
 </head>
@@ -19,47 +72,53 @@
 
 <body>
 
-<div class="navigation container" style="padding-top: 0px">
-    <span class="border-bottom">
+<div class="navigation container" style="padding-top: 20px">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+            <span class="border-bottom">
         <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-lg" style="margin-bottom: 5px;">
-        <a href="#" class="navbar-brand"><img src="/static/logo.png" height="35%" width="35%" alt="Air Company"
-                                              style="width: 225px"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto" style="font-size: 18px">
+            <nav class="navbar navbar-expand-lg" style="margin-bottom: 5px;">
+                <a class="navbar-brand"><img src="/static/logo.png" height="45%" width="45%" alt="Air Company"
+                                             style="width: 240px"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto" style="font-size: 20px">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Flights</a>
-                </li>
+                        <li class="nav-item" style="width: 110px; margin-left: 20px;">
+                            <a class="nav-link" href="../">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item" style="width: 110px;">
+                            <a class="nav-link" href="#flights" onclick="check_flight()">Flights</a>
+                        </li>
 
-                <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">More</a>
-                        <div id="drop_item" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <li class="nav-item dropdown" style="width: 110px;">
+                                <a class="nav-link dropdown-toggle" href="" id="dropdownMenuButton"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">More</a>
+                                <div id="drop_item" class="dropdown-menu" role="menu"
+                                     aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                </div>
+                        </li>
+                    </ul>
+
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <div class="btn-group btn-group-md" role="group">
+                            <button id="login_button" type="button" class="btn btn-outline-secondary"
+                                    onclick="window.location.href='/login/'">Login</button>
+                            <button id="register_button" type="button" class="btn btn-outline-secondary"
+                                    onclick="window.location.href='/register/'">Register</button>
                         </div>
-                </li>
-
-            </ul>
-
-
-            <form class="form-inline mt-2 mt-md-0">
-                <div class="btn-group btn-group-md" role="group">
-                    <button id="login_button" type="button" class="btn btn-outline-secondary" onclick="window.location.href='/login/'">Login</button>
-                    <button id="register_button" type="button" class="btn btn-outline-secondary" onclick="window.location.href='/register/'">Register</button>
+                    </form>
                 </div>
-            </form>
+            </nav>
+            </span>
         </div>
-    </nav>
-</span>
-
+    </div>
 </div>
 
 <div id="slides" class="carousel slide" data-ride="carousel">
@@ -91,10 +150,134 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<div class="container" style="padding-top: 42px;">
+    <div class="row" style="text-align: center;">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+            <p style="font-size: 18px;"><strong>Search for flight!</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="searchforflight" style="padding-top: 24px;">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchsc"
+                       placeholder="Source city"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="serachsa"
+                       placeholder="Source airport name"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchdc"
+                       placeholder="Destination city"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchda"
+                       placeholder="Destination airport name"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchdate"
+                       placeholder="YY/MM/DD"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <button class="btn btn-light btn-block" type="button" style="font-size: 18px"><strong>Search!</strong>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<!--
+<div class="container" style="padding-left: 150px; padding-right: 150px;">
+    <div class="row" id="result-header">
+        <div class="col-md-12">
+            <div class="row btn-group btn-group-lg" style="align-content: center;">
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-outline-warning custom">Light</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-outline-warning custom">Light</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-outline-warning custom">Light</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="container flight-content" id="flights" style="padding-top: 42px;">
+    <div id="result">
+        <div>
+            <ul class="fligtdetails list-group list-group-flush">
+                <li tabindex="0" class="search-result">
+                    <div class="row">
+                        <div class="col-md-10" id="col-left">
+                            <div class="row">
+                                <div class="col col-md-12">
+                                    //duration time
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-4">
+                                    //source city/time
+                                </div>
+                                <div class="col col-md-4 text-center">
+                                    <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                         style="width: 180px; height: 30px;">
+                                </div>
+                                <div class="col col-md-4">
+                                    //arrival city/time
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" id="col-right">
+                            //flight status
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
 
 <br>
 <br>
-<br>
+<div>
+    <!--Write something-->
+</div>
+
 
 <footer class="footer">
     <div class="container">
@@ -103,6 +286,7 @@
         </center>
     </div>
 </footer>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

@@ -10,6 +10,15 @@
         <h1>Sorry, the page does not exist.</h1>
         <p class="lead">You have enter a forbidden zone and please go back to where you are, or you may not
             get the flight information you want.</p>
-        <p>Roll back to home: <a href="../">Click me</a>, :)</p>
+        <p>Roll back:
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="goback()">Click me</button>
+            :)
+        </p>
     </main>
+    
+    <script>
+    function goback() {
+        window.history.back();
+    }
+    </script>
 {% endblock %}

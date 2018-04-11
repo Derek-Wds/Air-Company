@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/form.css') }}" type="text/css">
+    <style>
+        input[type='text'],
+        input[type='number'],
+        input[type='password'],
+        textarea {
+            outline: none;
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+        }
+    </style>
     <title>Register</title>
 </head>
 
@@ -95,7 +105,8 @@
                 </div>
             </div>
 
-            <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Register" onclick="register_suc()">Register
+            <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Register" onclick="register_suc()">
+                Register
             </button>
             <br>
             <center>
@@ -109,52 +120,37 @@
 
 <script>
     function register_suc() {
-    var customer_reg = document.getElementById("registerer1");
-    var agent_reg = document.getElementById("registerer2");
-    var staff_reg = document.getElementById("registerer3");
-    var emails = document.getElementById("inputEmail");
-    var pwd1 = document.getElementById("inputPassword");
-    var pwd2 = document.getElementById("confirmPassword");
+        var customer_reg = document.getElementById("registerer1");
+        var agent_reg = document.getElementById("registerer2");
+        var staff_reg = document.getElementById("registerer3");
+        var emails = document.getElementById("inputEmail");
+        var pwd1 = document.getElementById("inputPassword");
+        var pwd2 = document.getElementById("confirmPassword");
 
-    if (customer_reg.checked == true) {
-        if ((emails.value + 1) != 1) {
-            window.location.reload();
-            if ((pwd1.value + 1) != 1) {
-                window.location.reload();
-                if ((pwd2.value + 1) != 1) {
-                    document.write('');
-                    window.location.assign("/customer/");
-                }
+        if (customer_reg.checked == true) {
+            if (emails.value.length != 0 && pwd1.value.length != 0 && pwd2.value.length != 0) {
+                document.write('');
+                window.location.assign("/customer/");
             }
         }
-    }
 
-    if (agent_reg.checked == true) {
-        if ((emails.value + 1) != 1) {
-            window.location.reload();
-            if ((pwd1.value + 1) != 1) {
-                window.location.reload();
-                if ((pwd2.value + 1) != 1) {
-                    document.write('');
-                    window.location.assign("/agent/");
-                }
+
+        if (agent_reg.checked == true) {
+            if (emails.value.length != 0 && pwd1.value.length != 0 && pwd2.value.length != 0) {
+                document.write('');
+                window.location.assign("/agent/");
             }
         }
-    }
 
-    if (staff_reg.checked == true) {
-        if ((emails.value + 1) != 1) {
-            window.location.reload();
-            if ((pwd1.value + 1) != 1) {
-                window.location.reload();
-                if ((pwd2.value + 1) != 1) {
-                    document.write('');
-                    window.location.assign("/staff/");
-                }
+
+        if (staff_reg.checked == true) {
+            if (emails.value.length != 0 && pwd1.value.length != 0 && pwd2.value.length != 0) {
+                document.write('');
+                window.location.assign("/staff/");
             }
+
         }
     }
-}
 
 </script>
 

@@ -1,45 +1,37 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB2312"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
 
-<html>
+<a href="#div1"> div1</a>
+<a href="#div2"> div2</a>
+<a href="#div3"> div3</a>
+<a href="#div4"> div4</a>
+<a href="#div5"> div5</a>
 
- <head>
+<div id="div1" style="width: 60px;height: 300px;background-color: #003366">
+1
+</div>
 
- <script type="text/javascript" >
+<div id="div2" style="width: 60px;height: 300px;background-color:#556699">
+2
+</div>
 
-  function baidu(){
+<div id="div3" style="width: 60px;height: 300px;background-color: #f5f5f5">
+3
+</div>
 
-  var radios = document.getElementsByName("a");
+<div id="div4" style="width: 60px;height: 300px;background-color: #7d7d7d">
+4
+</div>
 
-  for ( var i = 0; i < radios.length; i++) {
+<div id="div5" style="width: 60px;height: 300px;background-color: #e9f1fa">
+5
+</div>
 
-  if (radios[i].checked==true) {
 
-      i++;
-
-   alert("你选中的是第"+i+"个单选框。值为："+radios[--i].value);
-
-   }
-
-  }
-
- }
-
-</script>
-
- </head>
-
- <body>
-
-  <input type="radio" name="a" value="1"/>1
-
-  <input type="radio" name="a" value="2"/>2
-
-  <input type="radio" name="a" value="3"/>3
-
-  <input type="radio" name="a" value="4"/>4
-
-  <input type="button" onClick="baidu()" value="按下"/>
-
- </body>
-
+</body>
 </html>
