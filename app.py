@@ -60,11 +60,11 @@ def login_page():
             else:
                 err = "Password error!"
                 flash(err)
-        return render_template("login1.html")
+        return render_template("login.html")
 
     except Exception as e:
         flash(str(e))
-        return render_template("login1.html")
+        return render_template("login.html")
 
 @app.route('/login-customer/', methods = ['GET', 'POST'])
 def login_customer():
