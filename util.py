@@ -1,6 +1,7 @@
 import pymysql.cursors
 from functools import wraps
 
+
 def query_mod(sql, config):
     connection = pymysql.connect(**config)
     try:
