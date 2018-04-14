@@ -23,7 +23,7 @@
     <title>Register</title>
 </head>
 
-<body style="height: 600px; padding-top: 42px;" data-gr-c-s-loaded="true">
+<body style="height: 600px; padding-top: 200px;" data-gr-c-s-loaded="true">
 <main id="main" class="site-main main">
     <div class="row justify-content-center">
         <form class="form" method="post">
@@ -69,41 +69,6 @@
                 </div>
             </div>
             <br>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <div class="form-group">
-                        <label for="inputEmail" style="align-content: left">Username</label>
-                        <input size="20"
-                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="text" id="inputEmail" name="email" class="form-control"
-                               value="{{ request.form.email }}" required="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input size="20"
-                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="password" id="inputPassword" name="password" class="form-control"
-                               value="{{ request.form.password }}" required="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <div class="form-group">
-                        <label for="inputPassword">Confirm Password</label>
-                        <input size="20"
-                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="password" id="confirmPassword" name="password" class="form-control"
-                               value="{{ request.form.password }}" required="">
-                    </div>
-                </div>
-            </div>
 
             <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Register" onclick="register_suc()">
                 Register
@@ -128,27 +93,20 @@
         var pwd2 = document.getElementById("confirmPassword");
 
         if (customer_reg.checked == true) {
-            if (emails.value.length != 0 && pwd1.value.length != 0 && pwd2.value.length != 0) {
-                document.write('');
-                window.location.assign("/customer/");
-            }
+            document.write('');
+            window.location.assign("/customer/");
         }
 
 
         if (agent_reg.checked == true) {
-            if (emails.value.length != 0 && pwd1.value.length != 0 && pwd2.value.length != 0) {
-                document.write('');
-                window.location.assign("/agent/");
-            }
+            document.write('');
+            window.location.assign("/agent/");
         }
 
 
         if (staff_reg.checked == true) {
-            if (emails.value.length != 0 && pwd1.value.length != 0 && pwd2.value.length != 0) {
-                document.write('');
-                window.location.assign("/staff/");
-            }
-
+            document.write('');
+            window.location.assign("/staff/");
         }
     }
 
