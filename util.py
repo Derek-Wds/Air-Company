@@ -1,5 +1,5 @@
 import pymysql.cursors
-
+from functools import wraps
 
 def query_mod(sql, config):
     connection = pymysql.connect(**config)
@@ -36,3 +36,12 @@ def fetch_all(sql, config):
     finally:
         connection.close()
     return result
+
+
+def customer_login_required(f):
+    pass
+
+
+
+
+

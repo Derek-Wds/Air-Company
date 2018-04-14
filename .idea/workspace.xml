@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fb3a634-7859-405f-a496-40cc7b4bb046" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +15,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Air_Company$config.coverage" NAME="config Coverage Results" MODIFIED="1523681913206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Air_Company$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1523686648569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Air_Company$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1523707681276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Air_Company$Air_Company.coverage" NAME="Air-Company Coverage Results" MODIFIED="1523466386213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
@@ -49,102 +48,13 @@
     </expand>
     <select />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="DATABASE/7b1d36de-ce94-4c9a-893e-d03d656ad2f0" pinned="false" current-in-tab="false">
-              <entry file="uml://DATABASE/7b1d36de-ce94-4c9a-893e-d03d656ad2f0">
-                <provider selected="true" editor-type-id="UmlEditorProvider">
-                  <state>
-                    <ID>DATABASE</ID>
-                    <OriginalElement>7b1d36de-ce94-4c9a-893e-d03d656ad2f0</OriginalElement>
-                    <nodes>
-                      <node x="232.0" y="101.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline_staff</node>
-                      <node x="386.2291666666667" y="313.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight</node>
-                      <node x="402.2291666666667" y="690.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket</node>
-                      <node x="525.25" y="935.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases</node>
-                      <node x="634.2291666666667" y="591.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.customer</node>
-                      <node x="921.2291666666667" y="0.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.booking_agent</node>
-                      <node x="156.39583333333337" y="0.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline</node>
-                      <node x="464.0" y="145.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airport</node>
-                      <node x="0.0" y="134.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane</node>
-                    </nodes>
-                    <notes />
-                    <edges>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight">
-                        <point x="0.0" y="-48.0" />
-                        <point x="0.0" y="114.0" />
-                      </edge>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane">
-                        <point x="-81.33333333333331" y="-114.0" />
-                        <point x="426.89583333333337" y="288.0" />
-                        <point x="106.0" y="288.0" />
-                        <point x="0.0" y="48.0" />
-                      </edge>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline">
-                        <point x="0.0" y="-48.0" />
-                        <point x="106.0" y="76.0" />
-                        <point x="209.39583333333337" y="76.0" />
-                        <point x="-53.0" y="25.5" />
-                      </edge>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airport">
-                        <point x="0.0" y="-114.0" />
-                        <point x="508.2291666666667" y="288.0" />
-                        <point x="517.75" y="288.0" />
-                        <point x="-53.75" y="37.0" />
-                      </edge>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket">
-                        <point x="-58.0" y="-59.0" />
-                        <point x="583.25" y="910.0" />
-                        <point x="508.2291666666667" y="910.0" />
-                        <point x="0.0" y="48.0" />
-                      </edge>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.customer">
-                        <point x="58.0" y="-59.0" />
-                        <point x="699.25" y="910.0" />
-                        <point x="755.2291666666667" y="910.0" />
-                        <point x="0.0" y="147.0" />
-                      </edge>
-                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline_staff" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline">
-                        <point x="0.0" y="-81.0" />
-                        <point x="338.0" y="76.0" />
-                        <point x="315.39583333333337" y="76.0" />
-                        <point x="53.0" y="25.5" />
-                      </edge>
-                    </edges>
-                    <settings layout="Hierarchic Group" zoom="1.0177545691906005" x="215.81323755772192" y="410.8132375577219" />
-                    <SelectedNodes />
-                    <Categories>
-                      <Category>Key columns</Category>
-                      <Category>Columns</Category>
-                    </Categories>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="customer" pinned="false" current-in-tab="true">
-              <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/customer">
-                <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                  <state>
-                    <filtering enabled="true" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="394">
+              <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
               </folding>
@@ -152,11 +62,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
+      <file leaf-file-name="customer" pinned="false" current-in-tab="false">
+        <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/customer">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="509">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,10 +123,10 @@
         <option value="$PROJECT_DIR$/templates/test.html" />
         <option value="$PROJECT_DIR$/templates/ahome.html" />
         <option value="$PROJECT_DIR$/templates/shome.html" />
-        <option value="$PROJECT_DIR$/util.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7b1d36de-ce94-4c9a-893e-d03d656ad2f0/console.sql" />
+        <option value="$PROJECT_DIR$/util.py" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -219,8 +141,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-1920" />
+    <option name="y" value="-328" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -238,11 +162,6 @@
               <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
               <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -256,6 +175,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -343,55 +263,54 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1920" y="-328" width="1920" height="1080" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.23283581" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.16121212" />
       <window_info anchor="bottom" id="Terminal" order="12" />
-      <window_info anchor="bottom" id="Database Console" order="0" weight="0.32969698" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14449213" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10915868" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="4" weight="0.18526466" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18477103" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" order="0" weight="0.32935324" />
       <window_info active="true" anchor="bottom" id="Find" order="2" visible="true" weight="0.32852387" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32969698" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14449213" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3297568" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.19393939" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14449213" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.19393939" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Find" order="2" visible="true" weight="0.32852387" />
-      <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="right" id="Database" order="4" weight="0.18526466" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3297568" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="right" id="Database" order="4" weight="0.18526466" />
+      <window_info anchor="bottom" id="Python Console" order="11" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,6 +320,26 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/test.html" />
     <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -420,9 +359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1472">
           <caret line="66" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -447,9 +383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
           <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -555,40 +488,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7b1d36de-ce94-4c9a-893e-d03d656ad2f0/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbconnect.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="uml://DATABASE/7b1d36de-ce94-4c9a-893e-d03d656ad2f0">
       <provider selected="true" editor-type-id="UmlEditorProvider">
@@ -649,17 +554,15 @@
               <point x="53.0" y="25.5" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0177545691906005" x="215.81323755772192" y="410.8132375577219" />
+          <settings layout="Hierarchic Group" zoom="1.0177545691906005" x="216.0" y="411.0" />
           <SelectedNodes />
           <Categories>
             <Category>Key columns</Category>
             <Category>Columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form2.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -673,6 +576,13 @@
         <state relative-caret-position="-2712" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1480">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -680,10 +590,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/register.html">
+    <entry file="file://$PROJECT_DIR$/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1480">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+        <state relative-caret-position="509">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -696,8 +609,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="394">
+          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>

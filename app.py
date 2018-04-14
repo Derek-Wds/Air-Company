@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = secret_key
 
 @app.route('/')
 def home_page():
-    return render_template("test.html")
+    return render_template("index.html")
 
 @app.route('/home/customer/')
 def customer_page():
@@ -76,7 +76,7 @@ def register_page():
 
 @app.route('/customer/', methods = ['GET', 'POST'])
 def register_page1():
-    return render_template("register.html")
+    return render_template("form1.html")
 
 """
     try:
