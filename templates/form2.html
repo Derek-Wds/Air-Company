@@ -48,7 +48,42 @@
                     </center>
                 </div>
             </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputEmail" style="align-content: left">Email</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="text" id="inputEmail" name="email" class="form-control"
+                               value="{{ request.form.email }}" required="">
+                    </div>
+                </div>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="password" id="inputPassword" name="password" class="form-control"
+                               value="{{ request.form.password }}" required="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputPassword">Confirm Password</label>
+                        <input size="20"
+                               style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
+                               type="password" id="confirmPassword" name="password" class="form-control"
+                               value="{{ request.form.password }}" required="">
+                    </div>
+                </div>
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <div class="form-group">
