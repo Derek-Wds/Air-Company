@@ -17,7 +17,9 @@ def home_page():
 
 @app.route('/home/customer/')
 def customer_page():
-    return render_template("chome.html")
+    if g.email:
+        if g.type == 'customer':
+            return render_template("chome.html")
 
 
 @app.route('/home/agent/')
@@ -43,12 +45,14 @@ def page_not_found(e):
 def login_page():
     try:
         if request.method == "POST":
+            session.pop('email', None)
             email = request.form['email']
             # Password encoded with utf-8 first then encoded with md5
             password = md5(request.form['password'].encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM customer WHERE email = "{}"'.format(email)
             db_pwd = query_fetch(sql, DB)
             if password == db_pwd['password']:
+                session['email'] = email
                 return redirect(url_for('customer_page'))
             elif db_pwd is None:
                 err = "Account does not exist"
@@ -123,9 +127,6 @@ def register_page1():
         return render_template("form1.html")
 
 
-
-
-
 @app.route('/agent/', methods = ['GET', 'POST'])
 def register_page2():
     return render_template("form2.html")
@@ -134,6 +135,22 @@ def register_page2():
 @app.route('/staff/', methods = ['GET', 'POST'])
 def register_page3():
     return render_template("form3.html")
+
+
+@app.route('/logout/', methods = ['GET', 'POST'])
+def logout_redirect():
+    session.pop('email', None)
+    return redirect(url_for('home_page'))
+
+
+@app.before_request
+def before_request():
+    g.email = None
+    g.type = None
+    if 'email' in session:
+        g.email = session['email']
+    if 'type' in session:
+        g.type = session['type']
 
 
 if __name__ == '__main__':
