@@ -45,11 +45,8 @@ def login_page():
             email = request.form['email']
             # Password encoded with utf-8 first then encoded with md5
             password = md5(request.form['password'].encode('utf-8')).hexdigest()
-            print(password)
             sql = 'SELECT password FROM customer WHERE email = "{}"'.format(email)
-            print(sql)
             db_pwd = query_fetch(sql, DB)
-            print(db_pwd)
             if password == db_pwd['password']:
                 return redirect(url_for('customer_page'))
             elif db_pwd is None:
@@ -70,18 +67,20 @@ class Registration(Form):
 
 @app.route('/register/', methods = ['GET', 'POST'])
 def register_page():
-    # Make input form for everything in one page due to sql not null limitation
     return render_template("register.html")
 
 
 @app.route('/customer/', methods = ['GET', 'POST'])
 def register_page1():
-    return render_template("form1.html")
-
-"""
     try:
         if request.method == "POST":
             email = request.form['email']
+            pwd = request.form['password']
+            confirm_pwd = request.form['confirm_password']
+            if pwd != confirm_pwd:
+                err = "password and confirm password doesn't match!"
+                flash(err)
+                return render_template("form1.html")
             # Password encoded with utf-8 first then encoded with md5
             password = md5(request.form['password'].encode('utf-8')).hexdigest()
             building_number = request.form['building_number']
@@ -93,10 +92,10 @@ def register_page1():
             passport_expiration = request.form['passport_expiration']
             passport_country = request.form['passport_country']
             date_of_birth = request.form['date_of_birth']
-            print(password)
             sql_check = 'SELECT * FROM customer WHERE email = "{}"'.format(email)
             user_exist = query_fetch(sql_check, DB)
-            if user_exist is not None:
+            print('4')
+            if user_exist['password'] is not None:
                 err = "User already exists!"
                 flash(err)
             else:
@@ -105,10 +104,15 @@ def register_page1():
                                                  passport_number, passport_expiration, passport_country, date_of_birth)
                 query_mod(sql_add, DB)
                 return redirect(url_for('customer_page'))
+        return render_template("form1.html")
+
     except Exception as e:
         flash(str(e))
         return render_template("form1.html")
-"""
+
+
+
+
 
 @app.route('/agent/', methods = ['GET', 'POST'])
 def register_page2():
