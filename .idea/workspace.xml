@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fb3a634-7859-405f-a496-40cc7b4bb046" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/ahome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/shome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,13 +18,125 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Air_Company$Air_Company.coverage" NAME="Air-Company Coverage Results" MODIFIED="1523466386213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Amazon" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Amazon" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Amazon" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="airline: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="DATABASE/7b1d36de-ce94-4c9a-893e-d03d656ad2f0" pinned="false" current-in-tab="true">
+              <entry file="uml://DATABASE/7b1d36de-ce94-4c9a-893e-d03d656ad2f0">
+                <provider selected="true" editor-type-id="UmlEditorProvider">
+                  <state>
+                    <ID>DATABASE</ID>
+                    <OriginalElement>7b1d36de-ce94-4c9a-893e-d03d656ad2f0</OriginalElement>
+                    <nodes>
+                      <node x="232.0" y="101.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline_staff</node>
+                      <node x="386.2291666666667" y="313.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight</node>
+                      <node x="402.2291666666667" y="690.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket</node>
+                      <node x="525.25" y="935.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases</node>
+                      <node x="634.2291666666667" y="591.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.customer</node>
+                      <node x="921.2291666666667" y="0.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.booking_agent</node>
+                      <node x="156.39583333333337" y="0.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline</node>
+                      <node x="464.0" y="145.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airport</node>
+                      <node x="0.0" y="134.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane</node>
+                    </nodes>
+                    <notes />
+                    <edges>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight">
+                        <point x="0.0" y="-48.0" />
+                        <point x="0.0" y="114.0" />
+                      </edge>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane">
+                        <point x="-81.33333333333331" y="-114.0" />
+                        <point x="426.89583333333337" y="288.0" />
+                        <point x="106.0" y="288.0" />
+                        <point x="0.0" y="48.0" />
+                      </edge>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline">
+                        <point x="0.0" y="-48.0" />
+                        <point x="106.0" y="76.0" />
+                        <point x="209.39583333333337" y="76.0" />
+                        <point x="-53.0" y="25.5" />
+                      </edge>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airport">
+                        <point x="0.0" y="-114.0" />
+                        <point x="508.2291666666667" y="288.0" />
+                        <point x="517.75" y="288.0" />
+                        <point x="-53.75" y="37.0" />
+                      </edge>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket">
+                        <point x="-58.0" y="-59.0" />
+                        <point x="583.25" y="910.0" />
+                        <point x="508.2291666666667" y="910.0" />
+                        <point x="0.0" y="48.0" />
+                      </edge>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.customer">
+                        <point x="58.0" y="-59.0" />
+                        <point x="699.25" y="910.0" />
+                        <point x="755.2291666666667" y="910.0" />
+                        <point x="0.0" y="147.0" />
+                      </edge>
+                      <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline_staff" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline">
+                        <point x="0.0" y="-81.0" />
+                        <point x="338.0" y="76.0" />
+                        <point x="315.39583333333337" y="76.0" />
+                        <point x="53.0" y="25.5" />
+                      </edge>
+                    </edges>
+                    <settings layout="Hierarchic Group" zoom="1.0177545691906005" x="573.9545920985121" y="408.39687018984097" />
+                    <SelectedNodes>
+                      <node>7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane</node>
+                    </SelectedNodes>
+                    <Categories>
+                      <Category>Key columns</Category>
+                      <Category>Columns</Category>
+                    </Categories>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1329">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="370">
+              <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
               </folding>
@@ -35,110 +144,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            <state>
+              <caret column="11" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-253">
-              <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="684">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/chome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="249" column="10" lean-forward="true" selection-start-line="230" selection-start-column="4" selection-end-line="249" selection-end-column="10" />
-              <folding>
-                <element signature="e#1335#1355#0#HTML" expanded="true" />
-                <element signature="e#1768#1880#0#HTML" expanded="true" />
-                <element signature="e#2533#2560#0#HTML" expanded="true" />
-                <element signature="e#11367#11374#1#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+      <file leaf-file-name="content.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="ahome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ahome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="236" column="49" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
-              <folding>
-                <element signature="e#1505#1524#0#HTML" expanded="true" />
-                <element signature="e#1751#1864#0#HTML" expanded="true" />
-                <element signature="e#1949#2062#0#HTML" expanded="true" />
-                <element signature="e#2389#5343#0#HTML" />
-                <element signature="e#2427#2454#0#HTML" expanded="true" />
-                <element signature="e#5357#9458#0#HTML" />
-                <element signature="e#11946#11953#1#HTML" expanded="true" />
-                <element signature="e#12858#12865#1#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shome.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/shome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
-              <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-              <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
-              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-              <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
-              <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
-              <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
-              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
-              <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
-              <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-              <folding>
-                <element signature="e#1064#1084#0#HTML" expanded="true" />
-                <element signature="e#1478#1551#0#HTML" expanded="true" />
-                <element signature="e#1663#1735#0#HTML" expanded="true" />
-                <element signature="e#1854#1927#0#HTML" expanded="true" />
-                <element signature="e#2037#2110#0#HTML" expanded="true" />
-                <element signature="e#2219#2292#0#HTML" expanded="true" />
-                <element signature="e#2409#2482#0#HTML" expanded="true" />
-                <element signature="e#2599#2672#0#HTML" expanded="true" />
-                <element signature="e#2778#2851#0#HTML" expanded="true" />
-                <element signature="e#2978#3051#0#HTML" expanded="true" />
-                <element signature="e#5629#5636#1#HTML" expanded="true" />
-                <element signature="e#6591#6598#1#HTML" expanded="true" />
-                <element signature="e#7553#7560#1#HTML" expanded="true" />
-                <element signature="e#8515#8522#1#HTML" expanded="true" />
-                <element signature="e#9477#9484#1#HTML" expanded="true" />
-                <element signature="e#10439#10446#1#HTML" expanded="true" />
-                <element signature="e#11401#11408#1#HTML" expanded="true" />
-                <element signature="e#12363#12370#1#HTML" expanded="true" />
-                <element signature="e#13325#13332#1#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1247">
-              <caret line="160" column="34" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
+      <file leaf-file-name="dbconnect.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbconnect.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -147,6 +178,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -176,10 +208,12 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/chome.html" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/test.html" />
         <option value="$PROJECT_DIR$/templates/ahome.html" />
         <option value="$PROJECT_DIR$/templates/shome.html" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/util.py" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -192,15 +226,19 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1280" />
-    <option name="height" value="778" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,38 +246,16 @@
               <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
               <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Air-Company" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Air-Company" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Amazon RDS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -264,7 +280,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -286,7 +302,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1513" height="1013" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -296,10 +312,9 @@
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32852387" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14142762" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14449213" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32852387" />
+      <window_info anchor="right" id="Database" order="4" weight="0.18526466" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -310,6 +325,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" weight="0.32969698" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32852387" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,16 +336,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -357,13 +364,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html" />
     <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5658">
@@ -375,9 +376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1127">
           <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -405,27 +403,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form2.html" />
+    <entry file="file://$PROJECT_DIR$/templates/form3.html" />
+    <entry file="file://$PROJECT_DIR$/templates/form1.html" />
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
@@ -457,27 +437,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form2.html" />
+    <entry file="file://$PROJECT_DIR$/templates/form1.html" />
+    <entry file="file://$PROJECT_DIR$/templates/form3.html" />
     <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5658">
@@ -514,9 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -531,30 +490,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../temps/login_register_modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../temps/login-register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" selection-end-line="70" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../temps/login-register.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="230" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../temps/login_register_modal.html" />
+    <entry file="file://$PROJECT_DIR$/../temps/login-register.js" />
+    <entry file="file://$PROJECT_DIR$/../temps/login-register.css" />
     <entry file="file://$PROJECT_DIR$/static/css/navbar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -564,104 +502,149 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="1728">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-253">
-          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="2448">
+          <caret line="136" column="14" selection-start-line="136" selection-start-column="14" selection-end-line="136" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/chome.html" />
+    <entry file="file://$PROJECT_DIR$/templates/test.html" />
+    <entry file="file://$PROJECT_DIR$/templates/ahome.html" />
+    <entry file="file://$PROJECT_DIR$/templates/shome.html" />
+    <entry file="file://$PROJECT_DIR$/content.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbconnect.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/airline">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7b1d36de-ce94-4c9a-893e-d03d656ad2f0/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="uml://DATABASE/7b1d36de-ce94-4c9a-893e-d03d656ad2f0">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>7b1d36de-ce94-4c9a-893e-d03d656ad2f0</OriginalElement>
+          <nodes>
+            <node x="232.0" y="101.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline_staff</node>
+            <node x="386.2291666666667" y="313.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight</node>
+            <node x="402.2291666666667" y="690.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket</node>
+            <node x="525.25" y="935.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases</node>
+            <node x="634.2291666666667" y="591.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.customer</node>
+            <node x="921.2291666666667" y="0.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.booking_agent</node>
+            <node x="156.39583333333337" y="0.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline</node>
+            <node x="464.0" y="145.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airport</node>
+            <node x="0.0" y="134.0">7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight">
+              <point x="0.0" y="-48.0" />
+              <point x="0.0" y="114.0" />
+            </edge>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane">
+              <point x="-81.33333333333331" y="-114.0" />
+              <point x="426.89583333333337" y="288.0" />
+              <point x="106.0" y="288.0" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline">
+              <point x="0.0" y="-48.0" />
+              <point x="106.0" y="76.0" />
+              <point x="209.39583333333337" y="76.0" />
+              <point x="-53.0" y="25.5" />
+            </edge>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.flight" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airport">
+              <point x="0.0" y="-114.0" />
+              <point x="508.2291666666667" y="288.0" />
+              <point x="517.75" y="288.0" />
+              <point x="-53.75" y="37.0" />
+            </edge>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.ticket">
+              <point x="-58.0" y="-59.0" />
+              <point x="583.25" y="910.0" />
+              <point x="508.2291666666667" y="910.0" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.purchases" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.customer">
+              <point x="58.0" y="-59.0" />
+              <point x="699.25" y="910.0" />
+              <point x="755.2291666666667" y="910.0" />
+              <point x="0.0" y="147.0" />
+            </edge>
+            <edge source="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline_staff" target="7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airline">
+              <point x="0.0" y="-81.0" />
+              <point x="338.0" y="76.0" />
+              <point x="315.39583333333337" y="76.0" />
+              <point x="53.0" y="25.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0177545691906005" x="573.9545920985121" y="408.39687018984097" />
+          <SelectedNodes>
+            <node>7b1d36de-ce94-4c9a-893e-d03d656ad2f0.TABLE:airline.airplane</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/airline_staff">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/booking_agent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/customer">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1329">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="370">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="249" column="10" lean-forward="true" selection-start-line="230" selection-start-column="4" selection-end-line="249" selection-end-column="10" />
-          <folding>
-            <element signature="e#1335#1355#0#HTML" expanded="true" />
-            <element signature="e#1768#1880#0#HTML" expanded="true" />
-            <element signature="e#2533#2560#0#HTML" expanded="true" />
-            <element signature="e#11367#11374#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1247">
-          <caret line="160" column="34" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ahome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="236" column="49" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
-          <folding>
-            <element signature="e#1505#1524#0#HTML" expanded="true" />
-            <element signature="e#1751#1864#0#HTML" expanded="true" />
-            <element signature="e#1949#2062#0#HTML" expanded="true" />
-            <element signature="e#2389#5343#0#HTML" />
-            <element signature="e#2427#2454#0#HTML" expanded="true" />
-            <element signature="e#5357#9458#0#HTML" />
-            <element signature="e#11946#11953#1#HTML" expanded="true" />
-            <element signature="e#12858#12865#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/shome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
-          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-          <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
-          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
-          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
-          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
-          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
-          <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
-          <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-          <folding>
-            <element signature="e#1064#1084#0#HTML" expanded="true" />
-            <element signature="e#1478#1551#0#HTML" expanded="true" />
-            <element signature="e#1663#1735#0#HTML" expanded="true" />
-            <element signature="e#1854#1927#0#HTML" expanded="true" />
-            <element signature="e#2037#2110#0#HTML" expanded="true" />
-            <element signature="e#2219#2292#0#HTML" expanded="true" />
-            <element signature="e#2409#2482#0#HTML" expanded="true" />
-            <element signature="e#2599#2672#0#HTML" expanded="true" />
-            <element signature="e#2778#2851#0#HTML" expanded="true" />
-            <element signature="e#2978#3051#0#HTML" expanded="true" />
-            <element signature="e#5629#5636#1#HTML" expanded="true" />
-            <element signature="e#6591#6598#1#HTML" expanded="true" />
-            <element signature="e#7553#7560#1#HTML" expanded="true" />
-            <element signature="e#8515#8522#1#HTML" expanded="true" />
-            <element signature="e#9477#9484#1#HTML" expanded="true" />
-            <element signature="e#10439#10446#1#HTML" expanded="true" />
-            <element signature="e#11401#11408#1#HTML" expanded="true" />
-            <element signature="e#12363#12370#1#HTML" expanded="true" />
-            <element signature="e#13325#13332#1#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,9 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
 from wtforms import Form
 from dbconnect import connection
+import util
+from config import DB
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '\x1b\x9d\xa8\x9b\xbbn\xa5\xfd\xd2\xa4\x16%{c\xba~\xd5\xb1\x11iy\x97=\x96'
