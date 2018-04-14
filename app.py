@@ -50,7 +50,7 @@ def login_page():
             print(sql)
             db_pwd = query_fetch(sql, DB)
             print(db_pwd)
-            if str(password) == str(db_pwd):
+            if password == db_pwd['password']:
                 return redirect(url_for('customer_page'))
             elif db_pwd is None:
                 err = "Account does not exist"
