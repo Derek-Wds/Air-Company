@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fb3a634-7859-405f-a496-40cc7b4bb046" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/login1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/login2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/login3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ahome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ahome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/chome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,10 +17,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Air_Company$app.coverage" NAME="app Coverage Results" MODIFIED="1523709398543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask" />
     <SUITE FILE_PATH="coverage/Air_Company$config.coverage" NAME="config Coverage Results" MODIFIED="1523681913206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Air_Company$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1523715709408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Air_Company$Air_Company.coverage" NAME="Air-Company Coverage Results" MODIFIED="1523466386213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Air_Company$app.coverage" NAME="app Coverage Results" MODIFIED="1523709398543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -40,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="669">
-              <caret line="137" selection-start-line="137" selection-end-line="137" />
+              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="e#0#87#0" expanded="true" />
               </folding>
@@ -48,31 +50,66 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/chome.html">
+      <file leaf-file-name="login1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/login1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="254" column="44" selection-start-line="254" selection-start-column="44" selection-end-line="254" selection-end-column="44" />
+            <state relative-caret-position="391">
+              <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ahome.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/ahome.html">
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="281" column="44" selection-start-line="281" selection-start-column="44" selection-end-line="281" selection-end-column="44" />
+            <state relative-caret-position="554">
+              <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/shome.html">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="270" column="44" selection-start-line="270" selection-start-column="44" selection-end-line="270" selection-end-column="44" />
+            <state relative-caret-position="577">
+              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/login2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="761">
+              <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/login3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2967">
+              <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/form1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4391" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/form2.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="form3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/form3.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -80,8 +117,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -101,13 +138,11 @@
         <option value="$PROJECT_DIR$/static/js/form.js" />
         <option value="$PROJECT_DIR$/templates/404.html" />
         <option value="$PROJECT_DIR$/templates/405.html" />
-        <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/form1.html" />
         <option value="$PROJECT_DIR$/templates/form2.html" />
         <option value="$PROJECT_DIR$/templates/form3.html" />
         <option value="$PROJECT_DIR$/templates/flight.html" />
         <option value="$PROJECT_DIR$/static/css/footer.css" />
-        <option value="$PROJECT_DIR$/templates/register.html" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
@@ -116,10 +151,14 @@
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7b1d36de-ce94-4c9a-893e-d03d656ad2f0/console.sql" />
         <option value="$PROJECT_DIR$/util.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/chome.html" />
         <option value="$PROJECT_DIR$/templates/shome.html" />
         <option value="$PROJECT_DIR$/templates/ahome.html" />
+        <option value="$PROJECT_DIR$/templates/login2.html" />
+        <option value="$PROJECT_DIR$/templates/login3.html" />
+        <option value="$PROJECT_DIR$/templates/register.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/login.html" />
       </list>
     </option>
   </component>
@@ -244,7 +283,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -389,7 +428,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
+    <entry file="file://$PROJECT_DIR$/templates/login1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="119" selection-end-column="7" />
@@ -403,7 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form2.html" />
     <entry file="file://$PROJECT_DIR$/templates/form3.html" />
     <entry file="file://$PROJECT_DIR$/templates/form1.html" />
     <entry file="file://$PROJECT_DIR$/app.py">
@@ -429,7 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form3.html" />
     <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5658">
@@ -563,29 +600,10 @@
           <settings layout="Hierarchic Group" zoom="1.0177545691906005" x="216.0" y="411.0" />
           <SelectedNodes />
           <Categories>
-            <Category>Key columns</Category>
+            <Category />
             <Category>Columns</Category>
           </Categories>
           <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2712" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-834">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -608,23 +626,6 @@
       </provider>
     </entry>
     <entry file="das://7b1d36de-ce94-4c9a-893e-d03d656ad2f0/schema/airline/table/customer" />
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
-          <folding>
-            <element signature="e#0#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="254" column="44" selection-start-line="254" selection-start-column="44" selection-end-line="254" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/shome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="692">
@@ -634,8 +635,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ahome.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5108">
+          <caret line="254" column="14" lean-forward="true" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/chome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="240" column="40" lean-forward="true" selection-start-line="240" selection-start-column="40" selection-end-line="240" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form2.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form3.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/login3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2967">
+          <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4391" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/login1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="669">
-          <caret line="281" column="44" selection-start-line="281" selection-start-column="44" selection-end-line="281" selection-end-column="44" />
+          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="e#0#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/login2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
         </state>
       </provider>
     </entry>

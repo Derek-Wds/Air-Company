@@ -60,23 +60,32 @@ def login_page():
             else:
                 err = "Password error!"
                 flash(err)
-        return render_template("login.html")
+        return render_template("login1.html")
 
     except Exception as e:
         flash(str(e))
-        return render_template("login.html")
+        return render_template("login1.html")
 
+@app.route('/login-customer/', methods = ['GET', 'POST'])
+def login_customer():
+    return render_template("login1.html")
 
-class Registration(Form):
-    pass
+@app.route('/login-agent/', methods = ['GET', 'POST'])
+def login_agent():
+    return render_template("login2.html")
+
+@app.route('/login-staff/', methods = ['GET', 'POST'])
+def login_staff():
+    return render_template("login3.html")
+
 
 @app.route('/register/', methods = ['GET', 'POST'])
 def register_page():
     return render_template("register.html")
 
 
-@app.route('/customer/', methods = ['GET', 'POST'])
-def register_page1():
+@app.route('/register-customer/', methods = ['GET', 'POST'])
+def register_customer():
     try:
         if request.method == "POST":
             email = request.form['email']
@@ -127,13 +136,13 @@ def register_page1():
         return render_template("form1.html")
 
 
-@app.route('/agent/', methods = ['GET', 'POST'])
-def register_page2():
+@app.route('/register-agent/', methods = ['GET', 'POST'])
+def register_agent():
     return render_template("form2.html")
 
 
-@app.route('/staff/', methods = ['GET', 'POST'])
-def register_page3():
+@app.route('/register-staff/', methods = ['GET', 'POST'])
+def register_staff():
     return render_template("form3.html")
 
 
