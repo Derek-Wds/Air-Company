@@ -43,6 +43,10 @@ def page_not_found(e):
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login_page():
+    return render_template("login.html")
+
+@app.route('/login-customer/', methods = ['GET', 'POST'])
+def login_customer():
     try:
         if request.method == "POST":
             session.pop('email', None)
@@ -53,6 +57,7 @@ def login_page():
             db_pwd = query_fetch(sql, DB)
             if password == db_pwd['password']:
                 session['email'] = email
+                session['type'] = 'customer'
                 return redirect(url_for('customer_page'))
             elif db_pwd is None:
                 err = "Account does not exist"
@@ -60,15 +65,11 @@ def login_page():
             else:
                 err = "Password error!"
                 flash(err)
-        return render_template("login.html")
+        return render_template("login1.html")
 
     except Exception as e:
         flash(str(e))
-        return render_template("login.html")
-
-@app.route('/login-customer/', methods = ['GET', 'POST'])
-def login_customer():
-    return render_template("login1.html")
+        return render_template("login1.html")
 
 @app.route('/login-agent/', methods = ['GET', 'POST'])
 def login_agent():
@@ -90,44 +91,33 @@ def register_customer():
         if request.method == "POST":
             email = request.form['email']
             name = request.form['name']
-            print('1')
             pwd = request.form['password']
             confirm_pwd = request.form['confirm_password']
-            print('2')
             if pwd != confirm_pwd:
                 err = "password and confirm password doesn't match!"
                 flash(err)
                 return render_template("form1.html")
             # Password encoded with utf-8 first then encoded with md5
             password = md5(request.form['password'].encode('utf-8')).hexdigest()
-            print('3')
             building_number = request.form['building_number']
             street = request.form['street']
             city = request.form['city']
             state = request.form['state']
-            print('4')
             phone_number = request.form['phone_number']
             passport_number = request.form['passport_number']
             passport_expiration = request.form['passport_expiration']
             passport_country = request.form['passport_country']
-            print('5')
             date_of_birth = request.form['date_of_birth']
             sql_check = 'SELECT * FROM customer WHERE email = "{}"'.format(email)
             user_exist = query_fetch(sql_check, DB)
-            print(user_exist)
-            print('6')
             if user_exist is not None:
                 err = "User already exists!"
-                print('7')
                 flash(err)
             else:
-                print('8')
                 sql_add = 'INSERT INTO customer VALUES("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", ' \
                             '"{}", "{}")'.format(email, name, password, building_number, street, city, state, phone_number,
                                                  passport_number, passport_expiration, passport_country, date_of_birth)
-                print('9')
                 query_mod(sql_add, DB)
-                print('10')
                 return redirect(url_for('customer_page'))
         return render_template("form1.html")
 
