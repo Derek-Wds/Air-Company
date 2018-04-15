@@ -15,21 +15,33 @@ app.config['SECRET_KEY'] = secret_key
 def home_page():
     return render_template("index.html")
 
+
 @app.route('/home/customer/')
 def customer_page():
-    if g.email:
-        if g.type == 'customer':
-            return render_template("chome.html")
+    print(session['user'])
+    print(session['type'])
+    # If the user logged in a session with customer account
+    if g.type == 'customer':
+        return render_template("chome.html")
+    return redirect(url_for('home_page'))
 
 
 @app.route('/home/agent/')
 def agent_page():
-    return render_template("ahome.html")
+    print(session['user'])
+    print(session['type'])
+    if g.type == 'agent':
+        return render_template("ahome.html")
+    return redirect(url_for('home_page'))
 
 
 @app.route('/home/staff/')
 def staff_page():
-    return render_template("shome.html")
+    print(session['user'])
+    print(session['type'])
+    if g.type == 'staff':
+        return render_template("shome.html")
+    return redirect(url_for('home_page'))
 
 
 @app.errorhandler(404)
@@ -41,23 +53,28 @@ def page_not_found(e):
 def page_not_found(e):
     return render_template('405.html')
 
+
 @app.route('/login/', methods = ['GET', 'POST'])
 def login_page():
     return render_template("login.html")
+
 
 @app.route('/login-customer/', methods = ['GET', 'POST'])
 def login_customer():
     try:
         if request.method == "POST":
-            session.pop('email', None)
+            session.pop('user', None)
+            session.pop('type', None)
             email = request.form['email']
             # Password encoded with utf-8 first then encoded with md5
             password = md5(request.form['password'].encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM customer WHERE email = "{}"'.format(email)
             db_pwd = query_fetch(sql, DB)
             if password == db_pwd['password']:
-                session['email'] = email
+                session['user'] = email
                 session['type'] = 'customer'
+                print(session['user'])
+                print(session['type'])
                 return redirect(url_for('customer_page'))
             elif db_pwd is None:
                 err = "Account does not exist"
@@ -71,13 +88,65 @@ def login_customer():
         flash(str(e))
         return render_template("login1.html")
 
+
 @app.route('/login-agent/', methods = ['GET', 'POST'])
 def login_agent():
-    return render_template("login2.html")
+    try:
+        if request.method == "POST":
+            session.pop('user', None)
+            session.pop('type', None)
+            email = request.form['email']
+            # Password encoded with utf-8 first then encoded with md5
+            password = md5(request.form['password'].encode('utf-8')).hexdigest()
+            sql = 'SELECT password FROM booking_agent WHERE email = "{}"'.format(email)
+            db_pwd = query_fetch(sql, DB)
+            if password == db_pwd['password']:
+                session['user'] = email
+                session['type'] = 'agent'
+                print(session['user'])
+                print(session['type'])
+                return redirect(url_for('customer_page'))
+            elif db_pwd is None:
+                err = "Account does not exist"
+                flash(err)
+            else:
+                err = "Password error!"
+                flash(err)
+        return render_template("login2.html")
+
+    except Exception as e:
+        flash(str(e))
+        return render_template("login2.html")
+
 
 @app.route('/login-staff/', methods = ['GET', 'POST'])
 def login_staff():
-    return render_template("login3.html")
+    try:
+        if request.method == "POST":
+            session.pop('user', None)
+            session.pop('type', None)
+            username = request.form['username']
+            # Password encoded with utf-8 first then encoded with md5
+            password = md5(request.form['password'].encode('utf-8')).hexdigest()
+            sql = 'SELECT password FROM airline_staff WHERE username = "{}"'.format(username)
+            db_pwd = query_fetch(sql, DB)
+            if password == db_pwd['password']:
+                session['user'] = username
+                session['type'] = 'staff'
+                print(session['user'])
+                print(session['type'])
+                return redirect(url_for('customer_page'))
+            elif db_pwd is None:
+                err = "Account does not exist"
+                flash(err)
+            else:
+                err = "Password error!"
+                flash(err)
+        return render_template("login3.html")
+
+    except Exception as e:
+        flash(str(e))
+        return render_template("login3.html")
 
 
 @app.route('/register/', methods = ['GET', 'POST'])
@@ -118,6 +187,10 @@ def register_customer():
                             '"{}", "{}")'.format(email, name, password, building_number, street, city, state, phone_number,
                                                  passport_number, passport_expiration, passport_country, date_of_birth)
                 query_mod(sql_add, DB)
+                session['user'] = email
+                session['type'] = 'customer'
+                print(session['user'])
+                print(session['type'])
                 return redirect(url_for('customer_page'))
         return render_template("form1.html")
 
@@ -138,16 +211,19 @@ def register_staff():
 
 @app.route('/logout/', methods = ['GET', 'POST'])
 def logout_redirect():
-    session.pop('email', None)
+    print(session['user'])
+    print(session['type'])
+    session.pop('user', None)
+    session.pop('type', None)
     return redirect(url_for('home_page'))
 
 
 @app.before_request
 def before_request():
-    g.email = None
+    g.user = None
     g.type = None
-    if 'email' in session:
-        g.email = session['email']
+    if 'user' in session:
+        g.user = session['user']
     if 'type' in session:
         g.type = session['type']
 
