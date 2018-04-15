@@ -201,12 +201,75 @@ def register_customer():
 
 @app.route('/register-agent/', methods = ['GET', 'POST'])
 def register_agent():
-    return render_template("form2.html")
+    try:
+        if request.method == "POST":
+            email = request.form['email']
+            pwd = request.form['password']
+            confirm_pwd = request.form['confirm_password']
+            if pwd != confirm_pwd:
+                err = "password and confirm password doesn't match!"
+                flash(err)
+                return render_template("form2.html")
+            # Password encoded with utf-8 first then encoded with md5
+            password = md5(request.form['password'].encode('utf-8')).hexdigest()
+            booking_agent_id = request.form['booking_agent_id']
+            sql_check = 'SELECT * FROM booking_agent WHERE email = "{}"'.format(email)
+            user_exist = query_fetch(sql_check, DB)
+            if user_exist is not None:
+                err = "User already exists!"
+                flash(err)
+            else:
+                sql_add = 'INSERT INTO booking_agent VALUES("{}", "{}", "{}")'.format(email, password, booking_agent_id)
+                query_mod(sql_add, DB)
+                session['user'] = email
+                session['type'] = 'agent'
+                print(session['user'])
+                print(session['type'])
+                return redirect(url_for('agent_page'))
+        return render_template("form2.html")
+
+    except Exception as e:
+        flash(str(e))
+        return render_template("form2.html")
 
 
 @app.route('/register-staff/', methods = ['GET', 'POST'])
 def register_staff():
-    return render_template("form3.html")
+    try:
+        if request.method == "POST":
+            username = request.form['username']
+            pwd = request.form['password']
+            confirm_pwd = request.form['confirm_password']
+            if pwd != confirm_pwd:
+                err = "password and confirm password doesn't match!"
+                flash(err)
+                return render_template("form3.html")
+            # Password encoded with utf-8 first then encoded with md5
+            password = md5(request.form['password'].encode('utf-8')).hexdigest()
+            first_name = request.form['first_name']
+            last_name = request.form['last_name']
+            date_of_birth = request.form['date_of_birth']
+            airline_name = request.form['airline_name']
+
+            sql_check = 'SELECT * FROM airline_staff WHERE username = "{}"'.format(username)
+            user_exist = query_fetch(sql_check, DB)
+            if user_exist is not None:
+                err = "User already exists!"
+                flash(err)
+            else:
+                sql_add = 'INSERT INTO airline_staff VALUES("{}", "{}", "{}", "{}", "{}", "{}")'.format(
+                    username, password, first_name, last_name, date_of_birth, airline_name)
+                query_mod(sql_add, DB)
+                session['user'] = username
+                session['type'] = 'staff'
+                print(session['user'])
+                print(session['type'])
+                return redirect(url_for('staff_page'))
+        return render_template("form3.html")
+
+    except Exception as e:
+        flash(str(e))
+        return render_template("form3.html")
 
 
 @app.route('/logout/', methods = ['GET', 'POST'])
