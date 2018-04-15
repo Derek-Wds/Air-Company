@@ -57,7 +57,7 @@
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
                                type="text" id="inputEmail" name="username" class="form-control"
-                               value="{{ request.form.username }}" required="">
+                               value="{{ request.form.username }}" required="" maxlength="">
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
                                type="password" id="inputPassword" name="password" class="form-control"
-                               value="{{ request.form.password }}" required="">
+                               value="{{ request.form.password }}" required="" maxlength="50">
                     </div>
                 </div>
             </div>
@@ -81,18 +81,18 @@
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
                                type="password" id="confirmPassword" name="confirm_password" class="form-control"
-                               value="{{ request.form.confirm_password }}" required="">
+                               value="{{ request.form.confirm_password }}" required="" maxlength="50">
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <div class="form-group">
-                        <label for="inputFirstName" style="align-content: left">first-name</label>
+                        <label for="inputFirstName" style="align-content: left">First-name</label>
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
                                type="text" id="first-name" name="first_name" class="form-control"
-                               value="{{ request.form.first_name }}" required="">
+                               value="{{ request.form.first_name }}" required="" maxlength="50">
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
                                type="text" id="last-name" name="last_name" class="form-control"
-                               value="{{ request.form.last_name }}" required="">
+                               value="{{ request.form.last_name }}" required="" maxlength="50">
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                         <label for="inputDateOfBirth" style="align-content: left">Date of birth</label>
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
-                               type="text" id="birthday" name="date_of_birth" class="form-control"
+                               type="date" id="birthday" name="date_of_birth" class="form-control"
                                value="{{ request.form.date_of_birth }}" required="" placeholder="YYYY-MM-DD">
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                         <input size="20"
                                style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;"
                                type="text" id="airlineName" name="airline_name" class="form-control"
-                               value="{{ request.form.airline_name }}" required="">
+                               value="{{ request.form.airline_name }}" required="" maxlength="50">
                     </div>
                 </div>
             </div>
