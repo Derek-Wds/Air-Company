@@ -50,9 +50,12 @@ def page_not_found(e):
 
 
 @app.errorhandler(405)
-def page_not_found(e):
+def request_error(e):
     return render_template('405.html')
 
+@app.errorhandler(500)
+def server_wrong(e):
+    return render_template('500.html')
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login_page():
