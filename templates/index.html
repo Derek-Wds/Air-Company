@@ -16,6 +16,7 @@
         input[type='text'],
         input[type='number'],
         input[type='password'],
+        input[type='date'],
         textarea {
             outline: none;
             box-shadow: none !important;
@@ -30,6 +31,12 @@
 
         @media (min-width: 1200px) {
             #searchforflight {
+                max-width: 720px;
+                box-sizing: border-box;
+                background-color: #f5f5f5;
+                border-radius: 10px;
+            }
+            #checkflightstatus {
                 max-width: 720px;
                 box-sizing: border-box;
                 background-color: #f5f5f5;
@@ -63,6 +70,17 @@
         ul {
             list-style: none
         }
+
+        input[type="date"]::before {
+            content: attr(data-placeholder) !important;
+            width: 100%;
+        }
+
+        input[type="date"]:focus::before,
+        input[type="date"]:valid::before {
+            display: none !important;
+        }
+
     </style>
 
     <title>Air Company</title>
@@ -197,7 +215,7 @@
     <div class="row">
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="searchdate"
+                <input type="text" onfocus="(this.type='date')" class="form-control" id="searchdate"
                        placeholder="YY/MM/DD"
                        aria-label="Search term"
                        aria-describedby="basic-addon">
@@ -320,6 +338,54 @@
         </div>
     </div>
 
+</div>
+
+<br>
+<br>
+
+<div class="container" style="padding-top: 42px;">
+    <div class="row" style="text-align: center;">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+            <p style="font-size: 18px;"><strong>Check flight status!</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="checkflightstatus" style="padding-top: 24px;">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" id="searchfn"
+                       placeholder="flight number"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" onfocus="(this.type='date')" class="form-control" id="serachsd"
+                       placeholder="departure date"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <input type="text" onfocus="(this.type='date')" class="form-control" id="searchdate"
+                       placeholder="arrival date"
+                       aria-label="Search term"
+                       aria-describedby="basic-addon">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="input-group mb-3">
+                <button class="btn btn-light btn-block" type="button" style="font-size: 18px"><strong>Check!</strong>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <br>
