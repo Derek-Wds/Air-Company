@@ -11,8 +11,39 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = secret_key
 
 
-@app.route('/')
-def home_page():
+@app.route('/', methods=['GET'])
+def home_page_get():
+    return render_template("index.html")
+
+
+@app.route('/', methods=['POST'])
+def home_page_post():
+    source_airport = request.form.get('source_airport')
+    source_city = request.form.get('source_city')
+    destination_airport = request.form.get('destination_airport')
+    destination_city = request.form.get('destination_city')
+    date = request.form.get('date')
+
+    """
+    def post_get():
+    post_id = request.form.get('pid')
+    sql = "SELECT title, category, tags, content FROM posts WHERE pid = '{}'".format(post_id)
+    if VERBOSE:
+        print("post get query:" + sql)
+    indicator = query_fetch(sql, DB)
+    response = PostList()
+    if indicator:
+        response.data['pid'] = post_id
+        response.data['title'] = indicator['title']
+        response.data['category'] = indicator['category']
+   post_tags = 'dog, 2017, happy, weekend'
+        response.data['tags'] = indicator['tags']
+        response.data['content'] = indicator['content']
+    else:
+        response = ErrorResponse()
+        response.error['errorCode'] = '105'
+        response.error['errorMsg'] = 'Post does not exist'
+    return jsonify(response.__dict__)"""
     return render_template("index.html")
 
 

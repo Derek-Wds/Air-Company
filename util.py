@@ -37,12 +37,3 @@ def fetch_all(sql, config):
     finally:
         connection.close()
     return result
-
-
-def customer_login_required(f):
-    pass
-
-
-
-
-
