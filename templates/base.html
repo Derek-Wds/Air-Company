@@ -14,9 +14,18 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/footer.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/navbar.css') }}" type="text/css">
     <style>
+        .container {
+            position: relative;
+        }
+
+        .footer {
+            position: absolute;
+        }
+
         input[type='text'],
         input[type='number'],
         input[type='password'],
+        input[type='date'],
         textarea {
             outline: none;
             box-shadow: none !important;
@@ -80,7 +89,7 @@
 {% endblock %}
 <br>
 
-<footer class="footer">
+<footer class="footer navbar-fixed-bottom">
     <div class="container">
         <center>
             <span class="text-muted">All rights reserved to Derek & Masaki's Air Company © 2018</span>

@@ -139,7 +139,7 @@ def login_agent():
                 session['type'] = 'agent'
                 print(session['user'])
                 print(session['type'])
-                return redirect(url_for('customer_page'))
+                return redirect(url_for('agent_page'))
             elif db_pwd is None:
                 err = "Account does not exist"
                 flash(err)
@@ -169,7 +169,7 @@ def login_staff():
                 session['type'] = 'staff'
                 print(session['user'])
                 print(session['type'])
-                return redirect(url_for('customer_page'))
+                return redirect(url_for('staff_page'))
             elif db_pwd is None:
                 err = "Account does not exist"
                 flash(err)

@@ -3,8 +3,7 @@
 {% block head %}
     <style>
         div.background {
-            width: 1280px;
-            height: 793px;
+            height: 927px;
             background-image: url("/static/1.jpg");
             background-repeat: no-repeat;
             opacity: 0.7;
@@ -15,6 +14,86 @@
 
 
 {% block header %}
+    <div class="navigation container" id="top" style="padding-top: 0px">
+    <span class="border-bottom">
+        <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-lg" style="margin-bottom: 5px;">
+        <a class="navbar-brand"><img src="/static/logo.png" height="35%" width="35%" alt="Air Company"
+                                     style="width: 225px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto" style="font-size: 18px">
+
+                <li class="nav-item" style="width: 80px;">
+                    <a class="nav-link" href="#flights">Flights</a>
+                </li>
+
+                <li class="nav-item dropdown" style="width: 240px" ;>
+                        <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href=""
+                           aria-haspopup="true" aria-expanded="false">Tools for airline staff</a>
+                        <div id="drop_item" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#newflight">Create new flights</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#flightstatus">Change status of flights</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#newplane">Add new airplane</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#newairport">Add new airport</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#bookingagent">View all booking agents</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#freqcustomers">View frequent customers</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#reports">View reports</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#revenues">View comparison of revenue earned</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#topdesti">View top destinations</button></a>
+                        </div>
+                </li>
+            </ul>
+
+
+
+            <form class="form-inline mt-2 mt-md-0">
+                <div class="btn-group btn-group-md" role="group">
+                    <button id="login_button" type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                            data-target="#myflight"
+                            onclick="">My flights</button>
+                    <button id="login_button" type="button" class="btn btn-outline-secondary"
+                            onclick="sign_out()">Log out</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+    </span>
+    </div>
+{% endblock %}
+
+
+{% block main %}
     <div class="background">
         <div style="padding-top: 382px;">
             <div class="container" id="searchforflight" style="padding-top: 24px;">
@@ -73,82 +152,33 @@
             </div>
         </div>
     </div>
-    <div class="navigation container" id="top" style="padding-top: 0px">
-    <span class="border-bottom">
-        <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-lg" style="margin-bottom: 5px;">
-        <a class="navbar-brand"><img src="/static/logo.png" height="35%" width="35%" alt="Air Company"
-                                     style="width: 225px"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto" style="font-size: 18px">
 
-                <li class="nav-item" style="width: 80px;">
-                    <a class="nav-link" href="#flights">Flights</a>
-                </li>
-
-                <li class="nav-item dropdown" style="width: 240px" ;>
-                        <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Tools for airline staff</a>
-                        <div id="drop_item" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#newflight">Create new flights</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#flightstatus">Change status of flights</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#newplane">Add new airplane</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#newairport">Add new airport</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#bookingagent">View all booking agents</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#freqcustomers">View frequent customers</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#reports">View reports</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#revenues">View comparison of revenue earned</button></a>
-                            <a class="dropdown-item" style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
-                                        data-target="#topdesti">View top destinations</button></a>
-                        </div>
-                </li>
-            </ul>
-
-
-
-            <form class="form-inline mt-2 mt-md-0">
-                <div class="btn-group btn-group-md" role="group">
-                    <button id="login_button" type="button" class="btn btn-outline-secondary"
-                            onclick="">My flights</button>
-                    <button id="login_button" type="button" class="btn btn-outline-secondary"
-                            onclick="sign_out()">Log out</button>
-                </div>
-            </form>
-        </div>
-    </nav>
-    </span>
-    </div>
-{% endblock %}
-
-
-{% block main %}
-    <div class="modal fade" id="newflight" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">My flights</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newflight" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create new flight</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -166,10 +196,10 @@
 
     <div class="modal fade" id="flightstatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Change status of flight</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -187,10 +217,10 @@
 
     <div class="modal fade" id="newplane" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add new airplane</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -208,10 +238,10 @@
 
     <div class="modal fade" id="newairport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add new airport</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -229,10 +259,10 @@
 
     <div class="modal fade" id="bookingagent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">View all booking agents</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -249,10 +279,10 @@
 
     <div class="modal fade" id="freqcustomers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">View frequent customers</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -269,10 +299,10 @@
 
     <div class="modal fade" id="reports" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">View reports</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -289,10 +319,10 @@
 
     <div class="modal fade" id="revenues" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Comparison of revenues earned</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -309,10 +339,10 @@
 
     <div class="modal fade" id="topdesti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">View top destinations</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

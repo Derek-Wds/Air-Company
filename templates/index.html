@@ -36,6 +36,7 @@
                 background-color: #f5f5f5;
                 border-radius: 10px;
             }
+
             #checkflightstatus {
                 max-width: 720px;
                 box-sizing: border-box;
@@ -236,114 +237,54 @@
     <div id="result">
         <div>
             <ul class="fligtdetails list-group list-group-flush">
-                <li tabindex="0" class="search-result">
-                    <div class="row">
-                        <div class="col-md-10" id="col-left">
+                {% for flight1 in flights1 %}
+                    {% if flight1 %}
+                        <li tabindex="0" class="search-result">
                             <div class="row">
-                                <div class="col col-md-12">
-                                    //duration time
+                                <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
+                                    <div class="row">
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            {{ flight1['airline_name'] }} &nbsp; &nbsp; &nbsp; {{ flight1['flight_num'] }}
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                           <strong>{{ flight1['status'] }}</strong>
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            {{ flight1['airplane_id'] }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            {{ flight1['departure_airport'] }} &nbsp; &nbsp; {{ flight1['departure_time'] }}
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                            <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                                 style="width: 180px; height: 30px;">
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            {{ flight1['arrival_airport'] }} &nbsp; &nbsp; {{ flight1['arrival_time'] }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
+                                    <div class="row">
+                                        {{ flight1['price'] }}
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col col-md-4">
-                                    //source city/time
-                                </div>
-                                <div class="col col-md-4 text-center">
-                                    <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
-                                         style="width: 180px; height: 30px;">
-                                </div>
-                                <div class="col col-md-4">
-                                    //arrival city/time
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2" id="col-right">
-                            <div class="row">
-                                //flight status
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-
-                <li tabindex="0" class="search-result">
-                    <div class="row">
-                        <div class="col-md-10" id="col-left">
-                            <div class="row">
-                                <div class="col col-md-12">
-                                    //duration time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col col-md-4">
-                                    //source city/time
-                                </div>
-                                <div class="col col-md-4 text-center">
-                                    <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
-                                         style="width: 180px; height: 30px;">
-                                </div>
-                                <div class="col col-md-4">
-                                    //arrival city/time
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2" id="col-right">
-                            <div class="row">
-                                //flight status
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-
-                <li tabindex="0" class="search-result">
-                    <div class="row">
-                        <div class="col-md-10" id="col-left">
-                            <div class="row">
-                                <div class="col col-md-12">
-                                    //duration time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col col-md-4">
-                                    //source city/time
-                                </div>
-                                <div class="col col-md-4 text-center">
-                                    <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
-                                         style="width: 180px; height: 30px;">
-                                </div>
-                                <div class="col col-md-4">
-                                    //arrival city/time
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2" id="col-right">
-                            <div class="row">
-                                //flight status
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
 
 </div>
 
-<br>
-<br>
-
-<div class="container" style="padding-top: 42px;">
+<div class="container" style="padding-top: 0px;">
     <div class="row" style="text-align: center;">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <p style="font-size: 18px;"><strong>Check flight status!</strong></p>
@@ -356,7 +297,7 @@
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
                 <input type="number" class="form-control" id="searchfn"
-                       placeholder="flight number"
+                       placeholder="Flight number"
                        aria-label="Search term"
                        aria-describedby="basic-addon">
             </div>
@@ -364,7 +305,7 @@
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
                 <input type="text" onfocus="(this.type='date')" class="form-control" id="serachsd"
-                       placeholder="departure date"
+                       placeholder="Departure date"
                        aria-label="Search term"
                        aria-describedby="basic-addon">
             </div>
@@ -374,7 +315,7 @@
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
                 <input type="text" onfocus="(this.type='date')" class="form-control" id="searchdate"
-                       placeholder="arrival date"
+                       placeholder="Arrival date"
                        aria-label="Search term"
                        aria-describedby="basic-addon">
             </div>
@@ -386,6 +327,46 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container flight-content" id="flights" style="padding-top: 42px;">
+    <div id="result">
+        <div>
+            <ul class="fligtdetails list-group list-group-flush">
+                {% for flight2 in flights2 %}
+                    {% if flight2 %}
+                        <li tabindex="0" class="search-result">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-2 col-lg-2 col-sm-2">
+                                            {{ flight2['flight_num'] }}
+                                        </div>
+                                        <div class="col-md-8 col-lg-8 col-sm-8">
+                                            <div class="col-md-4 col-lg-4 col-sm-4">
+                                                {{ flight2['departure_airport'] }}
+                                            </div>
+                                            <div class="col-md-4 col-lg-4 col-sm-4 text-center">
+                                                <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                                 style="width: 150px; height: 25px;">
+                                            </div>
+                                            <div class="col-md-4 col-lg-4 col-sm-4">
+                                                {{ flight2['arrival_airport'] }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-sm-3">
+                                            {{ flight2['status'] }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
 </div>
 
 <br>

@@ -3,8 +3,7 @@
 {% block head %}
     <style>
         div.background {
-            width: 1280px;
-            height: 793px;
+            height: 927px;
             background-image: url("/static/3.jpg");
             background-repeat: no-repeat;
             opacity: 0.7;
@@ -54,7 +53,8 @@
 
             <form class="form-inline mt-2 mt-md-0">
                 <div class="btn-group btn-group-md" role="group">
-                    <button id="login_button" type="button" class="btn btn-outline-secondary"
+                    <button id="login_button" type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                        data-target="#myflight"
                             onclick="">My flights</button>
                     <button id="login_button" type="button" class="btn btn-outline-secondary"
                             onclick="sign_out()">Log out</button>
@@ -234,12 +234,32 @@
         </div>
     </div>
 
-    <div class="modal hide fade" id="myCommission" tabindex="0" role="dialog" aria-labelledby="myModal"
+    <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">My flights</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hide fade" id="myCommission" tabindex="0" role="dialog" aria-labelledby="myModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">My commission</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -256,10 +276,10 @@
 
     <div class="modal hide fade" id="viewtop" tabindex="0" role="dialog" aria-labelledby="myModal"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">View top customers</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
