@@ -246,7 +246,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h1>All the upcoming flights in the next 30 days:</h1>
                     <div class="container">
                         <div class="container flight-content" id="upcoming_flights" style="padding-top: 42px;">
                             <div id="result">
@@ -261,8 +260,9 @@
                                         </div>
                                     {% endif %}
 
-                                    {% for data in Data %}
-                                        {% if data %}
+                                    {% if Data %}
+                                        <h1>All the upcoming flights in the next 30 days:</h1>
+                                        {% for data in Data %}
                                             <li tabindex="0" class="search-result">
                                                 <div class="row">
                                                     <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
@@ -295,8 +295,9 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        {% endif %}
-                                    {% endfor %}
+
+                                        {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>

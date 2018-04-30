@@ -138,8 +138,8 @@
         <div id="result">
             <div>
                 <ul class="fligtdetails list-group list-group-flush">
-                    {% for flight in flights %}
-                        {% if flight %}
+                    {% if flight %}
+                        {% for flight in flights %}
                             <li tabindex="0" class="search-result">
                                 <div class="row">
                                     <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
@@ -182,8 +182,8 @@
                                     </div>
                                 </div>
                             </li>
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -215,8 +215,8 @@
                                         </div>
                                     {% endif %}
 
-                                    {% for data in Data %}
-                                        {% if data %}
+                                    {% if data %}
+                                        {% for data in Data %}
                                             <li tabindex="0" class="search-result">
                                                 <div class="row">
                                                     <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
@@ -249,8 +249,8 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        {% endif %}
-                                    {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
 
 
                                 </ul>
