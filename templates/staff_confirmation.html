@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>All airplanes</title>
+{% endblock %}
+
+
+{% block main %}
+    <main role="main" class="container">
+        <h1>These are all the airplanes that your company owned:</h1>
+        <p>
+        <div class="container">
+            <div class="container airplane-content" id="airplanes" style="padding-top: 42px;">
+                <div id="result">
+                    <ul class="list-group list-group-flush">
+                    {% if airplanes %}
+                        {% for airplane in airplanes %}
+                                <li tabindex="0" class="search-result">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                            <div class="row">
+                                                <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                    {{ airplane['airline_name'] }}
+                                                </div>
+                                                <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                    {{ airplane['airplane_id'] }}
+                                                </div>
+                                                <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                    {{ airplane['seats'] }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </p>
+        <p>
+            <button type="button" class="btn btn-outline-warning btn-sm" onclick="goback()">Click me</button>
+        </p>
+    </main>
+
+    <script>
+        function goback() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,672 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        div.background {
+            height: 927px;
+            background-image: url("/static/1.jpg");
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            background-size: 100% 100%;
+        }
+    </style>
+{% endblock %}
+
+
+{% block header %}
+    <div class="navigation container" id="top" style="padding-top: 0px">
+    <span class="border-bottom">
+        <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-lg" style="margin-bottom: 5px;">
+        <a class="navbar-brand"><img src="/static/logo.png" height="35%" width="35%" alt="Air Company"
+                                     style="width: 225px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto" style="font-size: 18px">
+
+                <li class="nav-item" style="width: 80px;">
+                    <a class="nav-link" href="#flights">Flights</a>
+                </li>
+
+                <li class="nav-item dropdown" style="width: 240px" ;>
+                        <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href=""
+                           aria-haspopup="true" aria-expanded="false">Tools for airline staff</a>
+                        <div id="drop_item" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#newflight">Create new flights</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#flightstatus">Change status of flights</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#newplane">Add new airplane</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#newairport">Add new airport</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#bookingagent">View all booking agents</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#freqcustomers">View frequent customers</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#reports">View reports</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#revenues">View comparison of revenue earned</button></a>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5; padding-left: 0px; padding-right: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#topdesti">View top destinations</button></a>
+                        </div>
+                </li>
+            </ul>
+
+
+
+            <form class="form-inline mt-2 mt-md-0">
+                <div class="btn-group btn-group-md" role="group">
+                    <button id="login_button" type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                            data-target="#myflight"
+                            onclick="">My flights</button>
+                    <button id="login_button" type="button" class="btn btn-outline-secondary"
+                            onclick="sign_out()">Log out</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+    </span>
+    </div>
+{% endblock %}
+
+
+{% block main %}
+    {% if username %}
+        <div class="container alert alert-success alert-dismissible" role="success"
+             style="padding-top: 5px; padding-bottom: 5px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                    style="padding-top: 3px; padding-bottom: 0px;"><span
+                    aria-hidden="true">&times;</span></button>
+            Welcome to Derek and Masaki's air company, {{ username }} !
+        </div>
+    {% endif %}
+    <div class="background">
+        <div style="padding-top: 382px;">
+            <div class="container" id="searchforflight" style="padding-top: 24px;">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="source_city"
+                                   placeholder="Source city"
+                                   aria-label="Search term"
+                                   aria-describedby="basic-addon">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="source_airport"
+                                   placeholder="Source airport name"
+                                   aria-label="Search term"
+                                   aria-describedby="basic-addon">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="destination_city"
+                                   placeholder="Destination city"
+                                   aria-label="Search term"
+                                   aria-describedby="basic-addon">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="destination_airport"
+                                   placeholder="Destination airport name"
+                                   aria-label="Search term"
+                                   aria-describedby="basic-addon">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="search_date"
+                                   placeholder="YY/MM/DD"
+                                   aria-label="Search term"
+                                   aria-describedby="basic-addon">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"><strong>Search!</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">My flights</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="container flight-content" id="flights" style="padding-top: 42px;">
+                            <div id="result">
+                                <ul class="fligtdetails list-group list-group-flush">
+                                    {% if msg %}
+                                        <div class="container alert alert-warning alert-dismissible" role="warning"
+                                             style="padding-top: 5px; padding-bottom: 5px">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                                    style="padding-top: 3px; padding-bottom: 0px;"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                            {{ msg }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% for data in Data %}
+                                        {% if data %}
+                                            <li tabindex="0" class="search-result">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                                        <div class="row">
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['airline_name'] }} &nbsp; &nbsp;
+                                                                &nbsp; {{ data['flight_num'] }}
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                <strong>{{ data['status'] }}</strong>
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['airplane_id'] }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['departure_airport'] }} &nbsp;
+                                                                &nbsp; {{ data['departure_time'] }}
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                                                <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                                                     style="width: 180px; height: 30px;">
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['arrival_airport'] }} &nbsp;
+                                                                &nbsp; {{ data['arrival_time'] }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newflight" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create new flight</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h1>All the upcoming flights in the next 30 days:</h1>
+                    <div class="container">
+                        <div class="container flight-content" id="upcoming_flights" style="padding-top: 42px;">
+                            <div id="result">
+                                <ul class="fligtdetails list-group list-group-flush">
+                                    {% if msg %}
+                                        <div class="container alert alert-warning alert-dismissible" role="warning"
+                                             style="padding-top: 5px; padding-bottom: 5px">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                                    style="padding-top: 3px; padding-bottom: 0px;"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                            {{ msg }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% for data in Data %}
+                                        {% if data %}
+                                            <li tabindex="0" class="search-result">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                                        <div class="row">
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['airline_name'] }} &nbsp; &nbsp;
+                                                                &nbsp; {{ data['flight_num'] }}
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                <strong>{{ data['status'] }}</strong>
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['airplane_id'] }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['departure_airport'] }} &nbsp;
+                                                                &nbsp; {{ data['departure_time'] }}
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                                                <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                                                     style="width: 180px; height: 30px;">
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                                {{ data['arrival_airport'] }} &nbsp;
+                                                                &nbsp; {{ data['arrival_time'] }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" id="add_new_flights" style="padding-top: 24px;">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="airline_name"
+                                           placeholder="Airline name"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="flight_number"
+                                           placeholder="Flight number"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="departure_airport"
+                                           placeholder="Departure airport"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="arrival_airport"
+                                           placeholder="Arrival airport"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" onfocus="(this.type='date')" class="form-control"
+                                           id="departure_time"
+                                           placeholder="Departure time"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" onfocus="(this.type='date')" class="form-control"
+                                           id="arrival_time"
+                                           placeholder="Arrival time"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control"
+                                           id="airplane_id"
+                                           placeholder="Airplane ID"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"
+                                           id="status"
+                                           placeholder="status"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control"
+                                           id="price"
+                                           placeholder="price"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
+                                        <strong>Add</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="flightstatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change status of flight</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="add_new_flights" style="padding-top: 24px;">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="source_city"
+                                           placeholder="Airline name"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" id="source_airport"
+                                           placeholder="Flight number"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"
+                                           id="change_status"
+                                           placeholder="New status"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
+                                        <strong>Change</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newplane" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add new airplane</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="add_new_flights" style="padding-top: 24px;">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="airline_name"
+                                           placeholder="Airline name"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" id="airplane_id"
+                                           placeholder="Airplane ID"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control"
+                                           id="seat"
+                                           placeholder="Seats"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
+                                        <strong>Add</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newairport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add new airport</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="add_new_airport">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-lg-5">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="airport_name"
+                                           placeholder="Airport name"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-lg-5">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="airport_city"
+                                           placeholder="Airport city"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-lg-2">
+                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Add</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="bookingagent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View all booking agents</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="freqcustomers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View frequent customers</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reports" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View reports</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="revenues" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Comparison of revenues earned</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="topdesti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View top destinations</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function sign_out() {
+            window.location.assign("/logout/");
+        }
+    </script>
+{% endblock %}

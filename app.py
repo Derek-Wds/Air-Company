@@ -53,7 +53,7 @@ def customer_page():
     print(session['type'])
     # If the user logged in a session with customer account
     if g.type == 'customer':
-        return render_template("chome.html")
+        return render_template("customer_home.html", username = session['user'])
     return redirect(url_for('home_page'))
 
 
@@ -62,7 +62,7 @@ def agent_page():
     print(session['user'])
     print(session['type'])
     if g.type == 'agent':
-        return render_template("ahome.html")
+        return render_template("agent_home.html", username = session['user'])
     return redirect(url_for('home_page'))
 
 
@@ -71,7 +71,7 @@ def staff_page():
     print(session['user'])
     print(session['type'])
     if g.type == 'staff':
-        return render_template("shome.html")
+        return render_template("staff_home.html", username = session['user'])
     return redirect(url_for('home_page'))
 
 
@@ -312,7 +312,7 @@ def logout_redirect():
     print(session['type'])
     session.pop('user', None)
     session.pop('type', None)
-    return redirect(url_for('home_page'))
+    return redirect(url_for('home_page_get'))
 
 
 @app.before_request

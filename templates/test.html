@@ -1,39 +1,182 @@
 <html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Language', 'Speakers (in millions)'],
-          ['Assamese', 13], ['Bengali', 83], ['Bodo', 1.4],
-          ['Dogri', 2.3], ['Gujarati', 46], ['Hindi', 300],
-          ['Kannada', 38], ['Kashmiri', 5.5], ['Konkani', 5],
-          ['Maithili', 20], ['Malayalam', 33], ['Manipuri', 1.5],
-          ['Marathi', 72], ['Nepali', 2.9], ['Oriya', 33],
-          ['Punjabi', 29], ['Sanskrit', 0.01], ['Santhali', 6.5],
-          ['Sindhi', 2.5], ['Tamil', 61], ['Telugu', 74], ['Urdu', 52]
-        ]);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>My Chart.js Chart</title>
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
 
-        var options = {
-          title: 'Indian Language Use',
-          pieSliceText: 'label',
-          slices: {  4: {offset: 0.2},
-                    12: {offset: 0.3},
-                    14: {offset: 0.4},
-                    15: {offset: 0.5},
-          },
-        };
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-
-
+        let massPopChart = new Chart(myChart, {
+            type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+                datasets: [{
+                    label: 'Population',
+                    data: [
+                        617594,
+                        181045,
+                        153060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    //backgroundColor:'green',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Largest Cities In Massachusetts',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
     </script>
-  </head>
-  <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-  </body>
+</head>
+<body>
+<div class="container">
+    <canvas id="myChart"></canvas>
+    <div class="container flight-content" id="flights" style="padding-top: 42px;">
+        <div id="result">
+            <div>
+                <ul class="fligtdetails list-group list-group-flush">
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-10" id="col-left">
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        //duration time
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        //source city/time
+                                    </div>
+                                    <div class="col col-md-4 text-center">
+                                        <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                             style="width: 180px; height: 30px;">
+                                    </div>
+                                    <div class="col col-md-4">
+                                        //arrival city/time
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2" id="col-right">
+                                <div class="row">
+                                    //flight status
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-10" id="col-left">
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        //duration time
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        //source city/time
+                                    </div>
+                                    <div class="col col-md-4 text-center">
+                                        <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                             style="width: 180px; height: 30px;">
+                                    </div>
+                                    <div class="col col-md-4">
+                                        //arrival city/time
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2" id="col-right">
+                                <div class="row">
+                                    //flight status
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-10" id="col-left">
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        //duration time
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        //source city/time
+                                    </div>
+                                    <div class="col col-md-4 text-center">
+                                        <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                             style="width: 180px; height: 30px;">
+                                    </div>
+                                    <div class="col col-md-4">
+                                        //arrival city/time
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2" id="col-right">
+                                <div class="row">
+                                    //flight status
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
 </html>
