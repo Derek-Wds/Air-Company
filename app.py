@@ -74,6 +74,7 @@ def customer_page():
     if g.type == 'customer':
         one_year_ago = date.today() + relativedelta(months=-12)
         six_months_ago = date.today() + relativedelta(months=-6)
+        # six months spending graph
         sql = "SELECT SUM(price) AS total, YEAR(purchase_date) AS y, MONTH(purchase_date) AS m FROM purchases NATURAL JOIN ticket " \
               "NATURAL JOIN flight WHERE customer_email = '{}' AND purchase_date >= '{}' GROUP BY YEAR(purchase_date), MONTH" \
               "(purchase_date)".format(g.user, six_months_ago)
@@ -81,11 +82,28 @@ def customer_page():
         six_months = fetch_all(sql, DB)
         print('six_months', six_months)
 
+        # one year spending
         sql = "SELECT SUM(price) AS dey FROM purchases NATURAL JOIN ticket NATURAL JOIN flight WHERE customer_email = '{}' AND " \
               "purchase_date >= '{}'".format(g.user, one_year_ago)
         print('one year spending SQL: ', sql)
         one_year = fetch_all(sql, DB)
         print('one year', one_year)
+
+        if from_date:
+            # custom range spending: total
+            sql = "SELECT SUM(price) AS dey FROM purchases NATURAL JOIN ticket NATURAL JOIN flight WHERE customer_email = '{}' AND " \
+                  "purchase_date <= '{}' AND purchase_date >= '{}'".format(g.user, to_date, from_date)
+            print('spend_range1 SQL: ', sql)
+            spend_range1 = fetch_all(sql, DB)
+            print('spend_range1', spend_range1)
+
+            # custom range spending: monthly
+            sql = "SELECT SUM(price) AS total, YEAR(purchase_date) AS y, MONTH(purchase_date) AS m FROM purchases NATURAL JOIN ticket " \
+                  "NATURAL JOIN flight WHERE customer_email = '{}' AND purchase_date >= '{}' AND purchase_date <= '{}' GROUP BY YEAR(purchase_date), MONTH" \
+                  "(purchase_date)".format(g.user, from_date, to_date)
+            print('spend_range2 SQL: ', sql)
+            spend_range2 = fetch_all(sql, DB)
+            print('spend_range2', spend_range2)
 
         # Buy Ticket
         if purchase_airline:
@@ -110,7 +128,8 @@ def customer_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months, one_year=one_year)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights,
+                                   six_months=six_months, one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -118,9 +137,11 @@ def customer_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months, one_year=one_year)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights,
+                                   six_months=six_months, one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
         # If the user logged in a session with customer account
-        return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months, one_year=one_year)
+        return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months,
+                               one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
     print('invalid session type')
     return redirect(url_for('home_page'))
 
