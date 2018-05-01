@@ -77,52 +77,84 @@
     {% endif %}
     <div class="background">
         <div style="padding-top: 382px;">
-            <div class="container" id="searchforflight" style="padding-top: 24px;">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-lg-12">
-                        <div class="input-group mb-3">
-                            <select class="form-control" id="choice">
-                                <option value="1">Based on city name</option>
-                                <option value="2">Based on airport name</option>
-                            </select>
+            <form method="POST" action="">
+                <div class="container" id="searchforflight" style="padding-top: 24px;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="source_city"
+                                       placeholder="Source city"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.source }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="destination_city"
+                                       placeholder="Destination city"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.destination }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" onfocus="(this.type='date')" class="form-control" name="city_date"
+                                       placeholder="YY/MM/DD"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.city_date }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"
+                                        onclick="">
+                                    <strong>Search!</strong>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="source_city"
-                                   placeholder="Source city/airport"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
+                <div class="container" id="searchforflight" style="padding-top: 24px;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="source_airport"
+                                       placeholder="Source airport"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.source_airport }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="destination_airport"
+                                       placeholder="Destination airport"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.destination_airport }}">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="destination_city"
-                                   placeholder="Destination city/airport"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" onfocus="(this.type='date')" class="form-control" name="airport_date"
+                                       placeholder="YY/MM/DD"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.airport_date }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"
+                                        onclick="">
+                                    <strong>Search!</strong>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" onfocus="(this.type='date')" class="form-control" id="date"
-                                   placeholder="YY/MM/DD"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"><strong>Search!</strong>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -434,13 +466,6 @@
                 }
             }
         });
-
-        var e = document.getElementById("choice");
-        var option = e.options[e.selectedIndex].value;
-        if (option == "2") {
-            document.getElementById("source_city").setAttribute("id", "source_aiport");
-            document.getElementById("destination_city").setAttribute("id", "destination_airport");
-        }
     </script>
 
 

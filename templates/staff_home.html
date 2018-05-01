@@ -655,8 +655,45 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
-                    <h1>Total amount of ticket sold</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-md-5 col-sm-5 col-lg-5">
+                                <div class="input-group mb-3">
+                                    <input type="text" onfocus="(this.type='date')" class="form-control" name="from_date"
+                                           placeholder="Starting date"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon" value="{{ request.form.from_date }}">
+                                </div>
+                            </div>
+                            <div class="col col-md-5 col-sm-5 col-lg-5">
+                                <div class="input-group mb-3">
+                                    <input type="text" onfocus="(this.type='date')" class="form-control" name="to_date"
+                                           placeholder="Ending date"
+                                           aria-label="Search term"
+                                           aria-describedby="basic-addon" value="{{ request.form.to_date}}">
+                                </div>
+                            </div>
+                            <div class="col col-md-2 col-sm-2 col-lg-2">
+                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search</strong>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-6 col-sm-6 col-lg-6">
+                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search in last year</strong>
+                                </button>
+                            </div>
+                            <div class="col col-md-6 col-sm-6 col-lg-6">
+                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search in last month</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% if total_amount_of_ticket %}
+                        <h1>Total amount of ticket sold</h1>
+                        <span>{{ total_amount_of_ticket }}</span>
+                    {% endif %}
+                    <canvas id="ticket_sold"></canvas>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -676,7 +713,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <canvas id="revenue_earned"></canvas>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -762,6 +799,125 @@
                 title: {
                     display: true,
                     text: 'Top 5 agents based on the amount of commission received'
+                }
+            }
+        });
+
+        let ticket_sold = document.getElementById('ticket_sold').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+        let mychart1 = new Chart(ticket_sold, {
+            type: 'bar',
+            data: {
+                labels: [{% for label in labels1 %}
+                    "{{label}}",
+                {% endfor %}],
+                datasets: [{
+                    label: [{% for label in labels1 %}
+                        "{{label1}}",
+                    {% endfor %}],
+                    data: [{% for value in values1 %}
+                        {{value}},
+                    {% endfor %}],
+                    backgroundColor: [
+                        'rgba(0, 255, 255, 0.6)',
+                        'rgba(255, 20, 47, 0.6)',
+                        'rgba(178, 34, 34, 0.6)',
+                        'rgba(255, 215, 0, 0.6)',
+                        'rgba(124, 252, 0, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 2,
+                    hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Month wise tickets sold',
+                    fontSize: 25
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
+
+        let revenue_earned = document.getElementById('revenue_earned').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+        let mychart2 = new Chart(revenue_earned, {
+            type: 'pie',
+            data: {
+                labels: [{% for label in labels2 %}
+                    "{{label}}",
+                {% endfor %}],
+                datasets: [{
+                    label: [{% for label in labels2 %}
+                        "{{label1}}",
+                    {% endfor %}],
+                    data: [{% for value in values2 %}
+                        {{value}},
+                    {% endfor %}],
+                    backgroundColor: [
+                        'rgba(0, 255, 255, 0.6)',
+                        'rgba(255, 20, 47, 0.6)',
+                        'rgba(178, 34, 34, 0.6)',
+                        'rgba(255, 215, 0, 0.6)',
+                        'rgba(124, 252, 0, 0.6)',
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 2,
+                    hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Comparison of Revenue earned',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
                 }
             }
         });
