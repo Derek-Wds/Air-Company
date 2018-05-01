@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, request, url_for, redirect, session, g
 from wtforms import Form
 from dbconnect import connection
-from util import query_fetch, query_mod, fetch_all
+from util import query_fetch, query_mod, fetch_all, replace
 from config import DB, secret_key
 from hashlib import md5
 import os
@@ -18,13 +18,13 @@ def home_page_get():
 
 @app.route('/', methods=['POST'])
 def home_page_post():
-    source_airport = request.form.get('source_airport')
-    source_city = request.form.get('source_city')
-    destination_airport = request.form.get('destination_airport')
-    destination_city = request.form.get('destination_city')
-    arrival_date = request.form.get('arrival_date')
-    departure_date = request.form.get('departure_date')
-    flight_number = request.form.get('flight_number')
+    source_airport = replace(request.form.get('source_airport'))
+    source_city = replace(request.form.get('source_city'))
+    destination_airport = replace(request.form.get('destination_airport'))
+    destination_city = replace(request.form.get('destination_city'))
+    arrival_date = replace(request.form.get('arrival_date'))
+    departure_date = replace(request.form.get('departure_date'))
+    flight_number = replace(request.form.get('flight_number'))
 
     # Query flight based on airport
     if source_airport:
@@ -99,9 +99,9 @@ def login_customer():
         if request.method == "POST":
             session.pop('user', None)
             session.pop('type', None)
-            email = request.form['email']
+            email = replace(request.form['email'])
             # Password encoded with utf-8 first then encoded with md5
-            password = md5(request.form['password'].encode('utf-8')).hexdigest()
+            password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM customer WHERE email = "{}"'.format(email)
             db_pwd = query_fetch(sql, DB)
             if password == db_pwd['password']:
@@ -129,9 +129,9 @@ def login_agent():
         if request.method == "POST":
             session.pop('user', None)
             session.pop('type', None)
-            email = request.form['email']
+            email = replace(request.form['email'])
             # Password encoded with utf-8 first then encoded with md5
-            password = md5(request.form['password'].encode('utf-8')).hexdigest()
+            password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM booking_agent WHERE email = "{}"'.format(email)
             db_pwd = query_fetch(sql, DB)
             if password == db_pwd['password']:
@@ -192,25 +192,25 @@ def register_page():
 def register_customer():
     try:
         if request.method == "POST":
-            email = request.form['email']
-            name = request.form['name']
-            pwd = request.form['password']
-            confirm_pwd = request.form['confirm_password']
+            email = replace(request.form['email'])
+            name = replace(request.form['name'])
+            pwd = replace(request.form['password'])
+            confirm_pwd = replace(request.form['confirm_password'])
             if pwd != confirm_pwd:
                 err = "password and confirm password doesn't match!"
                 flash(err)
                 return render_template("form1.html")
             # Password encoded with utf-8 first then encoded with md5
-            password = md5(request.form['password'].encode('utf-8')).hexdigest()
-            building_number = request.form['building_number']
-            street = request.form['street']
-            city = request.form['city']
-            state = request.form['state']
-            phone_number = request.form['phone_number']
-            passport_number = request.form['passport_number']
-            passport_expiration = request.form['passport_expiration']
-            passport_country = request.form['passport_country']
-            date_of_birth = request.form['date_of_birth']
+            password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
+            building_number = replace(request.form['building_number'])
+            street = replace(request.form['street'])
+            city = replace(request.form['city'])
+            state = replace(request.form['state'])
+            phone_number = replace(request.form['phone_number'])
+            passport_number = replace(request.form['passport_number'])
+            passport_expiration = replace(request.form['passport_expiration'])
+            passport_country = replace(request.form['passport_country'])
+            date_of_birth = replace(request.form['date_of_birth'])
             sql_check = 'SELECT * FROM customer WHERE email = "{}"'.format(email)
             user_exist = query_fetch(sql_check, DB)
             if user_exist is not None:
@@ -237,16 +237,16 @@ def register_customer():
 def register_agent():
     try:
         if request.method == "POST":
-            email = request.form['email']
-            pwd = request.form['password']
-            confirm_pwd = request.form['confirm_password']
+            email = replace(request.form['email'])
+            pwd = replace(request.form['password'])
+            confirm_pwd = replace(request.form['confirm_password'])
             if pwd != confirm_pwd:
                 err = "password and confirm password doesn't match!"
                 flash(err)
                 return render_template("form2.html")
             # Password encoded with utf-8 first then encoded with md5
-            password = md5(request.form['password'].encode('utf-8')).hexdigest()
-            booking_agent_id = request.form['booking_agent_id']
+            password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
+            booking_agent_id = replace(request.form['booking_agent_id'])
             sql_check = 'SELECT * FROM booking_agent WHERE email = "{}"'.format(email)
             user_exist = query_fetch(sql_check, DB)
             if user_exist is not None:
@@ -271,19 +271,19 @@ def register_agent():
 def register_staff():
     try:
         if request.method == "POST":
-            username = request.form['username']
-            pwd = request.form['password']
-            confirm_pwd = request.form['confirm_password']
+            username = replace(request.form['username'])
+            pwd = replace(request.form['password'])
+            confirm_pwd = replace(request.form['confirm_password'])
             if pwd != confirm_pwd:
                 err = "password and confirm password doesn't match!"
                 flash(err)
                 return render_template("form3.html")
             # Password encoded with utf-8 first then encoded with md5
-            password = md5(request.form['password'].encode('utf-8')).hexdigest()
-            first_name = request.form['first_name']
-            last_name = request.form['last_name']
-            date_of_birth = request.form['date_of_birth']
-            airline_name = request.form['airline_name']
+            password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
+            first_name = replace(request.form['first_name'])
+            last_name = replace(request.form['last_name'])
+            date_of_birth = replace(request.form['date_of_birth'])
+            airline_name = replace(request.form['airline_name'])
 
             sql_check = 'SELECT * FROM airline_staff WHERE username = "{}"'.format(username)
             user_exist = query_fetch(sql_check, DB)
