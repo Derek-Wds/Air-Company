@@ -23,37 +23,51 @@ def home_page_post():
     destination_airport = replace(request.form.get('destination_airport'))
     destination_city = replace(request.form.get('destination_city'))
     arrival_date = replace(request.form.get('arrival_date'))
-    departure_date = replace(request.form.get('departure_date'))
+    departure_date = replace(request.form.get('date'))
     flight_number = replace(request.form.get('flight_number'))
 
     # Query flight based on airport
     if source_airport:
         sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
-          " departure_time = '{}'".format(source_airport, destination_airport, departure_date)
+          " AND DATE(departure_time) = '{}'".format(source_airport, destination_airport, departure_date)
+        print(sql)
         response = fetch_all(sql, DB)
-        return render_template('index.html', flights=response)
+        print(response)
+        return render_template('index.html', flights1=response)
     # Query flight based on city
-    elif source_airport:
+    elif source_city:
         sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
-          " departure_time = '{}'".format(source_city, destination_city, departure_date)
+          " AND DATE(departure_time) = '{}'".format(source_city, destination_city, departure_date)
+        print(sql)
         response = fetch_all(sql, DB)
-        return render_template('index.html', flights=response)
+        print(response)
+        return render_template('index.html', flights1=response)
     # Query flight status
-    elif source_airport:
+    elif flight_number:
         sql = "SELECT * FROM flight WHERE flight_num = '{}' AND arrival_time = '{}'" \
-          " departure_time = '{}'".format(flight_number, arrival_date, departure_date)
+          " AND DATE(departure_time) = '{}'".format(flight_number, arrival_date, departure_date)
+        print(sql)
         response = fetch_all(sql, DB)
-        return render_template('index.html', flights=response)
+        print(response)
+        return render_template('index.html', flights2=response)
     return render_template('index.html')
 
 
-@app.route('/home/customer/')
+@app.route('/home/customer/', methods=['GET', 'POST'])
 def customer_page():
     print(session['user'])
     print(session['type'])
+    source_airport = replace(request.form.get('source_airport'))
+    source_city = replace(request.form.get('source_city'))
+    destination_airport = replace(request.form.get('destination_airport'))
+    destination_city = replace(request.form.get('destination_city'))
+    arrival_date = replace(request.form.get('arrival_date'))
+    departure_date = replace(request.form.get('departure_date'))
+    flight_number = replace(request.form.get('flight_number'))
+
     # If the user logged in a session with customer account
     if g.type == 'customer':
-        return render_template("customer_home.html", username = session['user'])
+        return render_template("customer_home.html", username=session['user'])
     return redirect(url_for('home_page'))
 
 
@@ -62,7 +76,7 @@ def agent_page():
     print(session['user'])
     print(session['type'])
     if g.type == 'agent':
-        return render_template("agent_home.html", username = session['user'])
+        return render_template("agent_home.html", username=session['user'])
     return redirect(url_for('home_page'))
 
 
