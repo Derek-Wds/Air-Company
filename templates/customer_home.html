@@ -164,6 +164,7 @@
             <span>{{ spend_range1[0]['dey'] }}</span>
             <canvas id="mySpending1"></canvas>
         {% endif %}
+
     </div>
     <div class="container flight-content" id="flights" style="padding-top: 42px;">
         <div id="result">
@@ -215,12 +216,14 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
     <form method="post">
         <div class="container">
-            <h1 class="text-center">
+            <h1 class="text-center" style="font-size: 18">
                 You can enter the airline name and flight number to purchase a ticket!
             </h1>
+            <br>
             <div class="row">
                 <div class="col col-md-5 col-sm-5 col-lg-5">
                     <div class="input-group mb-3">
@@ -265,16 +268,6 @@
                         <div class="container flight-content" id="flights" style="padding-top: 42px;">
                             <div id="result">
                                 <ul class="fligtdetails list-group list-group-flush">
-                                    {% if msg %}
-                                        <div class="container alert alert-warning alert-dismissible" role="warning"
-                                             style="padding-top: 5px; padding-bottom: 5px">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                                    style="padding-top: 3px; padding-bottom: 0px;"><span
-                                                    aria-hidden="true">&times;</span></button>
-                                            {{ msg }}
-                                        </div>
-                                    {% endif %}
-
                                     {% if Data %}
                                         {% for data in Data %}
                                             <li tabindex="0" class="search-result">

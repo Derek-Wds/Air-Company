@@ -160,6 +160,9 @@ def agent_page():
     destination_city = replace(request.form.get('destination_city'))
     city_departure_date = replace(request.form.get('city_date'))
     airport_departure_date = replace(request.form.get('airport_date'))
+    customer_ID = replace(request.form.get('purchase_customer'))
+    purchase_airline = replace(request.form.get('purchase_airline'))
+    purchase_flight = replace(request.form.get('purchase_flight'))
 
     if g.type == 'agent':
         # Query flight based on airport
@@ -178,7 +181,27 @@ def agent_page():
             response = fetch_all(sql, DB)
             print(response)
             return render_template('agent_home.html', username=session['user'], flights=response)
-        return render_template("agent_home.html", username=session['user'])
+
+        # Buy Ticket
+        if purchase_airline:
+            ticket_ID = randint(1, 99999999)
+            sql = "INSERT INTO ticket VALUES ('{}', '{}', '{}')".format(ticket_ID, purchase_airline, purchase_flight)
+            print("book ticket(ticket table) SQL: ", sql)
+            query_mod(sql, DB)
+            sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
+            booking_agent_ID = fetch_all(sql, DB)
+            sql = "INSERT INTO purchases(ticket_id, customer_email, purchase_date, booking_agent_id) VALUES ('{}', '{}', '{}', '{}')".format(ticket_ID, customer_ID, time.strftime("%Y-%m-%d"), booking_agent_ID[0]['booking_agent_id'])
+            print("book ticket(ticket table) SQL: ", sql)
+            query_mod(sql, DB)
+
+        # Show my flights
+        sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
+              "flight.flight_num AND purchases.booking_agent_id = '{}'".format(g.user)
+        print('my_flights SQL: ', sql)
+        my_flights = fetch_all(sql, DB)
+        print('my_flights response: ', my_flights)
+
+        return render_template("agent_home.html", username=session['user'], Data=my_flights)
     return redirect(url_for('home_page_get'))
 
 
