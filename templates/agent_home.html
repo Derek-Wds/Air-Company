@@ -81,36 +81,28 @@
         <div style="padding-top: 382px;">
             <div class="container" id="searchforflight" style="padding-top: 24px;">
                 <div class="row">
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="input-group mb-3">
+                            <select class="form-control" id="choice">
+                                <option value="1">Based on city name</option>
+                                <option value="2">Based on airport name</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="source_city"
-                                   placeholder="Source city"
+                                   placeholder="Source city/airport"
                                    aria-label="Search term"
                                    aria-describedby="basic-addon">
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="source_airport"
-                                   placeholder="Source airport name"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="destination_city"
-                                   placeholder="Destination city"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="destination_airport"
-                                   placeholder="Destination airport name"
+                                   placeholder="Destination city/airport"
                                    aria-label="Search term"
                                    aria-describedby="basic-addon">
                         </div>
@@ -119,7 +111,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="search_date"
+                            <input type="text" onfocus="(this.type='date')" class="form-control" id="date"
                                    placeholder="YY/MM/DD"
                                    aria-label="Search term"
                                    aria-describedby="basic-addon">
@@ -507,5 +499,12 @@
                 }
             }
         });
+
+        var e = document.getElementById("choice");
+        var option = e.options[e.selectedIndex].value;
+        if (option == "2") {
+            document.getElementById("source_city").setAttribute("id", "source_aiport");
+            document.getElementById("destination_city").setAttribute("id", "destination_airport");
+        }
     </script>
 {% endblock %}
