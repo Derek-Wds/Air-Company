@@ -159,7 +159,35 @@
             </form>
         </div>
     </div>
-
+    <div class="container">
+      <div id="result">
+          <ul class="fligtdetails list-group list-group-flush">
+              {% if commission1 and ticket1 and average1 %}
+                  <li tabindex="0" class="search-result">
+                      <div class="row">
+                          <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                              <span>Commissions in the last 30 days: {{ commission1 }}</span>
+                          </div>
+                      </div>
+                  </li>
+                  <li tabindex="0" class="search-result">
+                      <div class="row">
+                          <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                              <span>Total number of tickets that sold: {{ ticket1 }}</span>
+                          </div>
+                      </div>
+                  </li>
+                  <li tabindex="0" class="search-result">
+                      <div class="row">
+                          <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                              <span>Average commission received per ticket: {{ average1 }}</span>
+                          </div>
+                      </div>
+                  </li>
+              {% endif %}
+          </ul>
+      </div>
+    </div>
     <div class="container flight-content" id="flights" style="padding-top: 42px;">
         <div id="result">
             <ul class="fligtdetails list-group list-group-flush">
@@ -170,15 +198,15 @@
                                 <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
                                     <div class="row">
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
-                                            <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                            <font style="font-size: 20px"><strong>{{ flight['airline_name'] }}</strong></font>
                                             &nbsp; &nbsp;
-                                            Flight number: {{ flight1['flight_num'] }}
+                                            Flight number: {{ flight['flight_num'] }}
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
                                             <strong>{{ flight['status'] }}</strong>
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
-                                            Airplane id: {{ flight1['airplane_id'] }}
+                                            Airplane id: {{ flight['airplane_id'] }}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -198,7 +226,7 @@
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
                                     <div class="row">
-                                        Price: {{ flight1['price'] }}
+                                        Price: {{ flight['price'] }}
                                     </div>
                                     <div class="row">
                                         <button name="book" type="submit" class="btn btn-outline-warning btn-sm"
@@ -246,15 +274,15 @@
                                                     <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
                                                         <div class="row">
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                                                <font style="font-size: 20px"><strong>{{ data['airline_name'] }}</strong></font>
                                                                 &nbsp; &nbsp;
-                                                                Flight number: {{ flight1['flight_num'] }}
+                                                                Flight number: {{ data['flight_num'] }}
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                                                 <strong>{{ data['status'] }}</strong>
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                Airplane id: {{ flight1['airplane_id'] }}
+                                                                Airplane id: {{ data['airplane_id'] }}
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -360,33 +388,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div id="result">
-                            <ul class="fligtdetails list-group list-group-flush">
-                                {% if commission1 and ticket1 and average1 %}
-                                    <li tabindex="0" class="search-result">
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                                <span>Commissions in the last 30 days: {{ commission1 }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li tabindex="0" class="search-result">
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                                <span>Total number of tickets that sold: {{ ticket1 }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li tabindex="0" class="search-result">
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                                <span>Average commission received per ticket: {{ average1 }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
