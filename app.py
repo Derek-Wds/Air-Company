@@ -71,6 +71,7 @@ def customer_page():
     from_date = replace(request.form.get('from_date'))
     to_date = replace(request.form.get('to_date'))
 
+    # if user session is customer
     if g.type == 'customer':
         one_year_ago = date.today() + relativedelta(months=-12)
         six_months_ago = date.today() + relativedelta(months=-6)
@@ -105,6 +106,9 @@ def customer_page():
             spend_range2 = fetch_all(sql, DB)
             print('spend_range2', spend_range2)
 
+            return render_template("customer_home.html", username=session['user'],six_months=six_months,
+                                   one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
+
         # Buy Ticket
         if purchase_airline:
             ticket_ID = randint(1, 99999999)
@@ -129,7 +133,7 @@ def customer_page():
             response = fetch_all(sql, DB)
             print(response)
             return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights,
-                                   six_months=six_months, one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
+                                   six_months=six_months, one_year=one_year)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -138,10 +142,10 @@ def customer_page():
             response = fetch_all(sql, DB)
             print(response)
             return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights,
-                                   six_months=six_months, one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
+                                   six_months=six_months, one_year=one_year)
         # If the user logged in a session with customer account
         return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months,
-                               one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
+                               one_year=one_year)
     print('invalid session type')
     return redirect(url_for('home_page'))
 
@@ -151,6 +155,7 @@ def agent_page():
     print(session['user'])
     print(session['type'])
     if g.type == 'agent':
+
         return render_template("agent_home.html", username=session['user'])
     return redirect(url_for('home_page'))
 
