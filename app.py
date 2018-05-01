@@ -65,13 +65,18 @@ def customer_page():
     destination_city = replace(request.form.get('destination_city'))
     departure_date = replace(request.form.get('date'))
     if g.type == 'customer':
+        sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
+              "flight.flight_num AND purchases.customer_email = '{}'".format(session['user'])
+        print('my_flights SQL: ', sql)
+        my_flights = fetch_all(sql, DB)
+        print('my_flights response: ', my_flights)
         if source_airport:
             sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
               " AND DATE(departure_time) = '{}'".format(source_airport, destination_airport, departure_date)
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', flights=response)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -79,9 +84,10 @@ def customer_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', flights=response)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights)
         # If the user logged in a session with customer account
-            return render_template("customer_home.html", username=session['user'])
+        return render_template("customer_home.html", username=session['user'], Data=my_flights)
+    print('invalid session type')
     return redirect(url_for('home_page'))
 
 
