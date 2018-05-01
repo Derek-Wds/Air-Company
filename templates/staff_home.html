@@ -656,7 +656,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -682,8 +710,8 @@
                         label: "number",
                         backgroundColor: ["#368ecd", "#8951a2", "#35baa1", "#e89a1e", "#c45652"],
                         data: [{% for value in tickets %}
-                        {{value}},
-                    {% endfor %}]
+                            {{value}},
+                        {% endfor %}]
                     }
                 ]
             },
@@ -707,8 +735,8 @@
                         label: "amount",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45c56"],
                         data: [{% for value in commission%}
-                        {{value}},
-                    {% endfor %}]
+                            {{value}},
+                        {% endfor %}]
                     }
                 ]
             },
