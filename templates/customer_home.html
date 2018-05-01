@@ -130,7 +130,7 @@
         <div id="result">
             <div>
                 <ul class="fligtdetails list-group list-group-flush">
-                    {% if flight %}
+                    {% if flights %}
                         {% for flight in flights %}
                             <li tabindex="0" class="search-result">
                                 <div class="row">
@@ -207,7 +207,7 @@
                                         </div>
                                     {% endif %}
 
-                                    {% if data %}
+                                    {% if Data %}
                                         {% for data in Data %}
                                             <li tabindex="0" class="search-result">
                                                 <div class="row">
