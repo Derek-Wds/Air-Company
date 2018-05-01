@@ -266,7 +266,7 @@
                                         {{ flight1['price'] }}
                                     </div>
                                     <div class="row">
-                                        <button type="button" class="btn btn-outline-warning btn-sm">Book now</button>
+                                        <button type="submit" class="btn btn-outline-warning btn-sm">Book now</button>
                                     </div>
                                 </div>
                             </div>
@@ -291,7 +291,7 @@
     <div class="row">
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
-                <input type="number" class="form-control" id="flight_number"
+                <input type="number" class="form-control" name="flight_number"
                        placeholder="Flight number"
                        aria-label="Search term"
                        aria-describedby="basic-addon" value="{{ request.form.flight_number }}">
@@ -299,7 +299,7 @@
         </div>
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
-                <input type="text" onfocus="(this.type='date')" class="form-control" id="departure_date"
+                <input type="text" onfocus="(this.type='date')" class="form-control" name="departure_date"
                        placeholder="Departure date"
                        aria-label="Search term"
                        aria-describedby="basic-addon" value="{{ request.form.departure_date }}">
@@ -309,7 +309,7 @@
     <div class="row">
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="input-group mb-3">
-                <input type="text" onfocus="(this.type='date')" class="form-control" id="arrival_date"
+                <input type="text" onfocus="(this.type='date')" class="form-control" name="arrival_date"
                        placeholder="Arrival date"
                        aria-label="Search term"
                        aria-describedby="basic-addon" value="{{ request.form.arrival_date }}">
