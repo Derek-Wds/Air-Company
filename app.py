@@ -147,26 +147,48 @@ def customer_page():
         return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months,
                                one_year=one_year)
     print('invalid session type')
-    return redirect(url_for('home_page'))
+    return redirect(url_for('home_page_get'))
 
 
-@app.route('/home/agent/')
+@app.route('/home/agent/', methods=['GET', 'POST'])
 def agent_page():
     print(session['user'])
     print(session['type'])
+    source_airport = replace(request.form.get('source_airport'))
+    source_city = replace(request.form.get('source_city'))
+    destination_airport = replace(request.form.get('destination_airport'))
+    destination_city = replace(request.form.get('destination_city'))
+    city_departure_date = replace(request.form.get('city_date'))
+    airport_departure_date = replace(request.form.get('airport_date'))
+
     if g.type == 'agent':
-
+        # Query flight based on airport
+        if source_airport:
+            sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
+              " AND DATE(departure_time) = '{}'".format(source_airport, destination_airport, airport_departure_date)
+            print(sql)
+            response = fetch_all(sql, DB)
+            print(response)
+            return render_template('agent_home.html', username=session['user'], flights=response)
+        # Query flight based on city
+        elif source_city:
+            sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
+              " AND DATE(departure_time) = '{}'".format(source_city, destination_city, city_departure_date)
+            print(sql)
+            response = fetch_all(sql, DB)
+            print(response)
+            return render_template('agent_home.html', username=session['user'], flights=response)
         return render_template("agent_home.html", username=session['user'])
-    return redirect(url_for('home_page'))
+    return redirect(url_for('home_page_get'))
 
 
-@app.route('/home/staff/')
+@app.route('/home/staff/', methods=['GET', 'POST'])
 def staff_page():
     print(session['user'])
     print(session['type'])
     if g.type == 'staff':
         return render_template("staff_home.html", username = session['user'])
-    return redirect(url_for('home_page'))
+    return redirect(url_for('home_page_get'))
 
 
 @app.errorhandler(404)
