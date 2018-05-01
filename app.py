@@ -72,14 +72,21 @@ def customer_page():
     to_date = replace(request.form.get('to_date'))
 
     if g.type == 'customer':
-        today = time.strftime("%Y-%m-%d")
+        one_year_ago = date.today() + relativedelta(months=-12)
         six_months_ago = date.today() + relativedelta(months=-6)
         sql = "SELECT SUM(price) AS total, YEAR(purchase_date) AS y, MONTH(purchase_date) AS m FROM purchases NATURAL JOIN ticket " \
               "NATURAL JOIN flight WHERE customer_email = '{}' AND purchase_date >= '{}' GROUP BY YEAR(purchase_date), MONTH" \
               "(purchase_date)".format(g.user, six_months_ago)
-        print('get spending SQL: ', sql)
+        print('six month spending SQL: ', sql)
         six_months = fetch_all(sql, DB)
         print('six_months', six_months)
+
+        sql = "SELECT SUM(price) AS dey FROM purchases NATURAL JOIN ticket NATURAL JOIN flight WHERE customer_email = '{}' AND " \
+              "purchase_date >= '{}'".format(g.user, one_year_ago)
+        print('one year spending SQL: ', sql)
+        one_year = fetch_all(sql, DB)
+        print('one year', one_year)
+
         # Buy Ticket
         if purchase_airline:
             ticket_ID = randint(1, 99999999)
@@ -103,7 +110,7 @@ def customer_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months, one_year=one_year)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -111,9 +118,9 @@ def customer_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months, one_year=one_year)
         # If the user logged in a session with customer account
-        return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months)
+        return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months, one_year=one_year)
     print('invalid session type')
     return redirect(url_for('home_page'))
 
