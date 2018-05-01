@@ -198,13 +198,6 @@
                                         <div class="row">
                                             {{ flight['price'] }}
                                         </div>
-                                        <form method="post">
-                                            <div class="row">
-                                                <button name="book" type="submit" class="btn btn-outline-warning btn-sm"
-                                                        value="purchase">Book now
-                                                </button>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </li>
@@ -213,8 +206,41 @@
                 </ul>
             </div>
         </div>
-
     </div>
+
+    <form method="post">
+        <div class="container">
+            <h1 class="text-center">
+                You can enter the airline name and flight number to purchase a ticket!
+            </h1>
+            <div class="row">
+                <div class="col col-md-5 col-sm-5 col-lg-5">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"
+                               name="purchase_airline"
+                               placeholder="Airline of the ticket"
+                               aria-label="Search term"
+                               aria-describedby="basic-addon" value="{{ request.form.purchase_airline }}">
+                    </div>
+                </div>
+                <div class="col col-md-5 col-sm-5 col-lg-5">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"
+                               name="purchase_flight"
+                               placeholder="Flight number of the ticket"
+                               aria-label="Search term"
+                               aria-describedby="basic-addon" value="{{ request.form.purchase_flight }}">
+                    </div>
+                </div>
+                <div class="col col-md-2 col-sm-2 col-lg-2">
+                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px"
+                            onclick="">
+                        <strong>Book now</strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal"
          aria-hidden="true">
@@ -301,40 +327,44 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <canvas id="mySpending"></canvas>
-                    <br>
-                    <p align="center"><strong><font face="Lato" style="color: #777; font-size: 22px">Check your
-                        spending within a period of time:</font></strong></p>
-                    <div class="container" id="search_with_date">
-                        <div class="row">
-                            <div class="col-md-5 col-sm-5 col-lg-5">
-                                <div class="input-group mb-3">
-                                    <input type="text" onfocus="(this.type='date')" class="form-control" id="from_date"
-                                           placeholder="Starting date"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                <form method="post">
+                    <div class="modal-body">
+                        <canvas id="mySpending"></canvas>
+                        <br>
+                        <p align="center"><strong><font face="Lato" style="color: #777; font-size: 22px">Check your
+                            spending within a period of time:</font></strong></p>
+                        <div class="container" id="search_with_date">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='date')" class="form-control"
+                                               id="from_date"
+                                               placeholder="Starting date"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5 col-sm-5 col-lg-5">
-                                <div class="input-group mb-3">
-                                    <input type="text" onfocus="(this.type='date')" class="form-control" id="to_date"
-                                           placeholder="Ending date"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='date')" class="form-control"
+                                               id="to_date"
+                                               placeholder="Ending date"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
                                 </div>
+                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                    <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search</strong>
+                                    </button>
+                                </div>
+                                <br>
+                                {% if myspending1 %}
+                                    <canvas id="mySpending1"></canvas>
+                                {% endif %}
                             </div>
-                            <div class="col-md-2 col-sm-2 col-lg-2">
-                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search</strong>
-                                </button>
-                            </div>
-                            <br>
-                            {% if myspending1 %}
-                                <canvas id="mySpending1"></canvas>
-                            {% endif %}
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>

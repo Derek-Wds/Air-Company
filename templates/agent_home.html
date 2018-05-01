@@ -328,12 +328,13 @@
                                 {% endif %}
                             </ul>
                         </div>
-                        <div class="container" id="search_with_date">
+                        <form method="post">
+                            <div class="container" id="search_with_date">
                             <div class="row">
                                 <div class="col-md-5 col-sm-5 col-lg-5">
                                     <div class="input-group mb-3">
                                         <input type="text" onfocus="(this.type='date')" class="form-control"
-                                               id="from_date"
+                                               name="from_date"
                                                placeholder="Starting date"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -342,7 +343,7 @@
                                 <div class="col-md-5 col-sm-5 col-lg-5">
                                     <div class="input-group mb-3">
                                         <input type="text" onfocus="(this.type='date')" class="form-control"
-                                               id="to_date"
+                                               name="to_date"
                                                placeholder="Ending date"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -355,6 +356,7 @@
                                 <br>
                             </div>
                         </div>
+                        </form>
                         <div id="result">
                             <ul class="fligtdetails list-group list-group-flush">
                                 {% if commission1 and ticket1 and average1 %}
