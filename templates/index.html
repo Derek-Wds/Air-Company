@@ -264,7 +264,8 @@
                                 <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
                                     <div class="row">
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
-                                            <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font> &nbsp; &nbsp;
+                                            <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                            &nbsp; &nbsp;
                                             Flight number: {{ flight1['flight_num'] }}
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
@@ -284,18 +285,23 @@
                                                  style="width: 180px; height: 30px;">
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
-                                            <strong>{{ flight1['arrival_airport'] }}</strong> &nbsp; &nbsp; {{ flight1['arrival_time'] }}
+                                            <strong>{{ flight1['arrival_airport'] }}</strong> &nbsp;
+                                            &nbsp; {{ flight1['arrival_time'] }}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
-                                    <div class="row">
-                                        {{ flight1['price'] }}
+                                <form method="POST">
+                                    <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
+                                        <div class="row">
+                                            {{ flight1['price'] }}
+                                        </div>
+                                        <div class="row">
+                                            <button type="submit" class="btn btn-outline-warning btn-sm">Book now
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <button type="submit" class="btn btn-outline-warning btn-sm">Book now</button>
-                                    </div>
-                                </div>
+                                </form>
+
                             </div>
                         </li>
                     {% endif %}
@@ -314,42 +320,43 @@
     </div>
 </div>
 <form method="POST" action="">
-<div class="container" id="checkflightstatus" style="padding-top: 24px;">
-    <div class="row">
-        <div class="col-md-6 col-sm-6 col-lg-6">
-            <div class="input-group mb-3">
-                <input type="number" class="form-control" name="flight_number"
-                       placeholder="Flight number"
-                       aria-label="Search term"
-                       aria-describedby="basic-addon" value="{{ request.form.flight_number }}">
+    <div class="container" id="checkflightstatus" style="padding-top: 24px;">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" name="flight_number"
+                           placeholder="Flight number"
+                           aria-label="Search term"
+                           aria-describedby="basic-addon" value="{{ request.form.flight_number }}">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="input-group mb-3">
+                    <input type="text" onfocus="(this.type='date')" class="form-control" name="departure_date"
+                           placeholder="Departure date"
+                           aria-label="Search term"
+                           aria-describedby="basic-addon" value="{{ request.form.departure_date }}">
+                </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-lg-6">
-            <div class="input-group mb-3">
-                <input type="text" onfocus="(this.type='date')" class="form-control" name="departure_date"
-                       placeholder="Departure date"
-                       aria-label="Search term"
-                       aria-describedby="basic-addon" value="{{ request.form.departure_date }}">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="input-group mb-3">
+                    <input type="text" onfocus="(this.type='date')" class="form-control" name="arrival_date"
+                           placeholder="Arrival date"
+                           aria-label="Search term"
+                           aria-describedby="basic-addon" value="{{ request.form.arrival_date }}">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="input-group mb-3">
+                    <button class="btn btn-light btn-block" type="submit" style="font-size: 18px">
+                        <strong>Check!</strong>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-6 col-lg-6">
-            <div class="input-group mb-3">
-                <input type="text" onfocus="(this.type='date')" class="form-control" name="arrival_date"
-                       placeholder="Arrival date"
-                       aria-label="Search term"
-                       aria-describedby="basic-addon" value="{{ request.form.arrival_date }}">
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-lg-6">
-            <div class="input-group mb-3">
-                <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"><strong>Check!</strong>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 </form>
 <div class="container flight-content" id="flights" style="padding-top: 42px;">
     <div id="result">
