@@ -1,10 +1,9 @@
 from flask import Flask, render_template, flash, request, url_for, redirect, session, g
-from wtforms import Form
-from dbconnect import connection
 from util import query_fetch, query_mod, fetch_all, replace
 from config import DB, secret_key
 from hashlib import md5
-import os
+from random import *
+import time
 
 
 app = Flask(__name__)
@@ -63,16 +62,28 @@ def customer_page():
     source_city = replace(request.form.get('source_city'))
     destination_airport = replace(request.form.get('destination_airport'))
     destination_city = replace(request.form.get('destination_city'))
-    departure_date = replace(request.form.get('date'))
+    city_departure_date = replace(request.form.get('city_date'))
+    airport_departure_date = replace(request.form.get('airport_date'))
+    purchase_airline = replace(request.form.get('purchase_airline'))
+    purchase_flight = replace(request.form.get('purchase_flight'))
+
     if g.type == 'customer':
+        if purchase_airline:
+            ticket_ID = randint(1, 99999999)
+            sql = "INSERT INTO ticket VALUES ('{}', '{}', '{}')".format(ticket_ID, purchase_airline, purchase_flight)
+            print("book ticket(ticket table) SQL: ", sql)
+            query_mod(sql, DB)
+            sql = "INSERT INTO purchases(ticket_id, customer_email, purchase_date) VALUES ('{}', '{}', '{}')".format(ticket_ID, g.user, time.strftime("%Y-%m-%d"))
+            print("book ticket(ticket table) SQL: ", sql)
+            query_mod(sql, DB)
         sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
-              "flight.flight_num AND purchases.customer_email = '{}'".format(session['user'])
+              "flight.flight_num AND purchases.customer_email = '{}'".format(g.user)
         print('my_flights SQL: ', sql)
         my_flights = fetch_all(sql, DB)
         print('my_flights response: ', my_flights)
         if source_airport:
             sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
-              " AND DATE(departure_time) = '{}'".format(source_airport, destination_airport, departure_date)
+              " AND DATE(departure_time) = '{}'".format(source_airport, destination_airport, airport_departure_date)
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
@@ -80,7 +91,7 @@ def customer_page():
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
-              " AND DATE(departure_time) = '{}'".format(source_city, destination_city, departure_date)
+              " AND DATE(departure_time) = '{}'".format(source_city, destination_city, city_departure_date)
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
