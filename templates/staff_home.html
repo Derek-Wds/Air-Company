@@ -596,7 +596,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div>
+                        <h1>The most frequent customer within the last year</h1>
+                        <span>
+                            {% if frequent_customer %}
+                                <span>{{ frequent_customer }}</span>
+                            {% endif %}
+                        </span>
+
+                        <h1>The flights {{ frequent_customer }} has taken in the last year</h1>
+                        {% if flights %}
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Airline name</th>
+                                    <th scope="col">Flight number</th>
+                                    <th scope="col">Departure airport</th>
+                                    <th scope="col">Arrival airport</th>
+                                    <th scope="col">Departure time</th>
+                                    <th scope="col">Arrival time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% set num = 1 %}
+                                {% for flight in flights %}
+                                    <tr>
+                                        <th scope="row">{{ num }}</th>
+                                        <td>{{ flight['airline_name'] }}</td>
+                                        <td>{{ flight['flight_num'] }}</td>
+                                        <td>{{ flight['depature_airport'] }}</td>
+                                        <td>{{ flight['arrival_airport'] }}</td>
+                                        <td>{{ flight['depature_time'] }}</td>
+                                        <td>{{ flight['arrival_time'] }}</td>
+                                    </tr>
+                                    {% set num = num + 1 %}
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -616,7 +655,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+
+                    <h1>Total amount of ticket sold</h1>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -636,7 +676,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -656,35 +696,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <h1>Top 3 most popular destinations for last 3 months</h1>
+                    {% if top_destinations1 %}
+                        {% for item in top_destinations1 %}
+                            <font face="Lato">{{ item }} &nbsp; &nbsp;</font>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
