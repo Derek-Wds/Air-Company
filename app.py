@@ -4,6 +4,8 @@ from config import DB, secret_key
 from hashlib import md5
 from random import *
 import time
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 
 app = Flask(__name__)
@@ -66,8 +68,19 @@ def customer_page():
     airport_departure_date = replace(request.form.get('airport_date'))
     purchase_airline = replace(request.form.get('purchase_airline'))
     purchase_flight = replace(request.form.get('purchase_flight'))
+    from_date = replace(request.form.get('from_date'))
+    to_date = replace(request.form.get('to_date'))
 
     if g.type == 'customer':
+        today = time.strftime("%Y-%m-%d")
+        six_months_ago = date.today() + relativedelta(months=-6)
+        sql = "SELECT SUM(price) AS total, YEAR(purchase_date) AS y, MONTH(purchase_date) AS m FROM purchases NATURAL JOIN ticket " \
+              "NATURAL JOIN flight WHERE customer_email = '{}' AND purchase_date >= '{}' GROUP BY YEAR(purchase_date), MONTH" \
+              "(purchase_date)".format(g.user, six_months_ago)
+        print('get spending SQL: ', sql)
+        six_months = fetch_all(sql, DB)
+        print('six_months', six_months)
+        # Buy Ticket
         if purchase_airline:
             ticket_ID = randint(1, 99999999)
             sql = "INSERT INTO ticket VALUES ('{}', '{}', '{}')".format(ticket_ID, purchase_airline, purchase_flight)
@@ -76,18 +89,21 @@ def customer_page():
             sql = "INSERT INTO purchases(ticket_id, customer_email, purchase_date) VALUES ('{}', '{}', '{}')".format(ticket_ID, g.user, time.strftime("%Y-%m-%d"))
             print("book ticket(ticket table) SQL: ", sql)
             query_mod(sql, DB)
+
+        # Show my flights
         sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
               "flight.flight_num AND purchases.customer_email = '{}'".format(g.user)
         print('my_flights SQL: ', sql)
         my_flights = fetch_all(sql, DB)
         print('my_flights response: ', my_flights)
+        # Query flight based on airport
         if source_airport:
             sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
               " AND DATE(departure_time) = '{}'".format(source_airport, destination_airport, airport_departure_date)
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -95,9 +111,9 @@ def customer_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights)
+            return render_template('customer_home.html', username=session['user'], flights=response, Data=my_flights, six_months=six_months)
         # If the user logged in a session with customer account
-        return render_template("customer_home.html", username=session['user'], Data=my_flights)
+        return render_template("customer_home.html", username=session['user'], Data=my_flights, six_months=six_months)
     print('invalid session type')
     return redirect(url_for('home_page'))
 
