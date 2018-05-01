@@ -169,15 +169,15 @@
                                     <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
                                         <div class="row">
                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
-                                            &nbsp; &nbsp;
-                                            Flight number: {{ flight1['flight_num'] }}
+                                                <font style="font-size: 20px"><strong>{{ flight['airline_name'] }}</strong></font>
+                                                &nbsp; &nbsp;
+                                                Flight number: {{ flight['flight_num'] }}
                                             </div>
                                             <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                                 <strong>{{ flight['status'] }}</strong>
                                             </div>
                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                Airplane id: {{ flight1['airplane_id'] }}
+                                                Airplane id: {{ flight['airplane_id'] }}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -331,6 +331,11 @@
                 </div>
                 <form method="post">
                     <div class="modal-body">
+                        <span>
+                            <h1>Total amount of money spent in the past year:</h1>\
+                            <span>{{ one_year }}</span>
+                        </span>
+                        <br>
                         <canvas id="mySpending"></canvas>
                         <br>
                         <p align="center"><strong><font face="Lato" style="color: #777; font-size: 22px">Check your
@@ -360,7 +365,7 @@
                                     </button>
                                 </div>
                                 <br>
-                                {% if myspending1 %}
+                                {% if spend_range1 and spend_range2 %}
                                     <canvas id="mySpending1"></canvas>
                                 {% endif %}
                             </div>
@@ -387,15 +392,15 @@
         let mychart = new Chart(spending, {
             type: 'bar',
             data: {
-                labels: [{% for label in labels %}
-                    "{{label}}",
+                labels: [{% for item in six_months %}
+                    "{{item['y']}}",
                 {% endfor %}],
                 datasets: [{
-                    labels: [{% for label in labels %}
-                        "{{label}}",
+                    labels: [{% for item in six_months %}
+                        "{{item['m']}}",
                     {% endfor %}],
-                    data: [{% for value in values %}
-                        {{value}},
+                    data: [{% for item in six_months %}
+                        {{item['total']}},
                     {% endfor %}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.6)',
@@ -445,15 +450,15 @@
         let mychart1 = new Chart(spending1, {
             type: 'bar',
             data: {
-                labels: [{% for label in labels1 %}
-                    "{{label}}",
+                labels: [{% for item in spend_range2 %}
+                    "{{item['y']}}",
                 {% endfor %}],
                 datasets: [{
-                    label: [{% for label in labels1 %}
-                        "{{label}}",
+                    label: [{% for item in spend_range2 %}
+                        "{{item['m']}}",
                     {% endfor %}],
-                    data: [{% for value in values1 %}
-                        {{value}},
+                    data: [{% for item in spend_range2 %}
+                        {{item['total']}},
                     {% endfor %}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.6)',
@@ -477,7 +482,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'My spending in last 6 months',
+                    text: 'My spending in the range',
                     fontSize: 25
                 },
                 legend: {
