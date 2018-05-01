@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, request, url_for, redirect, session, g
 from wtforms import Form
 from dbconnect import connection
-from util import query_fetch, query_mod
+from util import query_fetch, query_mod, fetch_all
 from config import DB, secret_key
 from hashlib import md5
 import os
@@ -22,29 +22,29 @@ def home_page_post():
     source_city = request.form.get('source_city')
     destination_airport = request.form.get('destination_airport')
     destination_city = request.form.get('destination_city')
-    date = request.form.get('date')
+    arrival_date = request.form.get('arrival_date')
+    departure_date = request.form.get('departure_date')
+    flight_number = request.form.get('flight_number')
 
-    """
-    def post_get():
-    post_id = request.form.get('pid')
-    sql = "SELECT title, category, tags, content FROM posts WHERE pid = '{}'".format(post_id)
-    if VERBOSE:
-        print("post get query:" + sql)
-    indicator = query_fetch(sql, DB)
-    response = PostList()
-    if indicator:
-        response.data['pid'] = post_id
-        response.data['title'] = indicator['title']
-        response.data['category'] = indicator['category']
-   post_tags = 'dog, 2017, happy, weekend'
-        response.data['tags'] = indicator['tags']
-        response.data['content'] = indicator['content']
-    else:
-        response = ErrorResponse()
-        response.error['errorCode'] = '105'
-        response.error['errorMsg'] = 'Post does not exist'
-    return jsonify(response.__dict__)"""
-    return render_template("index.html")
+    # Query flight based on airport
+    if source_airport:
+        sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
+          " departure_time = '{}'".format(source_airport, destination_airport, departure_date)
+        response = fetch_all(sql, DB)
+        return render_template('index.html', flights=response)
+    # Query flight based on city
+    elif source_airport:
+        sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
+          " departure_time = '{}'".format(source_city, destination_city, departure_date)
+        response = fetch_all(sql, DB)
+        return render_template('index.html', flights=response)
+    # Query flight status
+    elif source_airport:
+        sql = "SELECT * FROM flight WHERE flight_num = '{}' AND arrival_time = '{}'" \
+          " departure_time = '{}'".format(flight_number, arrival_date, departure_date)
+        response = fetch_all(sql, DB)
+        return render_template('index.html', flights=response)
+    return render_template('index.html')
 
 
 @app.route('/home/customer/')
@@ -312,7 +312,7 @@ def logout_redirect():
     print(session['type'])
     session.pop('user', None)
     session.pop('type', None)
-    return redirect(url_for('home_page_get'))
+    return redirect(url_for('login_page'))
 
 
 @app.before_request
