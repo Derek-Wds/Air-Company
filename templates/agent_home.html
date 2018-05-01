@@ -170,14 +170,15 @@
                                 <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
                                     <div class="row">
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
-                                            {{ flight['airline_name'] }} &nbsp; &nbsp;
-                                            &nbsp; {{ flight['flight_num'] }}
+                                            <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                            &nbsp; &nbsp;
+                                            Flight number: {{ flight1['flight_num'] }}
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
                                             <strong>{{ flight['status'] }}</strong>
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
-                                            {{ flight['airplane_id'] }}
+                                            Airplane id: {{ flight1['airplane_id'] }}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -197,7 +198,7 @@
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
                                     <div class="row">
-                                        {{ flight['price'] }}
+                                        Price: {{ flight1['price'] }}
                                     </div>
                                     <div class="row">
                                         <button name="book" type="submit" class="btn btn-outline-warning btn-sm"
@@ -245,14 +246,15 @@
                                                     <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
                                                         <div class="row">
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                {{ data['airline_name'] }} &nbsp; &nbsp;
-                                                                &nbsp; {{ data['flight_num'] }}
+                                                                <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                                                &nbsp; &nbsp;
+                                                                Flight number: {{ flight1['flight_num'] }}
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                                                 <strong>{{ data['status'] }}</strong>
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                {{ data['airplane_id'] }}
+                                                                Airplane id: {{ flight1['airplane_id'] }}
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -330,32 +332,33 @@
                         </div>
                         <form method="post">
                             <div class="container" id="search_with_date">
-                            <div class="row">
-                                <div class="col-md-5 col-sm-5 col-lg-5">
-                                    <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='date')" class="form-control"
-                                               name="from_date"
-                                               placeholder="Starting date"
-                                               aria-label="Search term"
-                                               aria-describedby="basic-addon">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-5 col-lg-5">
+                                        <div class="input-group mb-3">
+                                            <input type="text" onfocus="(this.type='date')" class="form-control"
+                                                   name="from_date"
+                                                   placeholder="Starting date"
+                                                   aria-label="Search term"
+                                                   aria-describedby="basic-addon">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-5 col-sm-5 col-lg-5">
-                                    <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='date')" class="form-control"
-                                               name="to_date"
-                                               placeholder="Ending date"
-                                               aria-label="Search term"
-                                               aria-describedby="basic-addon">
+                                    <div class="col-md-5 col-sm-5 col-lg-5">
+                                        <div class="input-group mb-3">
+                                            <input type="text" onfocus="(this.type='date')" class="form-control"
+                                                   name="to_date"
+                                                   placeholder="Ending date"
+                                                   aria-label="Search term"
+                                                   aria-describedby="basic-addon">
+                                        </div>
                                     </div>
+                                    <div class="col-md-2 col-sm-2 col-lg-2">
+                                        <button class="btn btn-outline-warning btn-md" type="submit">
+                                            <strong>Search</strong>
+                                        </button>
+                                    </div>
+                                    <br>
                                 </div>
-                                <div class="col-md-2 col-sm-2 col-lg-2">
-                                    <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search</strong>
-                                    </button>
-                                </div>
-                                <br>
                             </div>
-                        </div>
                         </form>
                         <div id="result">
                             <ul class="fligtdetails list-group list-group-flush">

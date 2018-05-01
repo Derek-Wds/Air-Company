@@ -105,60 +105,62 @@
     {% endif %}
     <div class="background">
         <div style="padding-top: 382px;">
-            <div class="container" id="searchforflight" style="padding-top: 24px;">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="source_city"
-                                   placeholder="Source city"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
+            <form method="post">
+                <div class="container" id="searchforflight" style="padding-top: 24px;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="source_city"
+                                       placeholder="Source city"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="source_airport"
+                                       placeholder="Source airport name"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="source_airport"
-                                   placeholder="Source airport name"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="destination_city"
+                                       placeholder="Destination city"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="destination_airport"
+                                       placeholder="Destination airport name"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="search_date"
+                                       placeholder="YY/MM/DD"
+                                       aria-label="Search term"
+                                       aria-describedby="basic-addon">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"><strong>Search!</strong>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="destination_city"
-                                   placeholder="Destination city"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="destination_airport"
-                                   placeholder="Destination airport name"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="search_date"
-                                   placeholder="YY/MM/DD"
-                                   aria-label="Search term"
-                                   aria-describedby="basic-addon">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"><strong>Search!</strong>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -302,103 +304,106 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container" id="add_new_flights" style="padding-top: 24px;">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="airline_name"
-                                           placeholder="Airline name"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="flight_number"
-                                           placeholder="Flight number"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="departure_airport"
-                                           placeholder="Departure airport"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="arrival_airport"
-                                           placeholder="Arrival airport"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" onfocus="(this.type='date')" class="form-control"
-                                           id="departure_time"
-                                           placeholder="Departure time"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" onfocus="(this.type='date')" class="form-control"
-                                           id="arrival_time"
-                                           placeholder="Arrival time"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
 
+                    <form method="post">
+                        <div class="container" id="add_new_flights" style="padding-top: 24px;">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="airline_name"
+                                               placeholder="Airline name"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="flight_number"
+                                               placeholder="Flight number"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="departure_airport"
+                                               placeholder="Departure airport"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="arrival_airport"
+                                               placeholder="Arrival airport"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='date')" class="form-control"
+                                               id="departure_time"
+                                               placeholder="Departure time"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='date')" class="form-control"
+                                               id="arrival_time"
+                                               placeholder="Arrival time"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control"
+                                               id="airplane_id"
+                                               placeholder="Airplane ID"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                               id="status"
+                                               placeholder="status"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control"
+                                               id="price"
+                                               placeholder="price"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
+                                            <strong>Add</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control"
-                                           id="airplane_id"
-                                           placeholder="Airplane ID"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control"
-                                           id="status"
-                                           placeholder="status"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control"
-                                           id="price"
-                                           placeholder="price"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
-                                        <strong>Add</strong>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -418,44 +423,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container" id="add_new_flights" style="padding-top: 24px;">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="source_city"
-                                           placeholder="Airline name"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                    <form method="post">
+                        <div class="container" id="add_new_flights" style="padding-top: 24px;">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="source_city"
+                                               placeholder="Airline name"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" id="source_airport"
+                                               placeholder="Flight number"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control" id="source_airport"
-                                           placeholder="Flight number"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                               id="change_status"
+                                               placeholder="New status"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
+                                            <strong>Change</strong>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control"
-                                           id="change_status"
-                                           placeholder="New status"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
-                                        <strong>Change</strong>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -475,44 +482,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container" id="add_new_flights" style="padding-top: 24px;">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="airline_name"
-                                           placeholder="Airline name"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                    <form method="post">
+                        <div class="container" id="add_new_flights" style="padding-top: 24px;">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="airline_name"
+                                               placeholder="Airline name"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" id="airplane_id"
+                                               placeholder="Airplane ID"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control" id="airplane_id"
-                                           placeholder="Airplane ID"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control"
+                                               id="seat"
+                                               placeholder="Seats"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
+                                            <strong>Add</strong>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control"
-                                           id="seat"
-                                           placeholder="Seats"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6">
-                                <div class="input-group mb-3">
-                                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px">
-                                        <strong>Add</strong>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -532,30 +541,32 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container" id="add_new_airport">
-                        <div class="row">
-                            <div class="col-md-5 col-sm-5 col-lg-5">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="airport_name"
-                                           placeholder="Airport name"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                    <form method="post">
+                        <div class="container" id="add_new_airport">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="airport_name"
+                                               placeholder="Airport name"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5 col-sm-5 col-lg-5">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="airport_city"
-                                           placeholder="Airport city"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon">
+                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="airport_city"
+                                               placeholder="Airport city"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2 col-sm-2 col-lg-2">
-                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Add</strong>
-                                </button>
+                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                    <button class="btn btn-outline-warning btn-md" type="submit"><strong>Add</strong>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -655,40 +666,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-md-5 col-sm-5 col-lg-5">
-                                <div class="input-group mb-3">
-                                    <input type="text" onfocus="(this.type='date')" class="form-control" name="from_date"
-                                           placeholder="Starting date"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon" value="{{ request.form.from_date }}">
+                    <form method="post">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-md-5 col-sm-5 col-lg-5">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='date')" class="form-control"
+                                               name="from_date"
+                                               placeholder="Starting date"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon" value="{{ request.form.from_date }}">
+                                    </div>
+                                </div>
+                                <div class="col col-md-5 col-sm-5 col-lg-5">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='date')" class="form-control"
+                                               name="to_date"
+                                               placeholder="Ending date"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon" value="{{ request.form.to_date }}">
+                                    </div>
+                                </div>
+                                <div class="col col-md-2 col-sm-2 col-lg-2">
+                                    <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search</strong>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col col-md-5 col-sm-5 col-lg-5">
-                                <div class="input-group mb-3">
-                                    <input type="text" onfocus="(this.type='date')" class="form-control" name="to_date"
-                                           placeholder="Ending date"
-                                           aria-label="Search term"
-                                           aria-describedby="basic-addon" value="{{ request.form.to_date}}">
+                            <div class="row">
+                                <div class="col col-md-6 col-sm-6 col-lg-6">
+                                    <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search in last
+                                        year</strong>
+                                    </button>
+                                </div>
+                                <div class="col col-md-6 col-sm-6 col-lg-6">
+                                    <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search in last
+                                        month</strong>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col col-md-2 col-sm-2 col-lg-2">
-                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search</strong>
-                                </button>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col col-md-6 col-sm-6 col-lg-6">
-                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search in last year</strong>
-                                </button>
-                            </div>
-                            <div class="col col-md-6 col-sm-6 col-lg-6">
-                                <button class="btn btn-outline-warning btn-md" type="submit"><strong>Search in last month</strong>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                     {% if total_amount_of_ticket %}
                         <h1>Total amount of ticket sold</h1>
                         <span>{{ total_amount_of_ticket }}</span>
