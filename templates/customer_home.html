@@ -169,14 +169,15 @@
                                     <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
                                         <div class="row">
                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                {{ flight['airline_name'] }} &nbsp; &nbsp;
-                                                &nbsp; {{ flight['flight_num'] }}
+                                                <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                            &nbsp; &nbsp;
+                                            Flight number: {{ flight1['flight_num'] }}
                                             </div>
-                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                                 <strong>{{ flight['status'] }}</strong>
                                             </div>
                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                {{ flight['airplane_id'] }}
+                                                Airplane id: {{ flight1['airplane_id'] }}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -196,7 +197,7 @@
                                     </div>
                                     <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
                                         <div class="row">
-                                            {{ flight['price'] }}
+                                            Price: {{ flight1['price'] }}
                                         </div>
                                     </div>
                                 </div>
@@ -274,14 +275,15 @@
                                                     <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
                                                         <div class="row">
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                {{ data['airline_name'] }} &nbsp; &nbsp;
-                                                                &nbsp; {{ data['flight_num'] }}
+                                                                <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                                                &nbsp; &nbsp;
+                                                                Flight number: {{ flight1['flight_num'] }}
+                                                            </div>
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                                                <strong>{{ flight1['status'] }}</strong>
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                <strong>{{ data['status'] }}</strong>
-                                                            </div>
-                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                {{ data['airplane_id'] }}
+                                                                Airplane id: {{ flight1['airplane_id'] }}
                                                             </div>
                                                         </div>
                                                         <div class="row">
