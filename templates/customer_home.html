@@ -332,8 +332,8 @@
                 <form method="post">
                     <div class="modal-body">
                         <span>
-                            <h1>Total amount of money spent in the past year:</h1>\
-                            <span>{{ one_year }}</span>
+                            <h1 style="font-size: 18px;">Total amount of money spent in the past year:</h1>\
+                            <span>{{ one_year['dey'] }}</span>
                         </span>
                         <br>
                         <canvas id="mySpending"></canvas>
@@ -393,7 +393,7 @@
             type: 'bar',
             data: {
                 labels: [{% for item in six_months %}
-                    "{{item['y']}}",
+                    "{{item['m']}}",
                 {% endfor %}],
                 datasets: [{
                     labels: [{% for item in six_months %}
@@ -451,7 +451,7 @@
             type: 'bar',
             data: {
                 labels: [{% for item in spend_range2 %}
-                    "{{item['y']}}",
+                    "{{item['m']}}",
                 {% endfor %}],
                 datasets: [{
                     label: [{% for item in spend_range2 %}
