@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
                                         <div class="row">
-                                            Price: {{ flight1['price'] }}
+                                            Price: {{ flight['price'] }}
                                         </div>
                                     </div>
                                 </div>
@@ -275,15 +275,15 @@
                                                     <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
                                                         <div class="row">
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
+                                                                <font style="font-size: 20px"><strong>{{ data['airline_name'] }}</strong></font>
                                                                 &nbsp; &nbsp;
-                                                                Flight number: {{ flight1['flight_num'] }}
+                                                                Flight number: {{ data['flight_num'] }}
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                                                <strong>{{ flight1['status'] }}</strong>
+                                                                <strong>{{ data['status'] }}</strong>
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                                Airplane id: {{ flight1['airplane_id'] }}
+                                                                Airplane id: {{ data['airplane_id'] }}
                                                             </div>
                                                         </div>
                                                         <div class="row">
