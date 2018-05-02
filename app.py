@@ -329,6 +329,24 @@ def staff_page():
         top_destinations2 = fetch_all(sql, DB)
         print(top_destinations2)
 
+        # comparison of revenue earned
+        labels2 = []
+        end_date = datetime.date.today()
+        start_date = end_date - timedelta(days=30)
+        sql = "SELECT SUM(price) AS v FROM flight NATURAL JOIN purchases WHERE booking_agent_id IS NOT NULL AND purchase_date >= '{}' AND purchase_date <= '{}'".format(start_date, end_date)
+        labels2.extend(fetch_all(sql, DB))
+
+        sql = "SELECT SUM(price) AS v FROM flight NATURAL JOIN purchases WHERE booking_agent_id IS NULL AND purchase_date >= '{}' AND purchase_date <= '{}'".format(start_date, end_date)
+        labels2.extend(fetch_all(sql, DB))
+
+        end_date = datetime.date.today()
+        start_date = end_date - timedelta(days=365)
+        sql = "SELECT SUM(price) AS v FROM flight NATURAL JOIN purchases WHERE booking_agent_id IS NOT NULL AND purchase_date >= '{}' AND purchase_date <= '{}'".format(start_date, end_date)
+        labels2.extend(fetch_all(sql, DB))
+
+        sql = "SELECT SUM(price) AS v FROM flight NATURAL JOIN purchases WHERE booking_agent_id IS NULL AND purchase_date >= '{}' AND purchase_date <= '{}'".format(start_date, end_date)
+        labels2.extend(fetch_all(sql, DB))
+        print(labels2)
         # view my flights
 
         # create new flights
@@ -337,14 +355,14 @@ def staff_page():
                 airline_name, flight_number, departure_airport, departure_time, arrival_airport, arrival_time, price, status, airplane_id, departure_city, arrival_city)
             print(sql)
             query_mod(sql, DB)
-            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2)
+            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2)
 
         # change status of flights
         if status_source_airport:
             sql = "UPDATE flight SET status='{}' WHERE airline_name = '{}' AND flight_num = '{}'".format(change_status, status_source_city, status_source_airport)
             print(sql)
             query_mod(sql, DB)
-            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2)
+            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2)
 
         # add airplane in the system
         if airline_name_plane:
@@ -356,14 +374,14 @@ def staff_page():
             print(sql)
             airplanes = fetch_all(sql, DB)
             print(airplanes)
-            return render_template('staff_confirmation.html', username=session['user'], airplanes=airplanes, agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2)
+            return render_template('staff_confirmation.html', username=session['user'], airplanes=airplanes, agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2)
 
         # add new airport in the system
         if airport_name:
             sql = "INSERT INTO airport VALUES('{}', '{}')".format(airport_name, airport_city)
             print(sql)
             query_mod(sql, DB)
-            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2)
+            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2)
 
         # search particular customer and airline
         if freq_customer_email:
@@ -371,12 +389,12 @@ def staff_page():
             print(sql)
             flights2 = fetch_all(sql, DB)
             print(flights2)
-            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, flights2=flights2, top_destinations1=top_destinations1, top_destinations2=top_destinations2)
+            return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, flights2=flights2, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2)
 
         # comparison of revenue earned
 
         # view top destinations
-        return render_template("staff_home.html", username = session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2)
+        return render_template("staff_home.html", username = session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2)
     return redirect(url_for('home_page_get'))
 
 
