@@ -14,6 +14,20 @@
             width: 1200px !important;
             height: auto !important;
         }
+
+        input[type='text'],
+        input[type='number'],
+        input[type='password'],
+        input[type='date'],
+        input[type='email'],
+
+        ,
+        select,
+        textarea {
+            outline: none;
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+        }
     </style>
 {% endblock %}
 
@@ -167,61 +181,63 @@
 
     </div>
     <div class="container flight-content" id="flights" style="padding-top: 42px;">
-        <div id="result">
-            <div>
+        {% if flights %}
+            <h3 class="text-center">
+                Flight details
+            </h3>
+            <div id="result">
                 <ul class="fligtdetails list-group list-group-flush">
-                    {% if flights %}
-                        {% for flight in flights %}
-                            <li tabindex="0" class="search-result">
-                                <div class="row">
-                                    <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
-                                        <div class="row">
-                                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                <font style="font-size: 20px"><strong>{{ flight['airline_name'] }}</strong></font>
-                                                &nbsp; &nbsp;
-                                                {{ flight['flight_num'] }}
-                                            </div>
-                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                                <strong>{{ flight['status'] }}</strong>
-                                            </div>
-                                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                Airplane id: {{ flight['airplane_id'] }}
-                                            </div>
+                    {% for flight in flights %}
+                        <li tabindex="0" class="search-result">
+                            <div class="row">
+                                <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
+                                    <div class="row">
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            <font style="font-size: 20px"><strong>{{ flight['airline_name'] }}</strong></font>
+                                            &nbsp; &nbsp;
+                                            {{ flight['flight_num'] }}
                                         </div>
-                                        <div class="row">
-                                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                {{ flight['departure_airport'] }} &nbsp;
-                                                &nbsp; {{ flight['departure_time'] }}
-                                            </div>
-                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                                <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
-                                                     style="width: 180px; height: 30px;">
-                                            </div>
-                                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                {{ flight['arrival_airport'] }} &nbsp;
-                                                &nbsp; {{ flight['arrival_time'] }}
-                                            </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                            <strong>{{ flight['status'] }}</strong>
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            Airplane id: {{ flight['airplane_id'] }}
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
-                                        <div class="row">
-                                            Price: {{ flight['price'] }}
+                                    <div class="row">
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            {{ flight['departure_airport'] }} &nbsp;
+                                            &nbsp; {{ flight['departure_time'] }}
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                            <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                                 style="width: 180px; height: 30px;">
+                                        </div>
+                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                            {{ flight['arrival_airport'] }} &nbsp;
+                                            &nbsp; {{ flight['arrival_time'] }}
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                        {% endfor %}
-                    {% endif %}
+                                <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
+                                    <div class="row">
+                                        Price: {{ flight['price'] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
-        </div>
+        {% endif %}
     </div>
+    <br>
     <br>
     <form method="post">
         <div class="container">
-            <h1 class="text-center" style="font-size: 18">
+            <h3 class="text-center" style="font-size: 18">
                 You can enter the airline name and flight number to purchase a ticket!
-            </h1>
+            </h3>
             <br>
             <div class="row">
                 <div class="col col-md-5 col-sm-5 col-lg-5">

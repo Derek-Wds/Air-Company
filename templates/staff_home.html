@@ -8,6 +8,18 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
+
+        input[type='text'],
+        input[type='number'],
+        input[type='password'],
+        input[type='date'],
+        input[type='email'],,
+        select,
+        textarea {
+            outline: none;
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+        }
     </style>
 {% endblock %}
 
@@ -105,6 +117,81 @@
     <div class="background">
     </div>
 
+    <div class="container flight-content" id="flights" style="padding-top: 42px;">
+        <div id="result">
+            <ul class="fligtdetails list-group list-group-flush">
+                {% if flights1 %} {% for flight in flights1 %}
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
+                                <div class="row">
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        <font style="font-size: 20px">
+                                            <strong>{{ flight['airline_name'] }}</strong>
+                                        </font>
+                                        &nbsp; &nbsp; Flight number: {{ flight['flight_num'] }}
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        <strong>{{ flight['status'] }}</strong>
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        Airplane id: {{ flight['airplane_id'] }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        {{ flight['departure_airport'] }} &nbsp; &nbsp; {{ flight['departure_time'] }}
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                        <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                             style="width: 180px; height: 30px;">
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        {{ flight['arrival_airport'] }} &nbsp; &nbsp; {{ flight['arrival_time'] }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
+                                <div class="row">
+                                    Price: {{ flight['price'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %} {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 style="font-size: 18px">All the customers in the flight you just searched</h1>
+        {% if customers %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer name</th>
+                    <th scope="col">Customer email</th>
+                    <th scope="col">Customer passport number</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% set num = 1 %}
+                {% for customer in customers %}
+                    <tr>
+                        <th scope="row">{{ num }}</th>
+                        <td>{{ customer['name'] }}</td>
+                        <td>{{ customer['email'] }}</td>
+                        <td>{{ customer['passport_number'] }}</td>
+                    </tr>
+                    {% set num = num + 1 %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+
     <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -120,17 +207,7 @@
                         <div class="container flight-content" id="flights" style="padding-top: 42px;">
                             <div id="result">
                                 <ul class="fligtdetails list-group list-group-flush">
-                                    {% if msg %}
-                                        <div class="container alert alert-warning alert-dismissible" role="warning"
-                                             style="padding-top: 5px; padding-bottom: 5px">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                                    style="padding-top: 3px; padding-bottom: 0px;"><span
-                                                    aria-hidden="true">&times;</span></button>
-                                            {{ msg }}
-                                        </div>
-                                    {% endif %}
-
-                                    {% for data in Data %}
+                                    {% for data in my_flights %}
                                         {% if data %}
                                             <li tabindex="0" class="search-result">
                                                 <div class="row">
@@ -166,6 +243,124 @@
                                             </li>
                                         {% endif %}
                                     {% endfor %}
+                                    <br>
+                                    <form method="POST" action="">
+                                        <div class="container" id="searchforflight" style="padding-top: 24px;">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" name="source_city"
+                                                               placeholder="Source city"
+                                                               aria-label="Search term" aria-describedby="basic-addon"
+                                                               value="{{ request.form.source }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" name="destination_city"
+                                                               placeholder="Destination city" aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.destination }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" onfocus="(this.type='date')"
+                                                               class="form-control" name="city_date"
+                                                               placeholder="YY/MM/DD" aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.city_date }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <button class="btn btn-light btn-block" type="submit"
+                                                                style="font-size: 18px"
+                                                                onclick="">
+                                                            <strong>Search!</strong>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container" id="searchforflight" style="padding-top: 24px;">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" name="source_airport"
+                                                               placeholder="Source airport" aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.source_airport }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control"
+                                                               name="destination_airport"
+                                                               placeholder="Destination airport"
+                                                               aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.destination_airport }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" onfocus="(this.type='date')"
+                                                               class="form-control" name="airport_date"
+                                                               placeholder="YY/MM/DD" aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.airport_date }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                                    <div class="input-group mb-3">
+                                                        <button class="btn btn-light btn-block" type="submit"
+                                                                style="font-size: 18px"
+                                                                onclick="">
+                                                            <strong>Search!</strong>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form method="post">
+                                        <div class="container" id="search_with_date">
+                                            <h3>Please choose the flight to see those customers</h3>
+                                            <div class="row">
+                                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               name="airline_name" placeholder="Airline name"
+                                                               aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.airline_name }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                                    <div class="input-group mb-3">
+                                                        <input type="number"
+                                                               class="form-control"
+                                                               name="flight_number" placeholder="Flight number"
+                                                               aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.flight_number }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                    <button class="btn btn-outline-warning btn-md" type="submit">
+                                                        <strong>Search</strong>
+                                                    </button>
+                                                </div>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </ul>
                             </div>
                         </div>
@@ -193,16 +388,6 @@
                         <div class="container flight-content" id="upcoming_flights" style="padding-top: 42px;">
                             <div id="result">
                                 <ul class="fligtdetails list-group list-group-flush">
-                                    {% if msg %}
-                                        <div class="container alert alert-warning alert-dismissible" role="warning"
-                                             style="padding-top: 5px; padding-bottom: 5px">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                                    style="padding-top: 3px; padding-bottom: 0px;"><span
-                                                    aria-hidden="true">&times;</span></button>
-                                            {{ msg }}
-                                        </div>
-                                    {% endif %}
-
                                     {% if Data %}
                                         <h1>All the upcoming flights in the next 30 days:</h1>
                                         {% for data in Data %}
@@ -557,10 +742,11 @@
                         </span>
 
                         <h1 style="font-size: 18px">The flights {{ frequent_customer }} has taken in the last year</h1>
-                        {% if flights %}
+                        {% if flights2 %}
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
+                                    <th scope="col">#</th>
                                     <th scope="col">Airline name</th>
                                     <th scope="col">Flight number</th>
                                     <th scope="col">Departure airport</th>
@@ -571,7 +757,7 @@
                                 </thead>
                                 <tbody>
                                 {% set num = 1 %}
-                                {% for flight in flights %}
+                                {% for flight in flights2 %}
                                     <tr>
                                         <th scope="row">{{ num }}</th>
                                         <td>{{ flight['airline_name'] }}</td>
@@ -635,10 +821,13 @@
                             </div>
                             <div class="row">
                                 <div class="btn-group">
-                                    <button class="btn btn-outline-warning" type="submit" name="search_last_year" value="{{ search_last_year }}"><strong>Search in last
+                                    <button class="btn btn-outline-warning" type="submit" name="search_last_year"
+                                            value="{{ search_last_year }}"><strong>Search in last
                                         year</strong>
                                     </button>
-                                    <input type="submit" name="search_last_year" value="Search for last year" class="form-control" aria-describedby="basic-addon" placeholder="Search for last year">
+                                    <input type="submit" name="search_last_year" value="Search for last year"
+                                           class="form-control" aria-describedby="basic-addon"
+                                           placeholder="Search for last year">
                                     <button class="btn btn-outline-warning" type="submit"><strong>Search in last
                                         month</strong>
                                     </button>
