@@ -271,7 +271,11 @@ def staff_page():
     status_source_city = replace(request.form.get('status_source_city'))
     status_source_airport = replace(request.form.get('status_source_airport'))
     change_status = replace(request.form.get('change_status'))
+
     # add airplane in the system
+    airline_name_plane = replace(request.form.get('airline_name_plane'))
+    airplane_id_plane = replace(request.form.get('airplane_id_plane'))
+    seat = replace(request.form.get('seat'))
 
     # add new airport in the system
 
@@ -304,6 +308,16 @@ def staff_page():
             return render_template('staff_home.html', username=session['user'])
 
         # add airplane in the system
+        if airline_name_plane:
+            sql = "INSERT INTO airplane VALUES('{}', '{}', '{}')".format(airline_name_plane, airplane_id_plane, seat)
+            print(sql)
+            query_mod(sql, DB)
+
+            sql = "SELECT * FROM airplane WHERE airline_name = '{}'".format(airline_name_plane)
+            print(sql)
+            airplanes = fetch_all(sql, DB)
+            print(airplanes)
+            return render_template('staff_confirmation.html', username=session['user'], airplanes=airplanes)
 
         # add new airport in the system
 
