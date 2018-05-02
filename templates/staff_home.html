@@ -919,13 +919,15 @@
                     <h3>Top 3 most popular destinations for last 3 months</h3>
                     {% if top_destinations1 %}
                         {% for item in top_destinations1 %}
-                            <font face="Lato">{{ item }} &nbsp; &nbsp;</font>
+                            <font face="Lato">{{ item['arrival_city'] }} &nbsp; &nbsp;</font>
                         {% endfor %}
                     {% endif %}
+                    <br>
+                    <br>
                     <h3>Top 3 most popular destinations for last year</h3>
                     {% if top_destinations1 %}
                         {% for item in top_destinations2 %}
-                            <font face="Lato">{{ item }} &nbsp; &nbsp;</font>
+                            <font face="Lato">{{ item['arrival_city'] }} &nbsp; &nbsp;</font>
                         {% endfor %}
                     {% endif %}
                 </div>
