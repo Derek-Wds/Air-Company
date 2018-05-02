@@ -170,6 +170,27 @@ def agent_page():
     if g.type == 'agent':
         sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
         booking_agent_ID = fetch_all(sql, DB)
+        #view top 5 customers tickects
+        end_date = datetime.date.today()
+        start_date = end_date - timedelta(days=183)
+        sql = "SELECT customer.email as customer_email, COUNT(distinct ticket_id) AS tickets FROM purchases NATURAL JOIN ticket NATURAL JOIN flight, customer WHERE booking_agent_id = '{}' AND purchases.customer_email = customer.email AND " \
+                  "purchase_date <= '{}' AND purchase_date >= '{}' GROUP BY customer_email ORDER BY tickets DESC LIMIT 5".format(booking_agent_ID[0]['booking_agent_id'], end_date, start_date)
+        top_cus1 = fetch_all(sql, DB)
+        print(top_cus1)
+
+        #view top 5 customers commission
+        end_date = datetime.date.today()
+        start_date = end_date - timedelta(days=365)
+        sql = "SELECT customer.email as customer_email, SUM(price)*0.1 AS commission FROM purchases NATURAL JOIN ticket NATURAL JOIN flight, customer WHERE booking_agent_id = '{}' AND purchases.customer_email = customer.email AND " \
+                  "purchase_date <= '{}' AND purchase_date >= '{}' GROUP BY customer_email ORDER BY commission DESC LIMIT 5".format(booking_agent_ID[0]['booking_agent_id'], end_date, start_date)
+        top_cus2 = fetch_all(sql, DB)
+        for i in top_cus2:
+            print(i)
+
+
+        #commission
+        sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
+        booking_agent_ID = fetch_all(sql, DB)
         end_date = datetime.date.today()
         start_date = end_date - timedelta(days=30)
         sql = "SELECT SUM(price)*0.1 AS commission, COUNT(distinct ticket_id) AS ticket, (SUM(price)*0.1/COUNT(distinct ticket_id)) AS average FROM purchases NATURAL JOIN ticket NATURAL JOIN flight WHERE booking_agent_id = '{}' AND " \
@@ -188,7 +209,7 @@ def agent_page():
             commission1 = fetch_all(sql, DB)
             print('Commission1', commission1)
 
-            return render_template("agent_home.html", username=session['user'], commission1=commission1, commission=commission)
+            return render_template("agent_home.html", username=session['user'], commission1=commission1, commission=commission,  top_cus1=top_cus1, top_cus2 = top_cus2)
 
         
         # Query flight based on airport
@@ -198,7 +219,7 @@ def agent_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('agent_home.html', username=session['user'], flights=response, commission=commission)
+            return render_template('agent_home.html', username=session['user'], flights=response, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -206,7 +227,7 @@ def agent_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('agent_home.html', username=session['user'], flights=response, commission=commission)
+            return render_template('agent_home.html', username=session['user'], flights=response, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
 
         # Buy Ticket
         if purchase_airline:
@@ -226,7 +247,7 @@ def agent_page():
         print('my_flights SQL: ', sql)
         my_flights = fetch_all(sql, DB)
         print('my_flights response: ', my_flights)
-        return render_template("agent_home.html", username=session['user'], Data=my_flights, commission=commission)
+        return render_template("agent_home.html", username=session['user'], Data=my_flights, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
     return redirect(url_for('home_page_get'))
 
 

@@ -61,7 +61,7 @@
     </button>
     Welcome to Derek and Masaki's air company, {{ username }} !
 </div>
-{% endif %} 
+{% endif %}
 <div class="background">
     <div style="padding-top: 382px;">
         <form method="POST" action="">
@@ -406,28 +406,26 @@
     let mychart1 = new Chart(customers_tickets, {
         type: 'bar',
         data: {
-            labels: [{% for label in labels %}
-                    "{{label}}",
-                {% endfor %}],
-    datasets: [{
-        labels: [{% for label in labels %}
-                        "{{label}}",
-    {% endfor %}],
-        data: [{% for value in values %}
-    { { value } },
-    {% endfor %}],
-    backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(153, 102, 255, 0.6)',
-    ],
-        borderWidth: 1,
+            labels: 'tickets',
+            datasets: [{
+                labels: [{% for label in top_cus1 %}
+                        "{{label['customer_email']}}",
+            {% endfor %}],
+                data: [{% for value in top_cus1 %}
+            { { value['tickets'] } },
+            {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+            ],
+            borderWidth: 1,
             borderColor: '#777',
-                hoverBorderWidth: 2,
-                    hoverBorderColor: '#000'
-                }]
+            hoverBorderWidth: 2,
+            hoverBorderColor: '#000'
+                        }]
             },
     options: {
         title: {
@@ -463,15 +461,13 @@
     let mychart2 = new Chart(customer_commission, {
         type: 'bar',
         data: {
-            labels: [{% for label in labels1 %}
-                    "{{label}}",
-                {% endfor %}],
-    datasets: [{
-        label: [{% for label in labels1 %}
-                        "{{label1}}",
-    {% endfor %}],
-        data: [{% for value in values1 %}
-    { { value } },
+            labels: 'commission',
+            datasets: [{
+                label: [{% for label in top_cus2 %}
+                        "{{label['customer_email']}}",
+            {% endfor %}],
+        data: [{% for value in top_cus2 %}
+    { { value['commission'] } },
     {% endfor %}],
     backgroundColor: [
         'rgba(0, 255, 255, 0.6)',
