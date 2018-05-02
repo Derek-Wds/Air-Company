@@ -1,23 +1,24 @@
 {% extends 'base.html' %} {% block head %}
-<style>
-    div.background {
-        height: 927px;
-        background-image: url("/static/3.jpg");
-        background-repeat: no-repeat;
-        opacity: 0.7;
-        background-size: 100% 100%;
-    }
-</style>
+    <style>
+        div.background {
+            height: 927px;
+            background-image: url("/static/3.jpg");
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            background-size: 100% 100%;
+        }
+    </style>
 {% endblock %} {% block header %}
-<div class="navigation container" id="top" style="padding-top: 0px">
+    <div class="navigation container" id="top" style="padding-top: 0px">
     <span class="border-bottom">
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-lg" style="margin-bottom: 5px;">
             <a class="navbar-brand">
                 <img src="/static/logo.png" height="35%" width="35%" alt="Air Company" style="width: 225px">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -28,15 +29,20 @@
                     </li>
 
                     <li class="nav-item dropdown" style="width: 240px" ;>
-                        <a class="nav-link dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools for booking agent</a>
+                        <a class="nav-link dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Tools for booking agent</a>
                         <div id="drop_item" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" style="background-color: #f5f5f5;  padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#myCommission">View my commission</button>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5;  padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#myCommission">View my commission</button>
                             </a>
 
 
-                            <a class="dropdown-item" style="background-color: #f5f5f5;  padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#viewtop">View top</button>
+                            <a class="dropdown-item"
+                               style="background-color: #f5f5f5;  padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px;">
+                                <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                                        data-target="#viewtop">View top</button>
                             </a>
                         </div>
                     </li>
@@ -46,473 +52,502 @@
 
                 <form class="form-inline mt-2 mt-md-0">
                     <div class="btn-group btn-group-md" role="group">
-                        <button id="login_button" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myflight" onclick="">My flights</button>
+                        <button id="login_button" type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                data-target="#myflight" onclick="">My flights</button>
                         <button id="login_button" type="button" class="btn btn-outline-secondary" onclick="sign_out()">Log out</button>
                     </div>
                 </form>
             </div>
         </nav>
     </span>
-</div>
+    </div>
 {% endblock %} {% block main %} {% if username %}
-<div class="container alert alert-success alert-dismissible" role="success" style="padding-top: 5px; padding-bottom: 5px">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding-top: 3px; padding-bottom: 0px;">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    Welcome to Derek and Masaki's air company, {{ username }} !
-</div>
+    <div class="container alert alert-success alert-dismissible" role="success"
+         style="padding-top: 5px; padding-bottom: 5px">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                style="padding-top: 3px; padding-bottom: 0px;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Welcome to Derek and Masaki's air company, {{ username }} !
+    </div>
 {% endif %}
-<div class="background">
-    <div style="padding-top: 382px;">
-        <form method="POST" action="">
-            <div class="container" id="searchforflight" style="padding-top: 24px;">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="source_city" placeholder="Source city" aria-label="Search term" aria-describedby="basic-addon"
-                                value="{{ request.form.source }}">
+    <div class="background">
+        <div style="padding-top: 382px;">
+            <form method="POST" action="">
+                <div class="container" id="searchforflight" style="padding-top: 24px;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="source_city" placeholder="Source city"
+                                       aria-label="Search term" aria-describedby="basic-addon"
+                                       value="{{ request.form.source }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="destination_city"
+                                       placeholder="Destination city" aria-label="Search term"
+                                       aria-describedby="basic-addon"
+                                       value="{{ request.form.destination }}">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="destination_city" placeholder="Destination city" aria-label="Search term" aria-describedby="basic-addon"
-                                value="{{ request.form.destination }}">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" onfocus="(this.type='date')" class="form-control" name="city_date"
+                                       placeholder="YY/MM/DD" aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.city_date }}">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" onfocus="(this.type='date')" class="form-control" name="city_date" placeholder="YY/MM/DD" aria-label="Search term"
-                                aria-describedby="basic-addon" value="{{ request.form.city_date }}">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <button class="btn btn-light btn-block" type="submit" style="font-size: 18px" onclick="">
-                                <strong>Search!</strong>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container" id="searchforflight" style="padding-top: 24px;">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="source_airport" placeholder="Source airport" aria-label="Search term" aria-describedby="basic-addon"
-                                value="{{ request.form.source_airport }}">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="destination_airport" placeholder="Destination airport" aria-label="Search term"
-                                aria-describedby="basic-addon" value="{{ request.form.destination_airport }}">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"
+                                        onclick="">
+                                    <strong>Search!</strong>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <input type="text" onfocus="(this.type='date')" class="form-control" name="airport_date" placeholder="YY/MM/DD" aria-label="Search term"
-                                aria-describedby="basic-addon" value="{{ request.form.airport_date }}">
+                <div class="container" id="searchforflight" style="padding-top: 24px;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="source_airport"
+                                       placeholder="Source airport" aria-label="Search term"
+                                       aria-describedby="basic-addon"
+                                       value="{{ request.form.source_airport }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="destination_airport"
+                                       placeholder="Destination airport" aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.destination_airport }}">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-group mb-3">
-                            <button class="btn btn-light btn-block" type="submit" style="font-size: 18px" onclick="">
-                                <strong>Search!</strong>
-                            </button>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <input type="text" onfocus="(this.type='date')" class="form-control" name="airport_date"
+                                       placeholder="YY/MM/DD" aria-label="Search term"
+                                       aria-describedby="basic-addon" value="{{ request.form.airport_date }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="input-group mb-3">
+                                <button class="btn btn-light btn-block" type="submit" style="font-size: 18px"
+                                        onclick="">
+                                    <strong>Search!</strong>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<div class="container">
-    <div id="result">
-        <ul class="fligtdetails list-group list-group-flush">
-            {% if commission1 %}
-            <li tabindex="0" class="search-result">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                        <span>Commissions in the range of days: {{ commission1[0]['commission'] }}</span>
-                    </div>
-                </div>
-            </li>
-            <li tabindex="0" class="search-result">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                        <span>Total number of tickets that sold: {{ commission1[0]['ticket'] }}</span>
-                    </div>
-                </div>
-            </li>
-            <li tabindex="0" class="search-result">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                        <span>Average commission received per ticket: {{ commission1[0]['average'] }}</span>
-                    </div>
-                </div>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</div>
-<div class="container flight-content" id="flights" style="padding-top: 42px;">
-    <div id="result">
-        <ul class="fligtdetails list-group list-group-flush">
-            {% if flights %} {% for flight in flights %}
-            <li tabindex="0" class="search-result">
-                <div class="row">
-                    <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
-                        <div class="row">
-                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                <font style="font-size: 20px">
-                                    <strong>{{ flight['airline_name'] }}</strong>
-                                </font>
-                                &nbsp; &nbsp; Flight number: {{ flight['flight_num'] }}
-                            </div>
-                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                <strong>{{ flight['status'] }}</strong>
-                            </div>
-                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                Airplane id: {{ flight['airplane_id'] }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                {{ flight['departure_airport'] }} &nbsp; &nbsp; {{ flight['departure_time'] }}
-                            </div>
-                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg" style="width: 180px; height: 30px;">
-                            </div>
-                            <div class="col col-md-4 col-lg-4 col-sm-4">
-                                {{ flight['arrival_airport'] }} &nbsp; &nbsp; {{ flight['arrival_time'] }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
-                        <div class="row">
-                            Price: {{ flight['price'] }}
-                        </div>
-                    </div>
-                </div>
-            </li>
-            {% endfor %} {% endif %}
-        </ul>
-    </div>
-</div>
-<br>
-<form method="post">
     <div class="container">
-        <h1 class="text-center" style="font-size: 18px">
-            You can enter the airline name and flight number to purchase a ticket for the customer!
-        </h1>
-        <br>
-        <div class="row">
-            <div class="col col-md-6 col-sm-6 col-lg-6">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="purchase_airline" placeholder="Airline of the ticket" aria-label="Search term"
-                        aria-describedby="basic-addon" value="{{ request.form.purchase_airline }}">
-                </div>
-            </div>
-            <div class="col col-md-6 col-sm-6 col-lg-6">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="purchase_flight" placeholder="Flight number of the ticket" aria-label="Search term"
-                        aria-describedby="basic-addon" value="{{ request.form.purchase_flight }}">
-                </div>
-            </div>
+        <div id="result">
+            <ul class="fligtdetails list-group list-group-flush">
+                {% if commission1 %}
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                <span>Commissions in the range of days: {{ commission1[0]['commission'] }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                <span>Total number of tickets that sold: {{ commission1[0]['ticket'] }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                <span>Average commission received per ticket: {{ commission1[0]['average'] }}</span>
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-        <div class="row">
-            <div class="col col-md-6 col-sm-6 col-lg-6">
-                <div class="input-group mb-3">
-                    <input type="email" class="form-control" name="purchase_customer" placeholder="Customer email" aria-label="Search term" aria-describedby="basic-addon"
-                        value="{{ request.form.purchase_customer }}">
+    </div>
+    <div class="container flight-content" id="flights" style="padding-top: 42px;">
+        <div id="result">
+            <ul class="fligtdetails list-group list-group-flush">
+                {% if flights %} {% for flight in flights %}
+                    <li tabindex="0" class="search-result">
+                        <div class="row">
+                            <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
+                                <div class="row">
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        <font style="font-size: 20px">
+                                            <strong>{{ flight['airline_name'] }}</strong>
+                                        </font>
+                                        &nbsp; &nbsp; Flight number: {{ flight['flight_num'] }}
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        <strong>{{ flight['status'] }}</strong>
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        Airplane id: {{ flight['airplane_id'] }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        {{ flight['departure_airport'] }} &nbsp; &nbsp; {{ flight['departure_time'] }}
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                        <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                             style="width: 180px; height: 30px;">
+                                    </div>
+                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                        {{ flight['arrival_airport'] }} &nbsp; &nbsp; {{ flight['arrival_time'] }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
+                                <div class="row">
+                                    Price: {{ flight['price'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %} {% endif %}
+            </ul>
+        </div>
+    </div>
+    <br>
+    <form method="post">
+        <div class="container">
+            <h1 class="text-center" style="font-size: 18px">
+                You can enter the airline name and flight number to purchase a ticket for the customer!
+            </h1>
+            <br>
+            <div class="row">
+                <div class="col col-md-6 col-sm-6 col-lg-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="purchase_airline"
+                               placeholder="Airline of the ticket" aria-label="Search term"
+                               aria-describedby="basic-addon" value="{{ request.form.purchase_airline }}">
+                    </div>
+                </div>
+                <div class="col col-md-6 col-sm-6 col-lg-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="purchase_flight"
+                               placeholder="Flight number of the ticket" aria-label="Search term"
+                               aria-describedby="basic-addon" value="{{ request.form.purchase_flight }}">
+                    </div>
                 </div>
             </div>
-            <div class="col col-md-6 col-sm-6 col-lg-6">
-                <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px" onclick="">
-                    <strong>Book now</strong>
-                </button>
+            <div class="row">
+                <div class="col col-md-6 col-sm-6 col-lg-6">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" name="purchase_customer" placeholder="Customer email"
+                               aria-label="Search term" aria-describedby="basic-addon"
+                               value="{{ request.form.purchase_customer }}">
+                    </div>
+                </div>
+                <div class="col col-md-6 col-sm-6 col-lg-6">
+                    <button class="btn btn-warning btn-block" type="submit" style="font-size: 18px" onclick="">
+                        <strong>Book now</strong>
+                    </button>
+                </div>
             </div>
-        </div>
 
-    </div>
-    </div>
-</form>
-<div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">My flights</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        </div>
+        </div>
+    </form>
+    <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">My flights</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="container flight-content" id="flights" style="padding-top: 42px;">
+                            <div id="result">
+                                <ul class="fligtdetails list-group list-group-flush">
+                                    {% if Data %} {% for data in Data %}
+                                        <li tabindex="0" class="search-result">
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                                    <div class="row">
+                                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                            <font style="font-size: 20px">
+                                                                <strong>{{ data['airline_name'] }}</strong>
+                                                            </font>
+                                                            {{ data['flight_num'] }}
+                                                        </div>
+                                                        <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                                            <strong>{{ data['status'] }}</strong>
+                                                        </div>
+                                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                            Airplane id: {{ data['airplane_id'] }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                            {{ data['departure_airport'] }} &nbsp;
+                                                            &nbsp; {{ data['departure_time'] }}
+                                                        </div>
+                                                        <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                                                            <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                                                 style="width: 180px; height: 30px;">
+                                                        </div>
+                                                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                            {{ data['arrival_airport'] }} &nbsp;
+                                                            &nbsp; {{ data['arrival_time'] }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %} {% endif %}
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="container flight-content" id="flights" style="padding-top: 42px;">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal hide fade" id="myCommission" tabindex="0" role="dialog" aria-labelledby="myModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">My commission</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container flight-content" id="commission" style="padding-top: 42px;">
                         <div id="result">
                             <ul class="fligtdetails list-group list-group-flush">
-                                {% if Data %} {% for data in Data %}
                                 <li tabindex="0" class="search-result">
                                     <div class="row">
                                         <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                            <div class="row">
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    <font style="font-size: 20px">
-                                                        <strong>{{ data['airline_name'] }}</strong>
-                                                    </font>
-                                                    &nbsp; &nbsp; Flight number: {{ data['flight_num'] }}
-                                                </div>
-                                                <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                                    <strong>{{ data['status'] }}</strong>
-                                                </div>
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    Airplane id: {{ data['airplane_id'] }}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    {{ data['departure_airport'] }} &nbsp; &nbsp; {{ data['departure_time'] }}
-                                                </div>
-                                                <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                                    <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg" style="width: 180px; height: 30px;">
-                                                </div>
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    {{ data['arrival_airport'] }} &nbsp; &nbsp; {{ data['arrival_time'] }}
-                                                </div>
-                                            </div>
+                                            <span>Commissions in the last 30 days: {{ commission[0]['commission'] }}</span>
                                         </div>
                                     </div>
                                 </li>
-                                {% endfor %} {% endif %}
-
-
+                                <li tabindex="0" class="search-result">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                            <span>Total number of tickets that sold: {{ commission[0]['ticket'] }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li tabindex="0" class="search-result">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
+                                            <span>Average commission received per ticket: {{ commission[0]['average'] }}</span>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-    </div>
-</div>
-</div>
-
-<div class="modal hide fade" id="myCommission" tabindex="0" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">My commission</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container flight-content" id="commission" style="padding-top: 42px;">
-                    <div id="result">
-                        <ul class="fligtdetails list-group list-group-flush">
-                            <li tabindex="0" class="search-result">
+                        <br>
+                        <form method="post">
+                            <div class="container" id="search_with_date">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                        <span>Commissions in the last 30 days: {{ commission[0]['commission'] }}</span>
+                                    <div class="col-md-5 col-sm-5 col-lg-5">
+                                        <div class="input-group mb-3">
+                                            <input type="text" onfocus="(this.type='date')" class="form-control"
+                                                   name="from_date" placeholder="Starting date" aria-label="Search term"
+                                                   aria-describedby="basic-addon" value="{{ request.form.from_date }}">
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li tabindex="0" class="search-result">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                        <span>Total number of tickets that sold: {{ commission[0]['ticket'] }}</span>
+                                    <div class="col-md-5 col-sm-5 col-lg-5">
+                                        <div class="input-group mb-3">
+                                            <input type="text" onfocus="(this.type='date')" class="form-control"
+                                                   name="to_date" placeholder="Ending date" aria-label="Search term"
+                                                   aria-describedby="basic-addon" value="{{ request.form.to_date }}">
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li tabindex="0" class="search-result">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                        <span>Average commission received per ticket: {{ commission[0]['average'] }}</span>
+                                    <div class="col-md-2 col-sm-2 col-lg-2">
+                                        <button class="btn btn-outline-warning btn-md" type="submit">
+                                            <strong>Search</strong>
+                                        </button>
                                     </div>
+                                    <br>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <br>
-                    <form method="post">
-                        <div class="container" id="search_with_date">
-                            <div class="row">
-                                <div class="col-md-5 col-sm-5 col-lg-5">
-                                    <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='date')" class="form-control" name="from_date" placeholder="Starting date" aria-label="Search term"
-                                            aria-describedby="basic-addon" value="{{ request.form.from_date }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-5 col-sm-5 col-lg-5">
-                                    <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='date')" class="form-control" name="to_date" placeholder="Ending date" aria-label="Search term"
-                                            aria-describedby="basic-addon" value="{{ request.form.to_date }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-2 col-lg-2">
-                                    <button class="btn btn-outline-warning btn-md" type="submit">
-                                        <strong>Search</strong>
-                                    </button>
-                                </div>
-                                <br>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <div class="modal hide fade" id="viewtop" tabindex="0" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View top customers</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="top_customer1" height="766" width="1532" class="chartjs-render-monitor" style="display: block; height: 383px; width: 766px;"></canvas>
+                    <br>
+                    <br>
+                    <canvas id="top_customer2" height="766" width="1532" class="chartjs-render-monitor" style="display: block; height: 383px; width: 766px;"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="modal hide fade" id="viewtop" tabindex="0" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">View top customers</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <canvas id="customer_ticket"></canvas>
-                <canvas id="customer_commission"></canvas>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<script>
-    function sign_out() {
-        window.location.assign("/logout/");
-    }
+    <script>
+        function sign_out() {
+            window.location.assign("/logout/");
+        }
 
-    let customers_tickets = document.getElementById('customer_ticket').getContext('2d');
-    Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#777';
-    let mychart1 = new Chart(customers_tickets, {
-        type: 'bar',
-        data: {
-            labels: 'tickets',
-            datasets: [{
+        let customers_top1 = document.getElementById('top_customer1').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+        let mychart1 = new Chart(customers_top1, {
+            type: 'bar',
+            data: {
                 labels: [{% for label in top_cus1 %}
                         "{{label['customer_email']}}",
-            {% endfor %}],
-                data: [{% for value in top_cus1 %}
-            { { value['tickets'] } },
-            {% endfor %}],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-            ],
-            borderWidth: 1,
-            borderColor: '#777',
-            hoverBorderWidth: 2,
-            hoverBorderColor: '#000'
-                        }]
-            },
-    options: {
-        title: {
-            display: true,
-                text: 'Top 5 customers based on number of tickets in the past 6 months',
-                    fontSize: 25
-        },
-        legend: {
-            display: false,
-                position: 'right',
-                    labels: {
-                fontColor: '#000'
-            }
-        },
-        layout: {
-            padding: {
-                left: 50,
-                    right: 0,
-                        bottom: 0,
-                            top: 0
-            }
-        },
-        tooltips: {
-            enabled: true
-        }
-    }
-        });
-
-    let customer_commission = document.getElementById('customer_commission').getContext('2d');
-    Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#777';
-    let mychart2 = new Chart(customer_commission, {
-        type: 'bar',
-        data: {
-            labels: 'commission',
-            datasets: [{
-                label: [{% for label in top_cus2 %}
+                    {% endfor %}],
+                datasets: [{
+                    label: [{% for label in top_cus1 %}
                         "{{label['customer_email']}}",
-            {% endfor %}],
-        data: [{% for value in top_cus2 %}
-    { { value['commission'] } },
-    {% endfor %}],
-    backgroundColor: [
-        'rgba(0, 255, 255, 0.6)',
-        'rgba(255, 20, 47, 0.6)',
-        'rgba(178, 34, 34, 0.6)',
-        'rgba(255, 215, 0, 0.6)',
-        'rgba(124, 252, 0, 0.6)',
-    ],
-        borderWidth: 1,
-            borderColor: '#777',
-                hoverBorderWidth: 2,
+                    {% endfor %}],
+                    data: [{% for value in top_cus1 %}
+                        {{ value['tickets'] }},
+                    {% endfor %}],
+                    backgroundColor: [
+                        'rgba(0, 255, 255, 0.6)',
+                        'rgba(255, 20, 47, 0.6)',
+                        'rgba(178, 34, 34, 0.6)',
+                        'rgba(255, 215, 0, 0.6)',
+                        'rgba(124, 252, 0, 0.6)',
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 2,
                     hoverBorderColor: '#000'
                 }]
             },
-    options: {
-        title: {
-            display: true,
-                text: 'Top 5 customers based on amount of commission in the last year',
+            options: {
+                title: {
+                    display: true,
+                    text: 'Top 5 customers based on number of tickets in the past 6 months',
                     fontSize: 25
-        },
-        legend: {
-            display: false,
-                position: 'right',
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
                     labels: {
-                fontColor: '#000'
-            }
-        },
-        layout: {
-            padding: {
-                left: 50,
-                    right: 0,
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
                         bottom: 0,
-                            top: 0
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
             }
-        },
-        tooltips: {
-            enabled: true
-        }
-    }
         });
 
-    var e = document.getElementById("choice");
-    var option = e.options[e.selectedIndex].value;
-    if (option == "2") {
-        document.getElementById("source_city").setAttribute("id", "source_aiport");
-        document.getElementById("destination_city").setAttribute("id", "destination_airport");
-    }
-</script> {% endblock %}
+        let customers_top2 = document.getElementById('top_customer2').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+        let mychart2 = new Chart(customers_top2, {
+            type: 'bar',
+            data: {
+                labels: [{% for label in top_cus2 %}
+                        "{{label['customer_email']}}",
+                    {% endfor %}],
+                datasets: [{
+                    label: [{% for label in top_cus2 %}
+                        "{{label['customer_email']}}",
+                    {% endfor %}],
+                    data: [{% for value in top_cus2 %}
+                        {{ value['commission'] }},
+                    {% endfor %}],
+                    backgroundColor: [
+                        'rgba(0, 255, 255, 0.6)',
+                        'rgba(255, 20, 47, 0.6)',
+                        'rgba(178, 34, 34, 0.6)',
+                        'rgba(255, 215, 0, 0.6)',
+                        'rgba(124, 252, 0, 0.6)',
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 2,
+                    hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Top 5 customers based on amount of commission in the last year',
+                    fontSize: 25
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
+
+        var e = document.getElementById("choice");
+        var option = e.options[e.selectedIndex].value;
+        if (option == "2") {
+            document.getElementById("source_city").setAttribute("id", "source_aiport");
+            document.getElementById("destination_city").setAttribute("id", "destination_airport");
+        }
+    </script> {% endblock %}

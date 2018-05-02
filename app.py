@@ -189,8 +189,6 @@ def agent_page():
 
 
         #commission
-        sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
-        booking_agent_ID = fetch_all(sql, DB)
         end_date = datetime.date.today()
         start_date = end_date - timedelta(days=30)
         sql = "SELECT SUM(price)*0.1 AS commission, COUNT(distinct ticket_id) AS ticket, (SUM(price)*0.1/COUNT(distinct ticket_id)) AS average FROM purchases NATURAL JOIN ticket NATURAL JOIN flight WHERE booking_agent_id = '{}' AND " \
@@ -209,7 +207,7 @@ def agent_page():
             commission1 = fetch_all(sql, DB)
             print('Commission1', commission1)
 
-            return render_template("agent_home.html", username=session['user'], commission1=commission1, commission=commission,  top_cus1=top_cus1, top_cus2 = top_cus2)
+            return render_template("agent_home.html", username=session['user'], commission1=commission1, commission=commission, top_cus1=top_cus1,top_cus2 = top_cus2)
 
         
         # Query flight based on airport
@@ -242,8 +240,8 @@ def agent_page():
             query_mod(sql, DB)
 
         # Show my flights
-        sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
-              "flight.flight_num AND purchases.booking_agent_id = '{}'".format(g.user)
+        sql = "SELECT distinct * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
+              "flight.flight_num AND purchases.booking_agent_id = '{}'".format(booking_agent_ID[0]['booking_agent_id'])
         print('my_flights SQL: ', sql)
         my_flights = fetch_all(sql, DB)
         print('my_flights response: ', my_flights)
