@@ -278,6 +278,8 @@ def staff_page():
     seat = replace(request.form.get('seat'))
 
     # add new airport in the system
+    airport_name = replace(request.form.get('airport_name'))
+    airport_city = replace(request.form.get('airport_city'))
 
     # view all the booking agents
 
@@ -320,6 +322,12 @@ def staff_page():
             return render_template('staff_confirmation.html', username=session['user'], airplanes=airplanes)
 
         # add new airport in the system
+        if airport_name:
+            sql = "INSERT INTO airport VALUES('{}', '{}')".format(airport_name, airport_city)
+            print(sql)
+            query_mod(sql, DB)
+            return render_template('staff_home.html', username=session['user'])
+
 
         # view all the booking agents
 
