@@ -336,20 +336,20 @@
                                                     <div class="input-group mb-3">
                                                         <input type="text"
                                                                class="form-control"
-                                                               name="airline_name" placeholder="Airline name"
+                                                               name="airline_name1" placeholder="Airline name"
                                                                aria-label="Search term"
                                                                aria-describedby="basic-addon"
-                                                               value="{{ request.form.airline_name }}">
+                                                               value="{{ request.form.airline_name1 }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-lg-5">
                                                     <div class="input-group mb-3">
                                                         <input type="number"
                                                                class="form-control"
-                                                               name="flight_number" placeholder="Flight number"
+                                                               name="flight_number1" placeholder="Flight number"
                                                                aria-label="Search term"
                                                                aria-describedby="basic-addon"
-                                                               value="{{ request.form.flight_number }}">
+                                                               value="{{ request.form.flight_number1 }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-lg-2">
@@ -436,7 +436,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="airline_name"
+                                        <input type="text" class="form-control" name="airline_name"
                                                placeholder="Airline name"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -444,7 +444,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="flight_number"
+                                        <input type="text" class="form-control" name="flight_number"
                                                placeholder="Flight number"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -454,7 +454,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="departure_airport"
+                                        <input type="text" class="form-control" name="departure_airport"
                                                placeholder="Departure airport"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -462,7 +462,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="arrival_airport"
+                                        <input type="text" class="form-control" name="arrival_airport"
                                                placeholder="Arrival airport"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -472,8 +472,26 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='date')" class="form-control"
-                                               id="departure_time"
+                                        <input type="text" class="form-control" name="departure_city"
+                                               placeholder="Departure city"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name="arrival_city"
+                                               placeholder="Arrival city"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" onfocus="(this.type='datetime-local', this.step ='1')" class="form-control"
+                                               name="departure_time"
                                                placeholder="Departure time"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -481,8 +499,8 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='date')" class="form-control"
-                                               id="arrival_time"
+                                        <input type="text" onfocus="(this.type='datetime-local', this.step ='1')" class="form-control"
+                                               name="arrival_time"
                                                placeholder="Arrival time"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -494,7 +512,7 @@
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control"
-                                               id="airplane_id"
+                                               name="airplane_id"
                                                placeholder="Airplane ID"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -503,7 +521,7 @@
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control"
-                                               id="status"
+                                               name="status"
                                                placeholder="status"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">
@@ -514,7 +532,7 @@
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control"
-                                               id="price"
+                                               name="price"
                                                placeholder="price"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon">

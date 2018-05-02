@@ -187,7 +187,6 @@ def agent_page():
         for i in top_cus2:
             print(i)
 
-
         #commission
         end_date = datetime.date.today()
         start_date = end_date - timedelta(days=30)
@@ -253,7 +252,64 @@ def agent_page():
 def staff_page():
     print(session['user'])
     print(session['type'])
+    # view my flights
+
+    # create new flights
+    airline_name = replace(request.form.get('airline_name'))
+    flight_number = replace(request.form.get('flight_number'))
+    departure_airport = replace(request.form.get('departure_airport'))
+    arrival_airport = replace(request.form.get('arrival_airport'))
+    departure_time = replace(request.form.get('departure_time'))
+    airplane_id = replace(request.form.get('airplane_id'))
+    arrival_time = replace(request.form.get('arrival_time'))
+    status = replace(request.form.get('status'))
+    price = replace(request.form.get('price'))
+    departure_city = replace(request.form.get('departure_city'))
+    arrival_city = replace(request.form.get('arrival_city'))
+
+    # change status of flights
+
+    # add airplane in the system
+
+    # add new airport in the system
+
+    # view all the booking agents
+
+    # view frequent customers
+
+    # view reports
+
+    # comparison of revenue earned
+
+    # view top destinations
+
     if g.type == 'staff':
+        # view my flights
+
+        # create new flights
+        if airline_name:
+            sql = "INSERT INTO flight VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(
+                airline_name, flight_number, departure_airport, departure_time, arrival_airport, arrival_time, price, status, airplane_id, departure_city, arrival_city)
+            print(sql)
+            response = query_mod(sql, DB)
+            print(response)
+            return render_template('staff_home.html', username=session['user'])
+
+        # change status of flights
+
+        # add airplane in the system
+
+        # add new airport in the system
+
+        # view all the booking agents
+
+        # view frequent customers
+
+        # view reports
+
+        # comparison of revenue earned
+
+        # view top destinations
         return render_template("staff_home.html", username = session['user'])
     return redirect(url_for('home_page_get'))
 
