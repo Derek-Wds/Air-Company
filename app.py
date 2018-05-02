@@ -268,7 +268,9 @@ def staff_page():
     arrival_city = replace(request.form.get('arrival_city'))
 
     # change status of flights
-
+    status_source_city = replace(request.form.get('status_source_city'))
+    status_source_airport = replace(request.form.get('status_source_airport'))
+    change_status = replace(request.form.get('change_status'))
     # add airplane in the system
 
     # add new airport in the system
@@ -291,11 +293,15 @@ def staff_page():
             sql = "INSERT INTO flight VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(
                 airline_name, flight_number, departure_airport, departure_time, arrival_airport, arrival_time, price, status, airplane_id, departure_city, arrival_city)
             print(sql)
-            response = query_mod(sql, DB)
-            print(response)
+            query_mod(sql, DB)
             return render_template('staff_home.html', username=session['user'])
 
         # change status of flights
+        if status_source_airport:
+            sql = "UPDATE flight SET status='{}' WHERE airline_name = '{}' AND flight_num = '{}'".format(change_status, status_source_city, status_source_airport)
+            print(sql)
+            query_mod(sql, DB)
+            return render_template('staff_home.html', username=session['user'])
 
         # add airplane in the system
 
