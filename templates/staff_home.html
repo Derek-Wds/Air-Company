@@ -784,13 +784,13 @@
                         {% endif %}
 
                         {% if flights2 %}
-                            <h1 style="font-size: 18px">The flights {{ frequent_customer }} has taken in the last
+                            <h1 style="font-size: 18px">The flights {{ request.form.freq_customer_email }} has taken in the last
                                 year</h1>
 
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col"></th>
                                     <th scope="col">Airline name</th>
                                     <th scope="col">Flight number</th>
                                     <th scope="col">Departure airport</th>
@@ -800,10 +800,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% set num = 1 %}
                                 {% for flight in flights2 %}
                                     <tr>
-                                        <th scope="row">{{ num }}</th>
+                                        <th scope="row">#</th>
                                         <td>{{ flight['airline_name'] }}</td>
                                         <td>{{ flight['flight_num'] }}</td>
                                         <td>{{ flight['depature_airport'] }}</td>
@@ -811,7 +810,6 @@
                                         <td>{{ flight['depature_time'] }}</td>
                                         <td>{{ flight['arrival_time'] }}</td>
                                     </tr>
-                                    {% set num = num + 1 %}
                                 {% endfor %}
 
                                 </tbody>
