@@ -760,16 +760,20 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="input-group mb-3">
-                                        <input type="email" class="form-control"
+                                        <div class="col col-md-6 col-sm-6 col-lg-6">
+                                            <input type="email" class="form-control"
                                                name="freq_customer_email"
                                                placeholder="Enter Customer email"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon"
                                                value="{{ request.form.freq_customer_email }}">
-                                        <button class="btn btn-warning btn-block" type="submit"
+                                        </div>
+                                        <div class="col col-md-6 col-sm-6 col-lg-6">
+                                            <button class="btn btn-warning btn-block" type="submit"
                                                 style="font-size: 18px">
                                             <strong>Search</strong>
                                         </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
