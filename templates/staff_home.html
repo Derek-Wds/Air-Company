@@ -916,9 +916,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h1>Top 3 most popular destinations for last 3 months</h1>
+                    <h3>Top 3 most popular destinations for last 3 months</h3>
                     {% if top_destinations1 %}
                         {% for item in top_destinations1 %}
+                            <font face="Lato">{{ item }} &nbsp; &nbsp;</font>
+                        {% endfor %}
+                    {% endif %}
+                    <h3>Top 3 most popular destinations for last year</h3>
+                    {% if top_destinations1 %}
+                        {% for item in top_destinations2 %}
                             <font face="Lato">{{ item }} &nbsp; &nbsp;</font>
                         {% endfor %}
                     {% endif %}
