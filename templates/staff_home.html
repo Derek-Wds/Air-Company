@@ -756,28 +756,25 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col col-md-6 col-sm-6 col-lg-6">
+                        <form method="post">
+                            <div class="container">
+                                <div class="row">
                                     <div class="input-group mb-3">
                                         <input type="email" class="form-control"
                                                name="freq_customer_email"
-                                               placeholder="Ending date"
+                                               placeholder="Enter Customer email"
                                                aria-label="Search term"
                                                aria-describedby="basic-addon"
                                                value="{{ request.form.freq_customer_email }}">
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-lg-6">
-                                        <div class="input-group mb-3">
-                                            <button class="btn btn-warning btn-block" type="submit"
-                                                    style="font-size: 18px">
-                                                <strong>Search</strong>
-                                            </button>
-                                        </div>
+                                        <button class="btn btn-warning btn-block" type="submit"
+                                                style="font-size: 18px">
+                                            <strong>Search</strong>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+
                         <br>
                         {% if frequent_customer %}
                             <h1 style="font-size: 18px">The most frequent customer within the last year</h1>
@@ -866,25 +863,15 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="btn-group">
-                                    <button class="btn btn-outline-warning" type="submit" name="search_last_year"
-                                            value="{{ search_last_year }}"><strong>Search in last
-                                        year</strong>
-                                    </button>
-                                    <input type="submit" name="search_last_year" value="Search for last year"
-                                           class="form-control" aria-describedby="basic-addon"
-                                           placeholder="Search for last year">
-                                    <button class="btn btn-outline-warning" type="submit"><strong>Search in last
-                                        month</strong>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </form>
-                    {% if total_amount_of_ticket %}
+                    {% if total_amount_of_ticket1 and total_amount_of_ticket2 and total_amount_of_ticket3 %}
                         <h1>Total amount of ticket sold</h1>
-                        <span>{{ total_amount_of_ticket }}</span>
+                        <span>{{ total_amount_of_ticket1 }}</span>
+                        <h1>Total amount of ticket sold in last year</h1>
+                        <span>{{ total_amount_of_ticket2 }}</span>
+                        <h1>Total amount of ticket sold in last month</h1>
+                        <span>{{ total_amount_of_ticket3 }}</span>
                     {% endif %}
                     <canvas id="ticket_sold"></canvas>
                 </div>
