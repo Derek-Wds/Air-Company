@@ -13,7 +13,9 @@
         input[type='number'],
         input[type='password'],
         input[type='date'],
-        input[type='email'],,
+        input[type='email'],
+
+        ,
         select,
         textarea {
             outline: none;
@@ -165,7 +167,7 @@
 
     <div class="container">
         {% if customers %}
-        <h1 style="font-size: 18px">All the customers in the flight you just searched</h1>
+            <h1 style="font-size: 18px">All the customers in the flight you just searched</h1>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -490,7 +492,8 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='datetime-local', this.step ='1')" class="form-control"
+                                        <input type="text" onfocus="(this.type='datetime-local', this.step ='1')"
+                                               class="form-control"
                                                name="departure_time"
                                                placeholder="Departure time"
                                                aria-label="Search term"
@@ -499,7 +502,8 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" onfocus="(this.type='datetime-local', this.step ='1')" class="form-control"
+                                        <input type="text" onfocus="(this.type='datetime-local', this.step ='1')"
+                                               class="form-control"
                                                name="arrival_time"
                                                placeholder="Arrival time"
                                                aria-label="Search term"
@@ -925,7 +929,9 @@
                 {% endfor %}],
                 datasets: [
                     {
-                        label: "number",
+                        label: [{% for label in agent_ticket %}
+                            "{{label['email']}}",
+                        {% endfor %}],
                         backgroundColor: ["#368ecd", "#8951a2", "#35baa1", "#e89a1e", "#c45652"],
                         data: [{% for value in agent_ticket %}
                             {{value['tickets']}},
@@ -950,7 +956,9 @@
                 {% endfor %}],
                 datasets: [
                     {
-                        label: "amount",
+                        label: [{% for label in agent_commission %}
+                            "{{label['email']}}",
+                        {% endfor %}],
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45c56"],
                         data: [{% for value in agent_commission%}
                             {{value['commission']}},
