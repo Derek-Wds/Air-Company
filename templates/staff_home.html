@@ -921,14 +921,14 @@
             type: 'horizontalBar',
             data: {
                 labels: [{% for label in agent_ticket %}
-                    "{{label}}",
+                    "{{label['email']}}",
                 {% endfor %}],
                 datasets: [
                     {
                         label: "number",
                         backgroundColor: ["#368ecd", "#8951a2", "#35baa1", "#e89a1e", "#c45652"],
-                        data: [{% for value in tickets %}
-                            {{value}},
+                        data: [{% for value in agent_ticket %}
+                            {{value['tickets']}},
                         {% endfor %}]
                     }
                 ]
@@ -946,14 +946,14 @@
             type: 'horizontalBar',
             data: {
                 labels: [{% for label in agent_commission %}
-                    "{{label}}",
+                    "{{label['email']}}",
                 {% endfor %}],
                 datasets: [
                     {
                         label: "amount",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45c56"],
-                        data: [{% for value in commission%}
-                            {{value}},
+                        data: [{% for value in agent_commission%}
+                            {{value['commission']}},
                         {% endfor %}]
                     }
                 ]

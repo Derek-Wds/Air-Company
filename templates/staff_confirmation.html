@@ -13,27 +13,31 @@
             <div class="container airplane-content" id="airplanes" style="padding-top: 42px;">
                 <div id="result">
                     <ul class="list-group list-group-flush">
-                    {% if airplanes %}
-                        {% for airplane in airplanes %}
-                                <li tabindex="0" class="search-result">
-                                    <div class="row">
-                                        <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
-                                            <div class="row">
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    {{ airplane['airline_name'] }}
-                                                </div>
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    {{ airplane['airplane_id'] }}
-                                                </div>
-                                                <div class="col col-md-4 col-lg-4 col-sm-4">
-                                                    {{ airplane['seats'] }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                        {% endfor %}
-                    {% endif %}
+                        {% if airplanes %}
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Airline name</th>
+                                    <th scope="col">Airline ID</th>
+                                    <th scope="col">Seats</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% set num = 1 %}
+                                {% for airplane in airplanes %}
+                                    <tr>
+                                        <th scope="row">#</th>
+                                        <td>{{ airplane['airline_name'] }}</td>
+                                        <td>{{ airplane['airplane_id'] }}</td>
+                                        <td>{{ airplane['seats'] }}</td>
+                                    </tr>
+                                    {% set num = num + 1 %}
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
