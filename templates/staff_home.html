@@ -1012,7 +1012,7 @@
                     label: [{% for label in labels1 %}
                         "{{label1}}",
                     {% endfor %}],
-                    data: [{% for value in values1 %}
+                    data: [{% for value in labels1 %}
                         {{value}},
                     {% endfor %}],
                     backgroundColor: [
@@ -1068,14 +1068,14 @@
             type: 'pie',
             data: {
                 labels: [{% for label in labels2 %}
-                    "{{label}}",
+                    "{{label['label']}}",
                 {% endfor %}],
                 datasets: [{
                     label: [{% for label in labels2 %}
-                        "{{label1}}",
+                        "{{label1['label']}}",
                     {% endfor %}],
-                    data: [{% for value in values2 %}
-                        {{value}},
+                    data: [{% for value in labels2 %}
+                        {{value['value']}},
                     {% endfor %}],
                     backgroundColor: [
                         'rgba(0, 255, 255, 0.6)',
