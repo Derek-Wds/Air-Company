@@ -1067,15 +1067,11 @@
         let mychart2 = new Chart(revenue_earned, {
             type: 'pie',
             data: {
-                labels: [{% for label in labels2 %}
-                    "{{label['label']}}",
-                {% endfor %}],
+                labels: ['30 days indeirect', '30 days direct', 'one year indirect', 'one year direct'],
                 datasets: [{
-                    label: [{% for label in labels2 %}
-                        "{{label1['label']}}",
-                    {% endfor %}],
+                    label: ['30 days indeirect', '30 days direct', 'one year indirect', 'one year direct'],
                     data: [{% for value in labels2 %}
-                        {{value['value']}},
+                        {{value['v']}},
                     {% endfor %}],
                     backgroundColor: [
                         'rgba(0, 255, 255, 0.6)',
