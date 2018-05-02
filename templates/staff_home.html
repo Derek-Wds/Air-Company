@@ -119,6 +119,40 @@
     <div class="background">
     </div>
 
+    <div class="container" id="flights2">
+        {% if flights2 %}
+            <h1 style="font-size: 18px">The flights {{ request.form.freq_customer_email }} has taken in the last
+                year</h1>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Airline name</th>
+                    <th scope="col">Flight number</th>
+                    <th scope="col">Departure airport</th>
+                    <th scope="col">Arrival airport</th>
+                    <th scope="col">Departure time</th>
+                    <th scope="col">Arrival time</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for flight in flights2 %}
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>{{ flight['airline_name'] }}</td>
+                        <td>{{ flight['flight_num'] }}</td>
+                        <td>{{ flight['depature_airport'] }}</td>
+                        <td>{{ flight['arrival_airport'] }}</td>
+                        <td>{{ flight['depature_time'] }}</td>
+                        <td>{{ flight['arrival_time'] }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
     <div class="container flight-content" id="flights" style="padding-top: 42px;">
         <div id="result">
             <ul class="fligtdetails list-group list-group-flush">
@@ -762,17 +796,17 @@
                                     <div class="input-group mb-3">
                                         <div class="col col-md-6 col-sm-6 col-lg-6">
                                             <input type="email" class="form-control"
-                                               name="freq_customer_email"
-                                               placeholder="Enter Customer email"
-                                               aria-label="Search term"
-                                               aria-describedby="basic-addon"
-                                               value="{{ request.form.freq_customer_email }}">
+                                                   name="freq_customer_email"
+                                                   placeholder="Enter Customer email"
+                                                   aria-label="Search term"
+                                                   aria-describedby="basic-addon"
+                                                   value="{{ request.form.freq_customer_email }}">
                                         </div>
                                         <div class="col col-md-6 col-sm-6 col-lg-6">
                                             <button class="btn btn-warning btn-block" type="submit"
-                                                style="font-size: 18px">
-                                            <strong>Search</strong>
-                                        </button>
+                                                    style="font-size: 18px">
+                                                <strong>Search</strong>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -783,41 +817,8 @@
                         {% if frequent_customer %}
                             <h1 style="font-size: 18px">The most frequent customer within the last year</h1>
                             <span>
-                            <span>{{ frequent_customer }}</span>
+                            <span>{{ frequent_customer['email'] }}</span>
                         </span>
-                        {% endif %}
-
-                        {% if flights2 %}
-                            <h1 style="font-size: 18px">The flights {{ request.form.freq_customer_email }} has taken in the last
-                                year</h1>
-
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Airline name</th>
-                                    <th scope="col">Flight number</th>
-                                    <th scope="col">Departure airport</th>
-                                    <th scope="col">Arrival airport</th>
-                                    <th scope="col">Departure time</th>
-                                    <th scope="col">Arrival time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for flight in flights2 %}
-                                    <tr>
-                                        <th scope="row">#</th>
-                                        <td>{{ flight['airline_name'] }}</td>
-                                        <td>{{ flight['flight_num'] }}</td>
-                                        <td>{{ flight['depature_airport'] }}</td>
-                                        <td>{{ flight['arrival_airport'] }}</td>
-                                        <td>{{ flight['depature_time'] }}</td>
-                                        <td>{{ flight['arrival_time'] }}</td>
-                                    </tr>
-                                {% endfor %}
-
-                                </tbody>
-                            </table>
                         {% endif %}
                     </div>
                 </div>
