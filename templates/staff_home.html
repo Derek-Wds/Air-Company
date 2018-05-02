@@ -756,15 +756,40 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <h1 style="font-size: 18px">The most frequent customer within the last year</h1>
-                        <span>
-                            {% if frequent_customer %}
-                                <span>{{ frequent_customer }}</span>
-                            {% endif %}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-md-6 col-sm-6 col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="email" class="form-control"
+                                               name="freq_customer_email"
+                                               placeholder="Ending date"
+                                               aria-label="Search term"
+                                               aria-describedby="basic-addon"
+                                               value="{{ request.form.freq_customer_email }}">
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="input-group mb-3">
+                                            <button class="btn btn-warning btn-block" type="submit"
+                                                    style="font-size: 18px">
+                                                <strong>Search</strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        {% if frequent_customer %}
+                            <h1 style="font-size: 18px">The most frequent customer within the last year</h1>
+                            <span>
+                            <span>{{ frequent_customer }}</span>
                         </span>
+                        {% endif %}
 
-                        <h1 style="font-size: 18px">The flights {{ frequent_customer }} has taken in the last year</h1>
                         {% if flights2 %}
+                            <h1 style="font-size: 18px">The flights {{ frequent_customer }} has taken in the last
+                                year</h1>
+
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
