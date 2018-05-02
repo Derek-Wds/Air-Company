@@ -17,7 +17,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col"></th>
                                     <th scope="col">Airline name</th>
                                     <th scope="col">Airline ID</th>
                                     <th scope="col">Seats</th>
@@ -27,7 +27,7 @@
                                 {% set num = 1 %}
                                 {% for airplane in airplanes %}
                                     <tr>
-                                        <th scope="row">{{ num }}</th>
+                                        <th scope="row">#</th>
                                         <td>{{ airplane['airline_name'] }}</td>
                                         <td>{{ airplane['airplane_id'] }}</td>
                                         <td>{{ airplane['seats'] }}</td>
