@@ -164,8 +164,8 @@
     </div>
 
     <div class="container">
-        <h1 style="font-size: 18px">All the customers in the flight you just searched</h1>
         {% if customers %}
+        <h1 style="font-size: 18px">All the customers in the flight you just searched</h1>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -917,7 +917,7 @@
             window.location.assign("/logout/");
         }
 
-        new Chart(document.getElementById("agent-ticket"), {
+        new Chart(document.getElementById("agent_ticket"), {
             type: 'horizontalBar',
             data: {
                 labels: [{% for label in agent_ticket %}
@@ -942,7 +942,7 @@
             }
         });
 
-        new Chart(document.getElementById("agent-commission"), {
+        new Chart(document.getElementById("agent_commission"), {
             type: 'horizontalBar',
             data: {
                 labels: [{% for label in agent_commission %}
