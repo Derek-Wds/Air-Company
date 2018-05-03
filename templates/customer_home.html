@@ -172,16 +172,17 @@
         </div>
     </div>
 
-    <div class="container">
-        {% if spend_range1 and spend_range2 %}
+    {% if spend_range1 and spend_range2 %}
+        <div class="container">
             <h1 style="font-size: 18px;">Total amount of money spent in the range:</h1>
             <span>{{ spend_range1[0]['dey'] }}</span>
             <canvas id="mySpending1"></canvas>
-        {% endif %}
+        </div>
+    {% endif %}
 
-    </div>
-    <div class="container flight-content" id="flights" style="padding-top: 42px;">
-        {% if flights %}
+
+    {% if flights %}
+        <div class="container flight-content" id="flights" style="padding-top: 42px;">
             <h3 class="text-center">
                 Flight details
             </h3>
@@ -229,8 +230,8 @@
                     {% endfor %}
                 </ul>
             </div>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
     <br>
     <br>
     <form method="post">
@@ -320,8 +321,6 @@
                                             </li>
                                         {% endfor %}
                                     {% endif %}
-
-
                                 </ul>
                             </div>
                         </div>

@@ -12,7 +12,9 @@
         input[type='number'],
         input[type='password'],
         input[type='date'],
-        input[type='email'],,
+        input[type='email'],
+
+        ,
         select,
         textarea {
             outline: none;
@@ -161,10 +163,11 @@
             </form>
         </div>
     </div>
-    <div class="container">
-        <div id="result">
-            <ul class="fligtdetails list-group list-group-flush">
-                {% if commission1 %}
+
+    {% if commission1 %}
+        <div class="container">
+            <div id="result">
+                <ul class="fligtdetails list-group list-group-flush">
                     <li tabindex="0" class="search-result">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-sm-12" id="col-left">
@@ -186,55 +189,57 @@
                             </div>
                         </div>
                     </li>
-                {% endif %}
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="container flight-content" id="flights" style="padding-top: 42px;">
+    {% endif %}
+
+    {% if flights %} {% for flight in flights %}
+        <div class="container flight-content" id="flights" style="padding-top: 42px;">
         <div id="result">
-            <ul class="fligtdetails list-group list-group-flush">
-                {% if flights %} {% for flight in flights %}
-                    <li tabindex="0" class="search-result">
-                        <div class="row">
-                            <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
-                                <div class="row">
-                                    <div class="col col-md-4 col-lg-4 col-sm-4">
-                                        <font style="font-size: 20px">
-                                            <strong>{{ flight['airline_name'] }}</strong>
-                                        </font>
-                                        &nbsp; &nbsp; Flight number: {{ flight['flight_num'] }}
-                                    </div>
-                                    <div class="col col-md-4 col-lg-4 col-sm-4">
-                                        <strong>{{ flight['status'] }}</strong>
-                                    </div>
-                                    <div class="col col-md-4 col-lg-4 col-sm-4">
-                                        Airplane id: {{ flight['airplane_id'] }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col col-md-4 col-lg-4 col-sm-4">
-                                        {{ flight['departure_airport'] }} &nbsp; &nbsp; {{ flight['departure_time'] }}
-                                    </div>
-                                    <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
-                                        <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
-                                             style="width: 180px; height: 30px;">
-                                    </div>
-                                    <div class="col col-md-4 col-lg-4 col-sm-4">
-                                        {{ flight['arrival_airport'] }} &nbsp; &nbsp; {{ flight['arrival_time'] }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
-                                <div class="row">
-                                    Price: {{ flight['price'] }}
-                                </div>
-                            </div>
+        <ul class="fligtdetails list-group list-group-flush">
+        <li tabindex="0" class="search-result">
+            <div class="row">
+                <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
+                    <div class="row">
+                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                            <font style="font-size: 20px">
+                                <strong>{{ flight['airline_name'] }}</strong>
+                            </font>
+                            &nbsp; &nbsp; Flight number: {{ flight['flight_num'] }}
                         </div>
-                    </li>
-                {% endfor %} {% endif %}
-            </ul>
-        </div>
+                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                            <strong>{{ flight['status'] }}</strong>
+                        </div>
+                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                            Airplane id: {{ flight['airplane_id'] }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                            {{ flight['departure_airport'] }} &nbsp; &nbsp; {{ flight['departure_time'] }}
+                        </div>
+                        <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
+                            <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
+                                 style="width: 180px; height: 30px;">
+                        </div>
+                        <div class="col col-md-4 col-lg-4 col-sm-4">
+                            {{ flight['arrival_airport'] }} &nbsp; &nbsp; {{ flight['arrival_time'] }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-sm-2" id="col-right">
+                    <div class="row">
+                        Price: {{ flight['price'] }}
+                    </div>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
     </div>
+    </div>
+    {% endif %}
     <br>
     <form method="post">
         <div class="container">
@@ -424,10 +429,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="top_customer1" height="766" width="1532" class="chartjs-render-monitor" style="display: block; height: 383px; width: 766px;"></canvas>
+                    <canvas id="top_customer1" height="766" width="1532" class="chartjs-render-monitor"
+                            style="display: block; height: 383px; width: 766px;"></canvas>
                     <br>
                     <br>
-                    <canvas id="top_customer2" height="766" width="1532" class="chartjs-render-monitor" style="display: block; height: 383px; width: 766px;"></canvas>
+                    <canvas id="top_customer2" height="766" width="1532" class="chartjs-render-monitor"
+                            style="display: block; height: 383px; width: 766px;"></canvas>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -450,8 +457,8 @@
             type: 'bar',
             data: {
                 labels: [{% for label in top_cus1 %}
-                        "{{label['customer_email']}}",
-                    {% endfor %}],
+                    "{{label['customer_email']}}",
+                {% endfor %}],
                 datasets: [{
                     label: [{% for label in top_cus1 %}
                         "{{label['customer_email']}}",
@@ -507,8 +514,8 @@
             type: 'bar',
             data: {
                 labels: [{% for label in top_cus2 %}
-                        "{{label['customer_email']}}",
-                    {% endfor %}],
+                    "{{label['customer_email']}}",
+                {% endfor %}],
                 datasets: [{
                     label: [{% for label in top_cus2 %}
                         "{{label['customer_email']}}",

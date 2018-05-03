@@ -119,8 +119,9 @@
     <div class="background">
     </div>
 
+{% if flight_customers %}
     <div class="container">
-        {% if flight_customers %}
+
             <h3>
                 The total amount of ticket sold based on range of dates
             </h3>
@@ -144,11 +145,11 @@
                 {% endfor %}
                 </tbody>
             </table>
-        {% endif %}
     </div>
+{% endif %}
 
-    <div class="container">
         {% if report_custom %}
+    <div class="container">
             <h3>
                 The total amount of ticket sold based on range of dates
             </h3>
@@ -172,11 +173,11 @@
 
                 </tbody>
             </table>
-        {% endif %}
     </div>
+{% endif %}
 
-    <div class="container" id="flights2">
         {% if flights2 %}
+    <div class="container" id="flights2">
             <h1 style="font-size: 18px">The flights {{ request.form.freq_customer_email }} has taken in the last
                 year</h1>
 
@@ -207,12 +208,14 @@
 
                 </tbody>
             </table>
-        {% endif %}
     </div>
+    {% endif %}
+
+    {% if flights1 %}
     <div class="container flight-content" id="flights" style="padding-top: 42px;">
         <div id="result">
             <ul class="fligtdetails list-group list-group-flush">
-                {% if flights1 %} {% for flight in flights1 %}
+                 {% for flight in flights1 %}
                     <li tabindex="0" class="search-result">
                         <div class="row">
                             <div class="col-md-10 col-lg-10 col-sm-10" id="col-left">
@@ -221,9 +224,9 @@
                                         <font style="font-size: 20px">
                                             <strong>{{ flight['airline_name'] }}</strong>
                                         </font>
-                                        &nbsp; &nbsp; Flight number: {{ flight['flight_num'] }}
+                                        &nbsp; &nbsp;{{ flight['flight_num'] }}
                                     </div>
-                                    <div class="col col-md-4 col-lg-4 col-sm-4">
+                                    <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                         <strong>{{ flight['status'] }}</strong>
                                     </div>
                                     <div class="col col-md-4 col-lg-4 col-sm-4">
@@ -250,13 +253,14 @@
                             </div>
                         </div>
                     </li>
-                {% endfor %} {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
+{% endif %}
 
-    <div class="container">
         {% if customers %}
+    <div class="container">
             <h1 style="font-size: 18px">All the customers in the flight you just searched</h1>
             <table class="table table-hover">
                 <thead>
@@ -281,8 +285,8 @@
 
                 </tbody>
             </table>
-        {% endif %}
     </div>
+        {% endif %}
 
     <div class="modal hide fade" id="myflight" tabindex="0" role="dialog" aria-labelledby="myModal"
          aria-hidden="true">
@@ -309,7 +313,7 @@
                                                                 {{ data['airline_name'] }} &nbsp; &nbsp;
                                                                 &nbsp; {{ data['flight_num'] }}
                                                             </div>
-                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                                                 <strong>{{ data['status'] }}</strong>
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
@@ -508,11 +512,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    {% if Data %}
                     <div class="container">
                         <div class="container flight-content" id="upcoming_flights" style="padding-top: 42px;">
                             <div id="result">
                                 <ul class="fligtdetails list-group list-group-flush">
-                                    {% if Data %}
+
                                         <h1>All the upcoming flights in the next 30 days:</h1>
                                         {% for data in Data %}
                                             <li tabindex="0" class="search-result">
@@ -523,7 +528,7 @@
                                                                 {{ data['airline_name'] }} &nbsp; &nbsp;
                                                                 &nbsp; {{ data['flight_num'] }}
                                                             </div>
-                                                            <div class="col col-md-4 col-lg-4 col-sm-4">
+                                                            <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                                                 <strong>{{ data['status'] }}</strong>
                                                             </div>
                                                             <div class="col col-md-4 col-lg-4 col-sm-4">
@@ -549,11 +554,12 @@
                                             </li>
 
                                         {% endfor %}
-                                    {% endif %}
+
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
 
                     <form method="post">
                         <div class="container" id="add_new_flights" style="padding-top: 24px;">
