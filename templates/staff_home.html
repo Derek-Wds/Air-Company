@@ -868,9 +868,7 @@
                             </div>
                         </div>
                     </form>
-                    {% if total_amount_of_ticket1 and total_amount_of_ticket2 and total_amount_of_ticket3 %}
-                        <h1>Total amount of ticket sold</h1>
-                        <span>{{ report_custom[0]['amount'] }}</span>
+                    {% if report_year and report_month %}
                         <h1>Total amount of ticket sold in last year</h1>
                         <span>{{ report_month[0]['amount'] }}</span>
                         <h1>Total amount of ticket sold in last month</h1>
