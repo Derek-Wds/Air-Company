@@ -123,14 +123,13 @@
     <div class="container">
 
             <h3>
-                All the customers in the flight {{ request.form.airline_name1 }} {{ request.form.flight_number1 }}
+                All the customers in the flight {{ request.form.flight_number1 }}
             </h3>
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Customer</th>
-                    <th scope="col">Airline name</th>
                     <th scope="col">Flight number</th>
                 </tr>
                 </thead>
@@ -139,7 +138,6 @@
                     <tr>
                         <th scope="row">#</th>
                         <td>{{ item['c'] }}</td>
-                        <td>{{ request.form.airline_name1 }}</td>
                         <td>{{ request.form.flight_number1 }}</td>
                     </tr>
                 {% endfor %}
