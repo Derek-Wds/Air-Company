@@ -870,11 +870,11 @@
                     </form>
                     {% if total_amount_of_ticket1 and total_amount_of_ticket2 and total_amount_of_ticket3 %}
                         <h1>Total amount of ticket sold</h1>
-                        <span>{{ total_amount_of_ticket1 }}</span>
+                        <span>{{ report_custom[0]['amount'] }}</span>
                         <h1>Total amount of ticket sold in last year</h1>
-                        <span>{{ total_amount_of_ticket2 }}</span>
+                        <span>{{ report_month[0]['amount'] }}</span>
                         <h1>Total amount of ticket sold in last month</h1>
-                        <span>{{ total_amount_of_ticket3 }}</span>
+                        <span>{{ report_year[0]['amount'] }}</span>
                     {% endif %}
                     <canvas id="ticket_sold"></canvas>
                 </div>
