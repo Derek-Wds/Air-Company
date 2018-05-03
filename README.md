@@ -3,5 +3,6 @@
 ![theme](https://img.shields.io/badge/Black-Gold-yellow.svg)
 
 **This is a final project for Databases**
--Front-end: Bootstrap, chart.js
--Back-end: python flask, mysql, Amazon database
+
+- Front-end: Bootstrap, chart.js
+- Back-end: python flask, mysql, Amazon database
