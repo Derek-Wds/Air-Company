@@ -120,6 +120,34 @@
     </div>
 
     <div class="container">
+    {% if flight_customers %}
+            <h3>
+                The total amount of ticket sold based on range of dates
+            </h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Airline name</th>
+                    <th scope="col">Flight number</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in flight_customer %}
+                <tr>
+                    <th scope="row">#</th>
+                    <td>{{ flight['c'] }}</td>
+                    <td>{{{ request.form.airline_name1 }}</td>
+                    <td>{{ request.form.flight_number1 }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+    {% endif %}
+    </div>
+
+    <div class="container">
         {% if report_custom %}
             <h3>
                 The total amount of ticket sold based on range of dates
@@ -392,6 +420,7 @@
                                             </div>
                                         </div>
                                     </form>
+                                <br>
                                     <form method="post">
                                         <div class="container" id="search_with_date">
                                             <h3>Please choose the flight to see those customers</h3>
