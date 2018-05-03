@@ -894,10 +894,10 @@
                         </div>
                     </form>
                     {% if report_year and report_month %}
-                        <h1>Total amount of ticket sold in last year</h1>
-                        <span>{{ report_month[0]['amount'] }}</span>
-                        <h1>Total amount of ticket sold in last month</h1>
-                        <span>{{ report_year[0]['amount'] }}</span>
+                        <h3>Total amount of ticket sold in last year: {{ report_month[0]['amount'] }}</h3>
+                        <br>
+                        <h3>Total amount of ticket sold in last month: {{ report_year[0]['amount'] }}</h3>
+                        <span></span>
                     {% endif %}
                     <canvas id="ticket_sold"></canvas>
                 </div>
