@@ -1029,11 +1029,11 @@
             type: 'bar',
             data: {
                 labels: [{% for label in labels1 %}
-                    "{{label[month]}}",
+                    "{{label['m']}}",
                 {% endfor %}],
                 datasets: [{
                     label: [{% for label in labels1 %}
-                        "{{label1[m]}}",
+                        "{{label1['m']}}",
                     {% endfor %}],
                     data: [{% for value in labels1 %}
                         {{value['v']}},
