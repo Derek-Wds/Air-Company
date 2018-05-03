@@ -353,12 +353,21 @@ def staff_page():
         start_date = end_date - timedelta(days=365)
         sql = "SELECT COUNT(ticket_id) AS amount FROM purchases WHERE purchase_date >= '{}' AND purchase_date <= '{}'".format(start_date, end_date)
         report_year = fetch_all(sql, DB)
+        print('report-year', report_year)
 
         # view reports last month
         end_date = datetime.date.today()
         start_date = end_date - timedelta(days=30)
         sql = "SELECT COUNT(ticket_id) AS amount FROM purchases WHERE purchase_date >= '{}' AND purchase_date <= '{}'".format(start_date, end_date)
         report_month = fetch_all(sql, DB)
+        print('report-month', report_month)
+
+        # month-wise
+        end_date = datetime.date.today()
+        start_date = end_date - timedelta(days=365)
+        sql = "SELECT COUNT(ticket_id) AS v, MONTH(purchase_date) AS m FROM purchases WHERE purchase_date >= '{}' AND purchase_date <= '{}' GROUP BY MONTH(purchase_date)".format(start_date, end_date)
+        labels1 = fetch_all(sql, DB)
+        print('report-labels1', labels1)
 
         # view my flights
 
@@ -370,7 +379,7 @@ def staff_page():
             print(sql)
             query_mod(sql, DB)
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission,
-                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month)
+                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1)
 
         # change status of flights
         if status_source_airport:
@@ -378,7 +387,7 @@ def staff_page():
             print(sql)
             query_mod(sql, DB)
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission,
-                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month)
+                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1)
 
         # add airplane in the system
         if airline_name_plane:
@@ -391,7 +400,7 @@ def staff_page():
             airplanes = fetch_all(sql, DB)
             print(airplanes)
             return render_template('staff_confirmation.html', username=session['user'], airplanes=airplanes, agent_ticket=agent_ticket,
-                                   agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month)
+                                   agent_commission=agent_commission, frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1)
 
         # add new airport in the system
         if airport_name:
@@ -399,7 +408,7 @@ def staff_page():
             print(sql)
             query_mod(sql, DB)
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission,
-                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month)
+                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1)
 
         # search particular customer and airline
         if freq_customer_email:
@@ -408,17 +417,19 @@ def staff_page():
             flights2 = fetch_all(sql, DB)
             print(flights2)
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission,
-                                   frequent_customer=frequent_customer, flights2=flights2, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month)
+                                   frequent_customer=frequent_customer, flights2=flights2, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1)
 
         # view reports custom dates
         if report_to_date:
-            sql = "SELECT COUNT(ticket_id) FROM purchases WHERE purchase_date >= '{}' AND purchase_date <= '{}'".format(report_from_date, report_to_date)
+            sql = "SELECT COUNT(ticket_id) AS amount FROM purchases WHERE purchase_date >= '{}' AND purchase_date <= '{}'".format(report_from_date, report_to_date)
+            print(sql)
             report_custom = fetch_all(sql, DB)
+            print('report-custom', report_custom)
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission,
-                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, report_custom=report_custom)
+                                   frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, report_custom=report_custom, labels1=labels1)
 
         return render_template("staff_home.html", username = session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission,
-                               frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month)
+                               frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1)
     return redirect(url_for('home_page_get'))
 
 

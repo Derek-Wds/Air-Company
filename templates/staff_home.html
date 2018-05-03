@@ -138,7 +138,7 @@
                         <th scope="row">#</th>
                         <td>{{ report_custom[0]['amount'] }}</td>
                         <td>{{ request.form.report_from_date }}</td>
-                        <td>{{ request.fomr.report_to_date }}</td>
+                        <td>{{ request.form.report_to_date }}</td>
                     </tr>
                 {% endif %}
             </tbody>
@@ -874,7 +874,7 @@
                                                name="report_from_date"
                                                placeholder="Starting date"
                                                aria-label="Search term"
-                                               aria-describedby="basic-addon" value="{{ request.form.from_date }}">
+                                               aria-describedby="basic-addon" value="{{ request.form.report_from_date }}">
                                     </div>
                                 </div>
                                 <div class="col col-md-5 col-sm-5 col-lg-5">
@@ -883,7 +883,7 @@
                                                name="report_to_date"
                                                placeholder="Ending date"
                                                aria-label="Search term"
-                                               aria-describedby="basic-addon" value="{{ request.form.to_date }}">
+                                               aria-describedby="basic-addon" value="{{ request.form.report_to_date }}">
                                     </div>
                                 </div>
                                 <div class="col col-md-2 col-sm-2 col-lg-2">
