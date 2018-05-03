@@ -119,6 +119,31 @@
     <div class="background">
     </div>
 
+    <div class="container">
+        <h1>
+            The total amount of ticket sold based on range of dates
+        </h1>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Starting date</th>
+                <th scope="col">Ending date</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% if report_custom %}
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>{{ report_custom[0]['amount'] }}</td>
+                        <td>{{ request.form.from_date }}</td>
+                        <td>{{ request.fomr.to_date }}</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+    </div>
+
     <div class="container" id="flights2">
         {% if flights2 %}
             <h1 style="font-size: 18px">The flights {{ request.form.freq_customer_email }} has taken in the last
