@@ -336,6 +336,37 @@
                                         {% endif %}
                                     {% endfor %}
                                     <br>
+                                    <form method="post" action="">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" onfocus="(this.type='date')"
+                                                               class="form-control" name="flight_from_date"
+                                                               placeholder="Starting date" aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.flight_from_date }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" onfocus="(this.type='date')"
+                                                               class="form-control" name="flight_to_date"
+                                                               placeholder="Ending date" aria-label="Search term"
+                                                               aria-describedby="basic-addon"
+                                                               value="{{ request.form.flight_to_date }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                    <button class="btn btn-light btn-block" type="submit"
+                                                            style="font-size: 18px"
+                                                            onclick="">
+                                                        <strong>Search!</strong>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                     <form method="POST" action="">
                                         <div class="container" id="searchforflight" style="padding-top: 24px;">
                                             <div class="row">
@@ -357,25 +388,16 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
                                                     <div class="input-group mb-3">
                                                         <input type="text" onfocus="(this.type='date')"
-                                                               class="form-control" name="city_from_date"
-                                                               placeholder="Starting date" aria-label="Search term"
+                                                               class="form-control" name="city_date"
+                                                               placeholder="YY/MM/DD" aria-label="Search term"
                                                                aria-describedby="basic-addon"
-                                                               value="{{ request.form.city_from_date }}">
+                                                               value="{{ request.form.city_date }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-lg-5">
-                                                    <input type="text" onfocus="(this.type='date')"
-                                                           class="form-control"
-                                                           name="city_to_date"
-                                                           placeholder="Ending date"
-                                                           aria-label="Search term"
-                                                           aria-describedby="basic-addon"
-                                                           value="{{ request.form.city_to_date }}">
-                                                </div>
-                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
                                                     <div class="input-group mb-3">
                                                         <button class="btn btn-light btn-block" type="submit"
                                                                 style="font-size: 18px"
@@ -408,25 +430,16 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-sm-5 col-lg-5">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
                                                     <div class="input-group mb-3">
                                                         <input type="text" onfocus="(this.type='date')"
-                                                               class="form-control" name="airport_from_date"
-                                                               placeholder="Starting date" aria-label="Search term"
+                                                               class="form-control" name="airport_date"
+                                                               placeholder="YY/MM/DD" aria-label="Search term"
                                                                aria-describedby="basic-addon"
-                                                               value="{{ request.form.city_from_date }}">
+                                                               value="{{ request.form.airport_date }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-lg-5">
-                                                    <input type="text" onfocus="(this.type='date')"
-                                                           class="form-control"
-                                                           name="airport_to_date"
-                                                           placeholder="Ending date"
-                                                           aria-label="Search term"
-                                                           aria-describedby="basic-addon"
-                                                           value="{{ request.form.city_to_date }}">
-                                                </div>
-                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                <div class="col-md-6 col-sm-6 col-lg-6">
                                                     <div class="input-group mb-3">
                                                         <button class="btn btn-light btn-block" type="submit"
                                                                 style="font-size: 18px"
