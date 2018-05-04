@@ -1,5 +1,4 @@
 import pymysql.cursors
-from functools import wraps
 
 
 def query_mod(sql, config):
@@ -39,9 +38,15 @@ def fetch_all(sql, config):
     return result
 
 def replace(text):
-    #text = text.replace("'", "''")
-    #text = text.replace('"', '\"')
-    #text = text.replace("\\", "\\\\")
-    #text = text.replace('--', '')
-    #text = text.replace(';', '')
+    if type(text)=='String':
+        text = ''.join([c for c in text if c != "'"])
+        text = ''.join([c for c in text if c != '"'])
+        text = ''.join([c for c in text if c != "["])
+        text = ''.join([c for c in text if c != "]"])
+        text = ''.join([c for c in text if c != "="])
+        text = ''.join([c for c in text if c != "/"])
+        text = ''.join([c for c in text if c != "+"])
+        text = ''.join([c for c in text if c != "-"])
+        text = ''.join([c for c in text if c != "_"])
+        return text
     return text
