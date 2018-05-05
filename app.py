@@ -537,15 +537,15 @@ def login_customer():
             password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM customer WHERE email = "{}"'.format(email)
             db_pwd = query_fetch(sql, DB)
-            if password == db_pwd['password']:
+            if db_pwd is None:
+                err = "Account does not exist"
+                flash(err)
+            elif password == db_pwd['password']:
                 session['user'] = email
                 session['type'] = 'customer'
                 print(session['user'])
                 print(session['type'])
                 return redirect(url_for('customer_page'))
-            elif db_pwd is None:
-                err = "Account does not exist"
-                flash(err)
             else:
                 err = "Password error!"
                 flash(err)
@@ -567,15 +567,16 @@ def login_agent():
             password = md5(replace(request.form['password']).encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM booking_agent WHERE email = "{}"'.format(email)
             db_pwd = query_fetch(sql, DB)
-            if password == db_pwd['password']:
+            if db_pwd is None:
+                err = "Account does not exist"
+                flash(err)
+            elif password == db_pwd['password']:
                 session['user'] = email
                 session['type'] = 'agent'
                 print(session['user'])
                 print(session['type'])
                 return redirect(url_for('agent_page'))
-            elif db_pwd is None:
-                err = "Account does not exist"
-                flash(err)
+
             else:
                 err = "Password error!"
                 flash(err)
@@ -597,15 +598,15 @@ def login_staff():
             password = md5(request.form['password'].encode('utf-8')).hexdigest()
             sql = 'SELECT password FROM airline_staff WHERE username = "{}"'.format(username)
             db_pwd = query_fetch(sql, DB)
-            if password == db_pwd['password']:
+            if db_pwd is None:
+                err = "Account does not exist"
+                flash(err)
+            elif password == db_pwd['password']:
                 session['user'] = username
                 session['type'] = 'staff'
                 print(session['user'])
                 print(session['type'])
                 return redirect(url_for('staff_page'))
-            elif db_pwd is None:
-                err = "Account does not exist"
-                flash(err)
             else:
                 err = "Password error!"
                 flash(err)
