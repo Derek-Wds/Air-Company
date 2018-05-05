@@ -1,16 +1,19 @@
 import pymysql.cursors
-
+from flask import flash
 
 def query_mod(sql, config):
     connection = pymysql.connect(**config)
+    result = 0
     try:
         with connection.cursor() as cursor:
             # Insert a new record
             cursor.execute(sql)
         connection.commit()
+    except:
+        result = 1
     finally:
         connection.close()
-
+    return result
 
 def query_fetch(sql, config):
     connection = pymysql.connect(**config)

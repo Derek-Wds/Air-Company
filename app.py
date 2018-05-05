@@ -114,10 +114,14 @@ def customer_page():
             ticket_ID = randint(1, 99999999)
             sql = "INSERT INTO ticket VALUES ('{}', '{}', '{}')".format(ticket_ID, purchase_airline, purchase_flight)
             print("book ticket(ticket table) SQL: ", sql)
-            query_mod(sql, DB)
+            result = query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
             sql = "INSERT INTO purchases(ticket_id, customer_email, purchase_date) VALUES ('{}', '{}', '{}')".format(ticket_ID, g.user, time.strftime("%Y-%m-%d"))
             print("book ticket(ticket table) SQL: ", sql)
-            query_mod(sql, DB)
+            result = query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
 
         # Show my flights
         sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
@@ -238,12 +242,16 @@ def agent_page():
             ticket_ID = randint(1, 99999999)
             sql = "INSERT INTO ticket VALUES ('{}', '{}', '{}')".format(ticket_ID, purchase_airline, purchase_flight)
             print("book ticket(ticket table) SQL: ", sql)
-            query_mod(sql, DB)
+            result= query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
             sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
             booking_agent_ID = fetch_all(sql, DB)
             sql = "INSERT INTO purchases(ticket_id, customer_email, purchase_date, booking_agent_id) VALUES ('{}', '{}', '{}', '{}')".format(ticket_ID, customer_ID, time.strftime("%Y-%m-%d"), booking_agent_ID[0]['booking_agent_id'])
             print("book ticket(ticket table) SQL: ", sql)
-            query_mod(sql, DB)
+            result = query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
 
 
         return render_template("agent_home.html", username=session['user'], Data=my_flights, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
@@ -452,7 +460,9 @@ def staff_page():
             sql = "INSERT INTO flight VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(
                 airline_name, flight_number, departure_airport, departure_time, arrival_airport, arrival_time, price, status, airplane_id, departure_city, arrival_city)
             print(sql)
-            query_mod(sql, DB)
+            result = query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_ticket_month=agent_ticket_month, agent_commission=agent_commission,
                                    frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1, my_flights=my_flights)
 
@@ -468,8 +478,9 @@ def staff_page():
         if airline_name_plane:
             sql = "INSERT INTO airplane VALUES('{}', '{}', '{}')".format(airline_name_plane, airplane_id_plane, seat)
             print(sql)
-            query_mod(sql, DB)
-
+            result = query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
             sql = "SELECT * FROM airplane WHERE airline_name = '{}'".format(airline_name_plane)
             print(sql)
             airplanes = fetch_all(sql, DB)
@@ -481,7 +492,9 @@ def staff_page():
         if airport_name:
             sql = "INSERT INTO airport VALUES('{}', '{}')".format(airport_name, airport_city)
             print(sql)
-            query_mod(sql, DB)
+            result = query_mod(sql, DB)
+            if result == 1:
+                flash('Problem with SQL')
             return render_template('staff_home.html', username=session['user'], agent_ticket=agent_ticket, agent_commission=agent_commission, agent_ticket_month=agent_ticket_month,
                                    frequent_customer=frequent_customer, top_destinations1=top_destinations1, top_destinations2=top_destinations2, labels2=labels2, report_year=report_year, report_month=report_month, labels1=labels1, my_flights=my_flights)
 
@@ -654,7 +667,9 @@ def register_customer():
                 sql_add = 'INSERT INTO customer VALUES("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", ' \
                             '"{}", "{}")'.format(email, name, password, building_number, street, city, state, phone_number,
                                                  passport_number, passport_expiration, passport_country, date_of_birth)
-                query_mod(sql_add, DB)
+                result = query_mod(sql_add, DB)
+                if result == 1:
+                    flash('Problem with SQL')
                 session['user'] = email
                 session['type'] = 'customer'
                 print(session['user'])
@@ -688,7 +703,9 @@ def register_agent():
                 flash(err)
             else:
                 sql_add = 'INSERT INTO booking_agent VALUES("{}", "{}", "{}")'.format(email, password, booking_agent_id)
-                query_mod(sql_add, DB)
+                result = query_mod(sql_add, DB)
+                if result == 1:
+                    flash('Problem with SQL')
                 session['user'] = email
                 session['type'] = 'agent'
                 print(session['user'])
@@ -727,7 +744,9 @@ def register_staff():
             else:
                 sql_add = 'INSERT INTO airline_staff VALUES("{}", "{}", "{}", "{}", "{}", "{}")'.format(
                     username, password, first_name, last_name, date_of_birth, airline_name)
-                query_mod(sql_add, DB)
+                result = query_mod(sql_add, DB)
+                if result == 1:
+                    flash('Problem with SQL')
                 session['user'] = username
                 session['type'] = 'staff'
                 print(session['user'])
