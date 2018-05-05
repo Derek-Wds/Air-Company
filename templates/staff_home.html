@@ -1047,7 +1047,34 @@
                 legend: {display: false},
                 title: {
                     display: true,
-                    text: 'Top 5 agents based on the number of tickets sales'
+                    text: 'Top 5 agents based on the number of tickets sales past year'
+                }
+            }
+        });
+
+        new Chart(document.getElementById("agent_ticket_month"), {
+            type: 'horizontalBar',
+            data: {
+                labels: [{% for label in agent_ticket %}
+                    "{{label['email']}}",
+                {% endfor %}],
+                datasets: [
+                    {
+                        label: [{% for label in agent_ticket %}
+                            "{{label['email']}}",
+                        {% endfor %}],
+                        backgroundColor: ["#368ecd", "#8951a2", "#35baa1", "#e89a1e", "#c45652"],
+                        data: [{% for value in agent_ticket %}
+                            {{value['tickets']}},
+                        {% endfor %}]
+                    }
+                ]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: 'Top 5 agents based on the number of tickets sales past month'
                 }
             }
         });
@@ -1074,7 +1101,7 @@
                 legend: {display: false},
                 title: {
                     display: true,
-                    text: 'Top 5 agents based on the amount of commission received'
+                    text: 'Top 5 agents based on the amount of commission received past year'
                 }
             }
         });
