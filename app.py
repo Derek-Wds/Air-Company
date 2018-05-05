@@ -337,7 +337,7 @@ def staff_page():
 
         # view top destinations
         end_date = datetime.date.today()
-        start_date = end_date - timedelta(days=183)
+        start_date = end_date - timedelta(days=90)
         sql = "SELECT arrival_city FROM flight NATURAL JOIN purchases WHERE purchase_date >= '{}' AND purchase_date <= '{}' GROUP BY arrival_city ORDER BY COUNT(arrival_city) DESC LIMIT 3".format(start_date, end_date)
         print(sql)
         top_destinations1 = fetch_all(sql, DB)
