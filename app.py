@@ -90,6 +90,13 @@ def customer_page():
         one_year = fetch_all(sql, DB)
         print('one year', one_year)
 
+        # Show my flights
+        sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
+              "flight.flight_num AND purchases.customer_email = '{}'".format(g.user)
+        print('my_flights SQL: ', sql)
+        my_flights = fetch_all(sql, DB)
+        print('my_flights response: ', my_flights)
+
         if from_date:
             # custom range spending: total
             sql = "SELECT SUM(price) AS dey FROM purchases NATURAL JOIN ticket NATURAL JOIN flight WHERE customer_email = '{}' AND " \
@@ -106,7 +113,7 @@ def customer_page():
             spend_range2 = fetch_all(sql, DB)
             print('spend_range2', spend_range2)
 
-            return render_template("customer_home.html", username=session['user'],six_months=six_months,
+            return render_template("customer_home.html", username=session['user'],six_months=six_months, Data=my_flights,
                                    one_year=one_year, spend_range1=spend_range1, spend_range2=spend_range2)
 
         # Buy Ticket
@@ -123,12 +130,7 @@ def customer_page():
             if result == 1:
                 flash('Problem with SQL')
 
-        # Show my flights
-        sql = "SELECT * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
-              "flight.flight_num AND purchases.customer_email = '{}'".format(g.user)
-        print('my_flights SQL: ', sql)
-        my_flights = fetch_all(sql, DB)
-        print('my_flights response: ', my_flights)
+
         # Query flight based on airport
         if source_airport:
             sql = "SELECT * FROM flight WHERE departure_airport = '{}' AND arrival_airport = '{}'" \
