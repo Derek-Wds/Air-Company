@@ -196,6 +196,13 @@ def agent_page():
         if not commission:
             commission = {['commission']:'0', ['ticket']:'0', ['average']:'0'}
 
+        # Show my flights
+        sql = "SELECT distinct * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
+              "flight.flight_num AND purchases.booking_agent_id = '{}'".format(booking_agent_ID[0]['booking_agent_id'])
+        print('my_flights SQL: ', sql)
+        my_flights = fetch_all(sql, DB)
+        print('my_flights response: ', my_flights)
+
         #specify date
         if from_date:
             sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
@@ -206,7 +213,7 @@ def agent_page():
             commission1 = fetch_all(sql, DB)
             print('Commission1', commission1)
 
-            return render_template("agent_home.html", username=session['user'], commission1=commission1, commission=commission, top_cus1=top_cus1,top_cus2 = top_cus2)
+            return render_template("agent_home.html", username=session['user'], Data=my_flights, commission1=commission1, commission=commission, top_cus1=top_cus1,top_cus2 = top_cus2)
 
         
         # Query flight based on airport
@@ -216,7 +223,7 @@ def agent_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('agent_home.html', username=session['user'], flights=response, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
+            return render_template('agent_home.html', username=session['user'], Data=my_flights, flights=response, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
         # Query flight based on city
         elif source_city:
             sql = "SELECT * FROM flight WHERE departure_city = '{}' AND arrival_city = '{}'" \
@@ -224,7 +231,7 @@ def agent_page():
             print(sql)
             response = fetch_all(sql, DB)
             print(response)
-            return render_template('agent_home.html', username=session['user'], flights=response, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
+            return render_template('agent_home.html', username=session['user'], Data=my_flights, flights=response, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
 
         # Buy Ticket
         if purchase_airline:
@@ -238,12 +245,7 @@ def agent_page():
             print("book ticket(ticket table) SQL: ", sql)
             query_mod(sql, DB)
 
-        # Show my flights
-        sql = "SELECT distinct * FROM flight, purchases, ticket WHERE purchases.ticket_id = ticket.ticket_id AND ticket.flight_num = " \
-              "flight.flight_num AND purchases.booking_agent_id = '{}'".format(booking_agent_ID[0]['booking_agent_id'])
-        print('my_flights SQL: ', sql)
-        my_flights = fetch_all(sql, DB)
-        print('my_flights response: ', my_flights)
+
         return render_template("agent_home.html", username=session['user'], Data=my_flights, commission=commission, top_cus1=top_cus1, top_cus2 = top_cus2)
     return redirect(url_for('home_page_get'))
 
