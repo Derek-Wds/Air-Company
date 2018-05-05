@@ -266,7 +266,7 @@
                                         <div class="col col-md-4 col-lg-4 col-sm-4">
                                             <font style="font-size: 20px"><strong>{{ flight1['airline_name'] }}</strong></font>
                                             &nbsp; &nbsp;
-                                            Flight number: {{ flight1['flight_num'] }}
+                                            {{ flight1['flight_num'] }}
                                         </div>
                                         <div class="col col-md-4 col-lg-4 col-sm-4 text-center">
                                             <strong>{{ flight1['status'] }}</strong>
@@ -367,21 +367,19 @@
                                         <div class="col-md-2 col-lg-2 col-sm-2">
                                             {{ flight2['flight_num'] }}
                                         </div>
-                                        <div class="col-md-8 col-lg-8 col-sm-8">
-                                            <div class="col-md-4 col-lg-4 col-sm-4">
-                                                {{ flight2['departure_airport'] }}
+                                            <div class="col-md-2 col-lg-2 col-sm-2">
+                                                From:  <strong>{{ flight2['departure_airport'] }}</strong>
                                             </div>
                                             <div class="col-md-4 col-lg-4 col-sm-4 text-center">
                                                 <img src="http://hk.ceair.com/public/system/assets/images/nonstop.svg"
                                                      style="width: 150px; height: 25px;">
                                             </div>
-                                            <div class="col-md-4 col-lg-4 col-sm-4">
-                                                {{ flight2['arrival_airport'] }}
+                                            <div class="col-md-2 col-lg-2 col-sm-2">
+                                                To:  <strong>{{ flight2['arrival_airport'] }}</strong>
                                             </div>
-                                        </div>
                                         <div class="col-md-2 col-lg-2 col-sm-2 text-center">
-                                            {{ flight2['status'] }}
-                                        </div>
+                                            <strong>{{ flight2['status'] }}
+                                        </div></strong>
                                     </div>
                                 </div>
                             </div>
