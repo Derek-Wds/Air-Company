@@ -17,7 +17,6 @@ app.config['SECRET_KEY'] = secret_key
 def home_page_get():
     return render_template("index.html")
 
-
 @app.route('/', methods=['POST'])
 def home_page_post():
     source_airport = replace(request.form.get('source_airport'))
@@ -197,6 +196,7 @@ def agent_page():
         if not commission:
             commission = {['commission']:'0', ['ticket']:'0', ['average']:'0'}
 
+        #specify date
         if from_date:
             sql = "SELECT booking_agent_id FROM booking_agent WHERE email = '{}'".format(g.user)
             booking_agent_ID = fetch_all(sql, DB)
@@ -379,7 +379,9 @@ def staff_page():
         print('report-labels1', labels1)
 
         # view my flights
-        sql = "SELECT * FROM flight WHERE airline_name = '{}'".format(staff_airline['airline_name'])
+        start_date = datetime.date.today()
+        end_date = end_date + timedelta(days=30)
+        sql = "SELECT * FROM flight WHERE airline_name = '{}' AND DATE(departure_time) >= '{}' AND DATE(departure_time) <= '{}'".format(staff_airline['airline_name'], start_date, end_date)
         my_flights = fetch_all(sql, DB)
         print(my_flights)
 
